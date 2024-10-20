@@ -1,0 +1,107 @@
+name: license_server_admin_panel
+description: "A new Flutter project." # TODO: edit this
+publish_to: none
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.4.3 <4.0.0"
+
+dependencies:
+  bloc: ^8.1.4
+  collection: ^1.18.0
+  cupertino_icons: ^1.0.6
+  either_dart: ^1.0.0
+  flutter:
+    sdk: flutter
+  flutter_animate: ^4.5.0
+  flutter_localizations:
+    sdk: flutter
+  flutter_modular: ^6.3.4
+  flutter_svg: ^2.0.10+1
+  freezed_annotation: ^2.4.4
+  intl: any
+  json_annotation: ^4.9.0
+  logging: ^1.2.0
+  mcquenji_core:
+    git:
+      url: https://github.com/mcquenji/mcquenji_core.git
+  path: ^1.9.0
+  shadcn_flutter: ^0.0.21
+  vector_graphics: any
+
+dev_dependencies:
+  architecture_linter: ^0.2.2
+  build_runner: ^2.4.11
+  flutter_gen_runner: ^5.6.0
+  flutter_lints: ^3.0.0
+  flutter_test:
+    sdk: flutter
+  flutterando_analysis: ^0.0.2
+  freezed: ^2.5.2
+  json_serializable: ^6.8.0
+  test: ^1.25.2
+
+flutter:
+  uses-material-design: true
+  generate: true
+  assets:
+    - assets/
+
+flutter_gen:
+  output: lib/gen/
+  line_length: 80
+
+  integrations:
+    flutter_svg: true
+    flare_flutter: false
+    rive: false
+    lottie: false
+
+fonts:
+  - family: RadixIcons
+    fonts:
+      - asset: "packages/shadcn_flutter/icons/RadixIcons.otf"
+  - family: BootstrapIcons
+    fonts:
+      - asset: "packages/shadcn_flutter/icons/BootstrapIcons.otf"
+  - family: "GeistSans"
+    fonts:
+      - asset: "packages/shadcn_flutter/fonts/Geist-Black.otf"
+        weight: 800
+      - asset: "packages/shadcn_flutter/fonts/Geist-Bold.otf"
+        weight: 700
+      - asset: "packages/shadcn_flutter/fonts/Geist-Light.otf"
+        weight: 300
+      - asset: "packages/shadcn_flutter/fonts/Geist-Medium.otf"
+        weight: 500
+      - asset: "packages/shadcn_flutter/fonts/Geist-SemiBold.otf"
+        weight: 600
+      - asset: "packages/shadcn_flutter/fonts/Geist-Thin.otf"
+        weight: 100
+      - asset: "packages/shadcn_flutter/fonts/Geist-UltraBlack.otf"
+        weight: 900
+      - asset: "packages/shadcn_flutter/fonts/Geist-UltraLight.otf"
+        weight: 200
+      - asset: "packages/shadcn_flutter/fonts/Geist-Regular.otf"
+        weight: 400
+  - family: "GeistMono"
+    fonts:
+      - asset: "packages/shadcn_flutter/fonts/GeistMono-Black.otf"
+        weight: 800
+      - asset: "packages/shadcn_flutter/fonts/GeistMono-Bold.otf"
+        weight: 700
+      - asset: "packages/shadcn_flutter/fonts/GeistMono-Light.otf"
+        weight: 300
+      - asset: "packages/shadcn_flutter/fonts/GeistMono-Medium.otf"
+        weight: 500
+      - asset: "packages/shadcn_flutter/fonts/GeistMono-Regular.otf"
+        weight: 400
+      - asset: "packages/shadcn_flutter/fonts/GeistMono-SemiBold.otf"
+        weight: 600
+      - asset: "packages/shadcn_flutter/fonts/GeistMono-Thin.otf"
+        weight: 100
+      - asset: "packages/shadcn_flutter/fonts/GeistMono-UltraBlack.otf"
+        weight: 900
+      - asset: "packages/shadcn_flutter/fonts/GeistMono-UltraLight.otf"
+        weight: 200
