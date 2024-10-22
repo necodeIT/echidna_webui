@@ -11,6 +11,7 @@ dependencies:
   bloc: ^8.1.4
   collection: ^1.18.0
   cupertino_icons: ^1.0.6
+  dotenv: ^4.2.0
   either_dart: ^1.0.0
   flutter:
     sdk: flutter
@@ -22,6 +23,9 @@ dependencies:
   freezed_annotation: ^2.4.4
   intl: any
   json_annotation: ^4.9.0
+  license_server_rest:
+    git:
+      url: https://github.com/necodeIT/license_server_rest.git
   logging: ^1.2.0
   mcquenji_core:
     git:
@@ -41,6 +45,12 @@ dev_dependencies:
   freezed: ^2.5.2
   json_serializable: ^6.8.0
   test: ^1.25.2
+
+dependency_overrides:
+  modular_core:
+    git:
+      url: https://github.com/necodeIT/modular.git
+      path: modular_core
 
 flutter:
   uses-material-design: true
