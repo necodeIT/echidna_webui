@@ -67,4 +67,5 @@ linter:
     sort_pub_dependencies: true
     join_return_with_assignment: true
     prefer_for_elements_to_map_fromIterable: true
+    flutter_style_todos: false
     # yet to be released: document_ignores: true

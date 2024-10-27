@@ -1,15 +1,25 @@
 {
     "@@locale": "en",
     "global_home": "Home",
+    "@global_home": {},
     "global_licenseServerAdminPanel": "License Server Admin Panel",
+    "@global_licenseServerAdminPanel": {},
     "gloabal_adminPanel": "Admin Panel",
+    "@gloabal_adminPanel": {},
     "global_search": "Search",
+    "@global_search": {},
     "global_create": "Create",
+    "@global_create": {},
     "global_cancel": "Cancel",
+    "@global_cancel": {},
     "global_delete": "Delete",
+    "@global_delete": {},
     "auth_authScreen_poweredBy": "Powered by ",
+    "@auth_authScreen_poweredBy": {},
     "auth_authScreen_loginToContinue": "Login to continue",
+    "@auth_authScreen_loginToContinue": {},
     "auth_authScreen_signInWithIdProvider": "Sign in with your identity provider",
+    "@auth_authScreen_signInWithIdProvider": {},
     "auth_authScreen_loginWithIdp": "Login with {idp}",
     "@auth_authScreen_loginWithIdp": {
         "description": "auth_authScreen_loginWithIdp",
@@ -20,14 +30,23 @@
         }
     },
     "customers_customersScreen_title": "Customers",
+    "@customers_customersScreen_title": {},
     "customers_customersScreen_newCustomer": "New customer",
+    "@customers_customersScreen_newCustomer": {},
     "customers_customersScreen_searchCustomers": "Search customers...",
+    "@customers_customersScreen_searchCustomers": {},
     "customers_createCustomerDialog_createNewCustomer": "Create new customer",
+    "@customers_createCustomerDialog_createNewCustomer": {},
     "customers_createCustomerDialog_nameLabel": "Name",
+    "@customers_createCustomerDialog_nameLabel": {},
     "customers_createCustomerDialog_namePlaceholder": "John Smith",
+    "@customers_createCustomerDialog_namePlaceholder": {},
     "customers_createCustomerDialog_emailLabel": "Email",
+    "@customers_createCustomerDialog_emailLabel": {},
     "customers_createCustomerDialog_emailPlaceholder": "john.smith@customer.com",
+    "@customers_createCustomerDialog_emailPlaceholder": {},
     "customers_createCustomerDialog_creatingCustomer": "Creating customer",
+    "@customers_createCustomerDialog_creatingCustomer": {},
     "customers_createCustomerDialog_creatingCustomerWith": "Creating customer {name} with email {email}",
     "@customers_createCustomerDialog_creatingCustomerWith": {
         "description": "customers_createCustomerDialog_creatingCustomerWith",
@@ -41,6 +60,7 @@
         }
     },
     "customers_createCustomerDialog_customerCreated": "Customer created",
+    "@customers_createCustomerDialog_customerCreated": {},
     "customers_createCustomerDialog_successfullyCreated": "Successfully created {name} with email {email}",
     "@customers_createCustomerDialog_successfullyCreated": {
         "description": "customers_createCustomerDialog_successfullyCreated",
@@ -54,11 +74,17 @@
         }
     },
     "customers_createCustomerDialog_nameRequired": "Name is required",
+    "@customers_createCustomerDialog_nameRequired": {},
     "customers_createCustomerDialog_emailRequired": "Email is required",
+    "@customers_createCustomerDialog_emailRequired": {},
     "customers_createCustomerDialog_invalidEmail": "Invalid email address",
+    "@customers_createCustomerDialog_invalidEmail": {},
     "customers_createCustomerDialog_failedToCreate": "Failed to create customer",
+    "@customers_createCustomerDialog_failedToCreate": {},
     "customers_createCustomerDialog_failedToCreateTryAgain": "Failed to create customer, please try again",
+    "@customers_createCustomerDialog_failedToCreateTryAgain": {},
     "customers_deleteCustomerDialog_deletingCustomer": "Deleting customer...",
+    "@customers_deleteCustomerDialog_deletingCustomer": {},
     "customers_deleteCustomerDialog_deletingCustomerWith": "Deleting customer with name {name}",
     "@customers_deleteCustomerDialog_deletingCustomerWith": {
         "description": "customers_deleteCustomerDialog_deletingCustomersWith",
@@ -69,6 +95,7 @@
         }
     },
     "customers_deleteCustomerDialog_errorDeleting": "Error deleting customer",
+    "@customers_deleteCustomerDialog_errorDeleting": {},
     "customers_deleteCustomerDialog_errorDeletingWith": "An error occurred while deleting customer with name {name}. This may happen if the customer has licenses associated with it.",
     "@customers_deleteCustomerDialog_errorDeletingWith": {
         "description": "customers_deleteCustomerDialog_errorDeletingWith",
@@ -79,6 +106,7 @@
         }
     },
     "customers_deleteCustomerDialog_deleteCustomerCheck": "Delete customer?",
+    "@customers_deleteCustomerDialog_deleteCustomerCheck": {},
     "customers_deleteCustomerDialog_deleteCustomerWithCheck": "Are you sure you want to delete {name}? This action cannot be undone.",
     "@customers_deleteCustomerDialog_deleteCustomerWithCheck": {
         "description": "customers_deleteCustomerDialog_deleteCustomerWithCheck",
@@ -89,6 +117,7 @@
         }
     },
     "customers_editCustomerDialog_updatingCustomer": "Updating customer...",
+    "@customers_editCustomerDialog_updatingCustomer": {},
     "customers_editCustomerDialog_updatingCustomerWith": "Updating customer {id}",
     "@customers_editCustomerDialog_updatingCustomerWith": {
         "description": "customers_editCustomerDialog_updatingCustomerWith",
@@ -99,6 +128,7 @@
         }
     },
     "customers_editCustomerDialog_errorUpdating": "Error updating customer",
+    "@customers_editCustomerDialog_errorUpdating": {},
     "customers_editCustomerDialog_errorUpdatingWith": "An error occurred while updating customer {id}",
     "@customers_editCustomerDialog_errorUpdatingWith": {
         "description": "customers_editCustomerDialog_errorUpdatingWith",
@@ -118,7 +148,11 @@
         }
     },
     "customers_editCustomerDialog_updateCustomer": "Update customer",
+    "@customers_editCustomerDialog_updateCustomer": {},
     "licenses_licensesScreen_title": "Licenses",
+    "@licenses_licensesScreen_title": {},
     "products_productsScreen_title": "Products",
-    "dashboard_dashboardScreen_title": "Dashboard"
+    "@products_productsScreen_title": {},
+    "dashboard_dashboardScreen_title": "Dashboard",
+    "@dashboard_dashboardScreen_title": {}
 }

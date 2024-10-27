@@ -2,15 +2,11 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mcquenji_core/mcquenji_core.dart';
 import 'package:shadcn_flutter/shadcn_flutter.dart';
 
-import 'domain/domain.dart';
-import 'presentation/presentation.dart';
-import 'infra/infra.dart';
-import 'utils/utils.dart';
-
 export 'domain/domain.dart';
 export 'presentation/presentation.dart';
 export 'utils/utils.dart';
 
+/// Implements product management.
 class ProductsModule extends Module {
   @override
   List<Module> get imports => [

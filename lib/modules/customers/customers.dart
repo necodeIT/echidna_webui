@@ -11,6 +11,7 @@ export 'domain/domain.dart';
 export 'presentation/presentation.dart';
 export 'utils/utils.dart';
 
+/// Implements customer management.
 class CustomersModule extends Module {
   @override
   List<Module> get imports => [

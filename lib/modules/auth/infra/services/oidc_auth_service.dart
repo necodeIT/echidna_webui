@@ -5,6 +5,9 @@ import 'package:mcquenji_core/mcquenji_core.dart';
 /// Handles third-party authentication using OpenID Connect.
 class OidcAuthService extends AuthService {
   final NetworkService _networkService;
+
+  // waiting for implementation
+  // ignore: unused_field
   final OidcIdentityProvider _oidcIdentityProvider;
 
   /// Handles third-party authentication using OpenID Connect.
@@ -17,21 +20,21 @@ class OidcAuthService extends AuthService {
 
   @override
   Future<String> authenticate() async {
-    // TOOD: Implement authentication
+    // TOOD(mcquenji, MasterMarcoHD): Implement authentication
 
     throw UnimplementedError();
   }
 
   @override
   Future<void> logout() async {
-    // TODO: implement logout
+    // TODO(mcquenji, MasterMarcoHD): implement logout
 
     throw UnimplementedError();
   }
 
   @override
   Future<bool> verify(String token) async {
-    // TODO: implement verify
+    // TODO(mcquenji, MasterMarcoHD): implement verify
 
     throw UnimplementedError();
   }
