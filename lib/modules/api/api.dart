@@ -21,20 +21,7 @@ class ApiModule extends Module {
   void binds(Injector i) {
     i
       ..add<DotEnv>(() => env)
-      ..add<Server>(Server.fromEnvironment)
-      ..add<Token>(() => const Token(token: ''))
-      ..add<ApiService>(TokenApiService.new);
+      ..add<ServerConfig>(ServerConfig.fromEnvironment)
+      ..add<ApiService>(StdApiService.new);
   }
-
-  @override
-  void exportedBinds(Injector i) {
-    i
-      ..add<DotEnv>(() => env)
-      ..add<Server>(Server.fromEnvironment)
-      ..add<Token>(() => const Token(token: ''))
-      ..add<ApiService>(TokenApiService.new);
-  }
-
-  @override
-  void routes(RouteManager r) {}
 }

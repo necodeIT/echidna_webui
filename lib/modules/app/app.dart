@@ -2,11 +2,17 @@ library license_server_admin_panel.modules.app;
 
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:license_server_admin_panel/modules/api/api.dart';
+import 'package:license_server_admin_panel/modules/app/presentation/presentation.dart';
+import 'package:license_server_admin_panel/modules/auth/auth.dart';
+import 'package:license_server_admin_panel/modules/customers/customers.dart';
+import 'package:license_server_admin_panel/modules/dashboard/dashboard.dart';
+import 'package:license_server_admin_panel/modules/licenses/licenses.dart';
+import 'package:license_server_admin_panel/modules/products/products.dart';
 import 'package:mcquenji_core/mcquenji_core.dart';
-import 'package:shadcn_flutter/shadcn_flutter.dart';
 
 export 'domain/domain.dart';
 export 'presentation/presentation.dart';
+export 'utils/utils.dart';
 
 /// Root module of the application.
 class AppModule extends Module {
@@ -14,6 +20,7 @@ class AppModule extends Module {
   List<Module> get imports => [
         CoreModule(),
         ApiModule(),
+        AuthModule(),
       ];
 
   @override
@@ -24,6 +31,30 @@ class AppModule extends Module {
 
   @override
   void routes(RouteManager r) {
-    r.child('/', child: (_) => const SizedBox());
+    r
+      ..module('/auth', module: AuthModule())
+      ..child(
+        '/',
+        child: (_) => const NavbarScreen(),
+        children: [
+          ModuleRoute(
+            '/customers',
+            module: CustomersModule(),
+          ),
+          ModuleRoute(
+            '/dashboard',
+            module: DashboardModule(),
+          ),
+          ModuleRoute(
+            '/licenses',
+            module: LicensesModule(),
+          ),
+          ModuleRoute(
+            '/products',
+            module: ProductsModule(),
+          ),
+        ],
+        guards: [AuthGuard()],
+      );
   }
 }

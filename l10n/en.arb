@@ -1,0 +1,124 @@
+{
+    "@@locale": "en",
+    "global_home": "Home",
+    "global_licenseServerAdminPanel": "License Server Admin Panel",
+    "gloabal_adminPanel": "Admin Panel",
+    "global_search": "Search",
+    "global_create": "Create",
+    "global_cancel": "Cancel",
+    "global_delete": "Delete",
+    "auth_authScreen_poweredBy": "Powered by ",
+    "auth_authScreen_loginToContinue": "Login to continue",
+    "auth_authScreen_signInWithIdProvider": "Sign in with your identity provider",
+    "auth_authScreen_loginWithIdp": "Login with {idp}",
+    "@auth_authScreen_loginWithIdp": {
+        "description": "auth_authScreen_loginWithIdp",
+        "placeholders": {
+            "idp": {
+                "type": "String"
+            }
+        }
+    },
+    "customers_customersScreen_title": "Customers",
+    "customers_customersScreen_newCustomer": "New customer",
+    "customers_customersScreen_searchCustomers": "Search customers...",
+    "customers_createCustomerDialog_createNewCustomer": "Create new customer",
+    "customers_createCustomerDialog_nameLabel": "Name",
+    "customers_createCustomerDialog_namePlaceholder": "John Smith",
+    "customers_createCustomerDialog_emailLabel": "Email",
+    "customers_createCustomerDialog_emailPlaceholder": "john.smith@customer.com",
+    "customers_createCustomerDialog_creatingCustomer": "Creating customer",
+    "customers_createCustomerDialog_creatingCustomerWith": "Creating customer {name} with email {email}",
+    "@customers_createCustomerDialog_creatingCustomerWith": {
+        "description": "customers_createCustomerDialog_creatingCustomerWith",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            },
+            "email": {
+                "type": "String"
+            }
+        }
+    },
+    "customers_createCustomerDialog_customerCreated": "Customer created",
+    "customers_createCustomerDialog_successfullyCreated": "Successfully created {name} with email {email}",
+    "@customers_createCustomerDialog_successfullyCreated": {
+        "description": "customers_createCustomerDialog_successfullyCreated",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            },
+            "email": {
+                "type": "String"
+            }
+        }
+    },
+    "customers_createCustomerDialog_nameRequired": "Name is required",
+    "customers_createCustomerDialog_emailRequired": "Email is required",
+    "customers_createCustomerDialog_invalidEmail": "Invalid email address",
+    "customers_createCustomerDialog_failedToCreate": "Failed to create customer",
+    "customers_createCustomerDialog_failedToCreateTryAgain": "Failed to create customer, please try again",
+    "customers_deleteCustomerDialog_deletingCustomer": "Deleting customer...",
+    "customers_deleteCustomerDialog_deletingCustomerWith": "Deleting customer with name {name}",
+    "@customers_deleteCustomerDialog_deletingCustomerWith": {
+        "description": "customers_deleteCustomerDialog_deletingCustomersWith",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "customers_deleteCustomerDialog_errorDeleting": "Error deleting customer",
+    "customers_deleteCustomerDialog_errorDeletingWith": "An error occurred while deleting customer with name {name}. This may happen if the customer has licenses associated with it.",
+    "@customers_deleteCustomerDialog_errorDeletingWith": {
+        "description": "customers_deleteCustomerDialog_errorDeletingWith",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "customers_deleteCustomerDialog_deleteCustomerCheck": "Delete customer?",
+    "customers_deleteCustomerDialog_deleteCustomerWithCheck": "Are you sure you want to delete {name}? This action cannot be undone.",
+    "@customers_deleteCustomerDialog_deleteCustomerWithCheck": {
+        "description": "customers_deleteCustomerDialog_deleteCustomerWithCheck",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "customers_editCustomerDialog_updatingCustomer": "Updating customer...",
+    "customers_editCustomerDialog_updatingCustomerWith": "Updating customer {id}",
+    "@customers_editCustomerDialog_updatingCustomerWith": {
+        "description": "customers_editCustomerDialog_updatingCustomerWith",
+        "placeholders": {
+            "id": {
+                "type": "String"
+            }
+        }
+    },
+    "customers_editCustomerDialog_errorUpdating": "Error updating customer",
+    "customers_editCustomerDialog_errorUpdatingWith": "An error occurred while updating customer {id}",
+    "@customers_editCustomerDialog_errorUpdatingWith": {
+        "description": "customers_editCustomerDialog_errorUpdatingWith",
+        "placeholders": {
+            "id": {
+                "type": "String"
+            }
+        }
+    },
+    "customers_editCustomerDialog_editCustomerWithId": "Edit customer {id}",
+    "@customers_editCustomerDialog_editCustomerWithId": {
+        "description": "customers_editCustomerDialog_editCustomerWithId",
+        "placeholders": {
+            "id": {
+                "type": "String"
+            }
+        }
+    },
+    "customers_editCustomerDialog_updateCustomer": "Update customer",
+    "licenses_licensesScreen_title": "Licenses",
+    "products_productsScreen_title": "Products",
+    "dashboard_dashboardScreen_title": "Dashboard"
+}

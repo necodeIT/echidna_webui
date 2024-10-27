@@ -22,7 +22,7 @@ architecture_linter:
       path: "(presentation)"
     - &utils
       name: "Utils"
-      path: "(utils)"
+      path: "(/utils/utils.dart)"
 
   layers_config:
     - layer: *domain

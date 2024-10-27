@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'server.dart';
+part of 'server_config.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,42 +14,44 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-Server _$ServerFromJson(Map<String, dynamic> json) {
-  return _Server.fromJson(json);
+ServerConfig _$ServerConfigFromJson(Map<String, dynamic> json) {
+  return _ServerConfig.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Server {
+mixin _$ServerConfig {
   String get url => throw _privateConstructorUsedError;
 
-  /// Serializes this Server to a JSON map.
+  /// Serializes this ServerConfig to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 
-  /// Create a copy of Server
+  /// Create a copy of ServerConfig
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ServerCopyWith<Server> get copyWith => throw _privateConstructorUsedError;
+  $ServerConfigCopyWith<ServerConfig> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ServerCopyWith<$Res> {
-  factory $ServerCopyWith(Server value, $Res Function(Server) then) =
-      _$ServerCopyWithImpl<$Res, Server>;
+abstract class $ServerConfigCopyWith<$Res> {
+  factory $ServerConfigCopyWith(
+          ServerConfig value, $Res Function(ServerConfig) then) =
+      _$ServerConfigCopyWithImpl<$Res, ServerConfig>;
   @useResult
   $Res call({String url});
 }
 
 /// @nodoc
-class _$ServerCopyWithImpl<$Res, $Val extends Server>
-    implements $ServerCopyWith<$Res> {
-  _$ServerCopyWithImpl(this._value, this._then);
+class _$ServerConfigCopyWithImpl<$Res, $Val extends ServerConfig>
+    implements $ServerConfigCopyWith<$Res> {
+  _$ServerConfigCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of Server
+  /// Create a copy of ServerConfig
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
@@ -66,31 +68,32 @@ class _$ServerCopyWithImpl<$Res, $Val extends Server>
 }
 
 /// @nodoc
-abstract class _$$ServerImplCopyWith<$Res> implements $ServerCopyWith<$Res> {
-  factory _$$ServerImplCopyWith(
-          _$ServerImpl value, $Res Function(_$ServerImpl) then) =
-      __$$ServerImplCopyWithImpl<$Res>;
+abstract class _$$ServerConfigImplCopyWith<$Res>
+    implements $ServerConfigCopyWith<$Res> {
+  factory _$$ServerConfigImplCopyWith(
+          _$ServerConfigImpl value, $Res Function(_$ServerConfigImpl) then) =
+      __$$ServerConfigImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String url});
 }
 
 /// @nodoc
-class __$$ServerImplCopyWithImpl<$Res>
-    extends _$ServerCopyWithImpl<$Res, _$ServerImpl>
-    implements _$$ServerImplCopyWith<$Res> {
-  __$$ServerImplCopyWithImpl(
-      _$ServerImpl _value, $Res Function(_$ServerImpl) _then)
+class __$$ServerConfigImplCopyWithImpl<$Res>
+    extends _$ServerConfigCopyWithImpl<$Res, _$ServerConfigImpl>
+    implements _$$ServerConfigImplCopyWith<$Res> {
+  __$$ServerConfigImplCopyWithImpl(
+      _$ServerConfigImpl _value, $Res Function(_$ServerConfigImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of Server
+  /// Create a copy of ServerConfig
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? url = null,
   }) {
-    return _then(_$ServerImpl(
+    return _then(_$ServerConfigImpl(
       url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
@@ -101,25 +104,25 @@ class __$$ServerImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ServerImpl extends _Server {
-  const _$ServerImpl({required this.url}) : super._();
+class _$ServerConfigImpl extends _ServerConfig {
+  const _$ServerConfigImpl({required this.url}) : super._();
 
-  factory _$ServerImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ServerImplFromJson(json);
+  factory _$ServerConfigImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ServerConfigImplFromJson(json);
 
   @override
   final String url;
 
   @override
   String toString() {
-    return 'Server(url: $url)';
+    return 'ServerConfig(url: $url)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ServerImpl &&
+            other is _$ServerConfigImpl &&
             (identical(other.url, url) || other.url == url));
   }
 
@@ -127,35 +130,36 @@ class _$ServerImpl extends _Server {
   @override
   int get hashCode => Object.hash(runtimeType, url);
 
-  /// Create a copy of Server
+  /// Create a copy of ServerConfig
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ServerImplCopyWith<_$ServerImpl> get copyWith =>
-      __$$ServerImplCopyWithImpl<_$ServerImpl>(this, _$identity);
+  _$$ServerConfigImplCopyWith<_$ServerConfigImpl> get copyWith =>
+      __$$ServerConfigImplCopyWithImpl<_$ServerConfigImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ServerImplToJson(
+    return _$$ServerConfigImplToJson(
       this,
     );
   }
 }
 
-abstract class _Server extends Server {
-  const factory _Server({required final String url}) = _$ServerImpl;
-  const _Server._() : super._();
+abstract class _ServerConfig extends ServerConfig {
+  const factory _ServerConfig({required final String url}) = _$ServerConfigImpl;
+  const _ServerConfig._() : super._();
 
-  factory _Server.fromJson(Map<String, dynamic> json) = _$ServerImpl.fromJson;
+  factory _ServerConfig.fromJson(Map<String, dynamic> json) =
+      _$ServerConfigImpl.fromJson;
 
   @override
   String get url;
 
-  /// Create a copy of Server
+  /// Create a copy of ServerConfig
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ServerImplCopyWith<_$ServerImpl> get copyWith =>
+  _$$ServerConfigImplCopyWith<_$ServerConfigImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -3,30 +3,30 @@
 import 'package:dotenv/dotenv.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'server.freezed.dart';
-part 'server.g.dart';
+part 'server_config.freezed.dart';
+part 'server_config.g.dart';
 
 /// Holds the configuration for the server.
 @freezed
-class Server with _$Server {
+class ServerConfig with _$ServerConfig {
   /// Holds the configuration for the server.
-  const factory Server({
+  const factory ServerConfig({
     required String url,
-  }) = _Server;
+  }) = _ServerConfig;
 
-  const Server._();
+  const ServerConfig._();
 
-  /// Creates a [Server] from a JSON object.
-  factory Server.fromJson(Map<String, Object?> json) => _$ServerFromJson(json);
+  /// Creates a [ServerConfig] from a JSON object.
+  factory ServerConfig.fromJson(Map<String, Object?> json) => _$ServerConfigFromJson(json);
 
   /// Loads the server configuration from the environment.
-  factory Server.fromEnvironment(DotEnv env) {
+  factory ServerConfig.fromEnvironment(DotEnv env) {
     final url = env['SERVER_URL'];
 
     if (url == null) {
       throw Exception('SERVER_URL not found in environment');
     }
 
-    return Server(url: url);
+    return ServerConfig(url: url);
   }
 }

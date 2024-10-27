@@ -8,6 +8,7 @@ environment:
   sdk: ">=3.4.3 <4.0.0"
 
 dependencies:
+  awesome_extensions: ^2.0.19
   bloc: ^8.1.4
   collection: ^1.18.0
   cupertino_icons: ^1.0.6
@@ -30,8 +31,14 @@ dependencies:
   mcquenji_core:
     git:
       url: https://github.com/mcquenji/mcquenji_core.git
+  mcquenji_local_storage:
+    git:
+      url: https://github.com/mcquenji/mcquenji_local_storage.git
   path: ^1.9.0
+  quoter: ^0.0.1
   shadcn_flutter: ^0.0.21
+  uicons_updated: ^0.0.5
+  url_launcher: ^6.3.1
   vector_graphics: any
 
 dev_dependencies:
@@ -41,6 +48,9 @@ dev_dependencies:
   flutter_lints: ^3.0.0
   flutter_test:
     sdk: flutter
+  # flutter_utils:
+  #   git:
+  #     url: https://github.com/mcquenji/flutter_utils.git
   flutterando_analysis: ^0.0.2
   freezed: ^2.5.2
   json_serializable: ^6.8.0
@@ -57,6 +67,54 @@ flutter:
   generate: true
   assets:
     - assets/
+    - assets/branding/
+  fonts:
+    - family: GeistSans
+      fonts:
+        - asset: packages/shadcn_flutter/fonts/Geist-Black.otf
+          weight: 800
+        - asset: packages/shadcn_flutter/fonts/Geist-Bold.otf
+          weight: 700
+        - asset: packages/shadcn_flutter/fonts/Geist-Light.otf
+          weight: 300
+        - asset: packages/shadcn_flutter/fonts/Geist-Medium.otf
+          weight: 500
+        - asset: packages/shadcn_flutter/fonts/Geist-SemiBold.otf
+          weight: 600
+        - asset: packages/shadcn_flutter/fonts/Geist-Thin.otf
+          weight: 100
+        - asset: packages/shadcn_flutter/fonts/Geist-UltraBlack.otf
+          weight: 900
+        - asset: packages/shadcn_flutter/fonts/Geist-UltraLight.otf
+          weight: 200
+        - asset: packages/shadcn_flutter/fonts/Geist-Regular.otf
+          weight: 400
+    - family: GeistMono
+      fonts:
+        - asset: packages/shadcn_flutter/fonts/GeistMono-Black.otf
+          weight: 800
+        - asset: packages/shadcn_flutter/fonts/GeistMono-Bold.otf
+          weight: 700
+        - asset: packages/shadcn_flutter/fonts/GeistMono-Light.otf
+          weight: 300
+        - asset: packages/shadcn_flutter/fonts/GeistMono-Medium.otf
+          weight: 500
+        - asset: packages/shadcn_flutter/fonts/GeistMono-Regular.otf
+          weight: 400
+        - asset: packages/shadcn_flutter/fonts/GeistMono-SemiBold.otf
+          weight: 600
+        - asset: packages/shadcn_flutter/fonts/GeistMono-Thin.otf
+          weight: 100
+        - asset: packages/shadcn_flutter/fonts/GeistMono-UltraBlack.otf
+          weight: 900
+        - asset: packages/shadcn_flutter/fonts/GeistMono-UltraLight.otf
+          weight: 200
+    - family: RadixIcons
+      fonts:
+        - asset: packages/shadcn_flutter/icons/RadixIcons.otf
+    - family: BootstrapIcons
+      fonts:
+        - asset: packages/shadcn_flutter/icons/BootstrapIcons.otf
 
 flutter_gen:
   output: lib/gen/

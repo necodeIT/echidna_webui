@@ -1,0 +1,89 @@
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:license_server_admin_panel/modules/app/app.dart';
+import 'package:license_server_admin_panel/modules/customers/customers.dart';
+import 'package:shadcn_flutter/shadcn_flutter.dart';
+
+/// A screen that displays all customers.
+class CustomersScreen extends StatefulWidget {
+  /// A screen that displays all customers.
+  const CustomersScreen({super.key});
+
+  @override
+  State<CustomersScreen> createState() => _CustomersScreenState();
+}
+
+class _CustomersScreenState extends State<CustomersScreen> {
+  final searchController = TextEditingController();
+
+  @override
+  void initState() {
+    searchController.addListener(() {
+      setState(() {});
+    });
+
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final customers = context.watch<CustomersRepository>();
+
+    return Scaffold(
+      loadingProgressIndeterminate: customers.state.isLoading,
+      headers: [
+        AppBar(
+          title: Breadcrumb(
+            separator: Breadcrumb.arrowSeparator,
+            children: [
+              Text(context.t.customers_customersScreen_title),
+            ],
+          ),
+          trailing: [
+            SizedBox(
+              width: 300,
+              child: TextField(
+                controller: searchController,
+                placeholder: context.t.customers_customersScreen_searchCustomers,
+                leading: const Icon(RadixIcons.magnifyingGlass),
+              ),
+            ),
+            const SizedBox(width: 10),
+            Tooltip(
+              tooltip: Text(context.t.customers_customersScreen_newCustomer),
+              child: IconButton.outline(
+                icon: const Icon(RadixIcons.plus),
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (_) => CreateCustomerDialog(showToast: createShowTostHandler(context)),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
+      ],
+      child: !customers.state.hasData
+          ? const SizedBox()
+          : SingleChildScrollView(
+              controller: ScrollController(),
+              child: Wrap(
+                runSpacing: 20,
+                spacing: 20,
+                children: customers.search(searchController.text).map(CustomerCard.withoutKey).toList(),
+              ).withPadding(all: 20),
+            ),
+    );
+  }
+}
+
+/// Creates a [ShowToast] handler for the given [context].
+ShowToast createShowTostHandler(BuildContext context) {
+  return (Widget Function(BuildContext, ToastOverlay) builder, [Duration? showDuration]) {
+    return showToast(
+      context: context,
+      builder: builder,
+      showDuration: showDuration ?? const Duration(seconds: 5),
+    );
+  };
+}

@@ -5,4 +5,11 @@
   "dart.flutterSdkPath": ".fvm/versions/3.24.3",
   "dart.lineLength": 150,
   "dart.debugExternalPackageLibraries": true,
+  "dart.flutterRunAdditionalArgs": [
+    "--dart-define-from-file=.env",
+    "--web-port 5000",
+  ],
+  "dart.flutterTestAdditionalArgs": [
+    "--dart-define-from-file=.env",
+  ],
 }

@@ -9,12 +9,16 @@ abstract class ApiService extends Service {
   /// Sends a GET request to the license server.
   Future<HttpResponse<Either<List<JSON>, JSON>>> get(
     String path, {
+    required String token,
+    Object? pathParameter,
     Map<String, String> queryParameters = const {},
   });
 
   /// Sends a POST request to the license server.
   Future<HttpResponse<Either<List<JSON>, JSON>>> post(
     String path, {
+    required String token,
+    Object? pathParameter,
     Map<String, String> queryParameters = const {},
     Map<String, dynamic> body = const {},
   });
@@ -22,6 +26,8 @@ abstract class ApiService extends Service {
   /// Sends a PUT request to the license server.
   Future<HttpResponse<Either<List<JSON>, JSON>>> put(
     String path, {
+    required String token,
+    Object? pathParameter,
     Map<String, String> queryParameters = const {},
     Map<String, dynamic> body = const {},
   });
@@ -29,12 +35,16 @@ abstract class ApiService extends Service {
   /// Sends a DELETE request to the license server.
   Future<HttpResponse<Either<List<JSON>, JSON>>> delete(
     String path, {
+    required String token,
+    Object? pathParameter,
     Map<String, String> queryParameters = const {},
   });
 
   /// Sends a PATCH request to the license server.
   Future<HttpResponse<Either<List<JSON>, JSON>>> patch(
     String path, {
+    required String token,
+    Object? pathParameter,
     Map<String, String> queryParameters = const {},
     Map<String, dynamic> body = const {},
   });
