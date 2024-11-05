@@ -154,5 +154,103 @@
     "products_productsScreen_title": "Products",
     "@products_productsScreen_title": {},
     "dashboard_dashboardScreen_title": "Dashboard",
-    "@dashboard_dashboardScreen_title": {}
+    "@dashboard_dashboardScreen_title": {},
+    "products_productsScreen_searchProducts": "Search products",
+    "products_createProductDialog_creatingProduct": "Creating product",
+    "products_createProductDialog_creatingProductWith": "Creating product {name}",
+    "@products_createProductDialog_creatingProductWith": {
+        "description": "products_createProductDialog_creatingProductWith",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "products_createProductDialog_createdProduct": "Created product",
+    "products_createProductDialog_createdProductWith": "Successfully created product {name}",
+    "@products_createProductDialog_createdProductWith": {
+        "description": "products_createProductDialog_createdProductWith",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "products_createProductDialog_errorCreating": "Error creating product",
+    "products_createProductDialog_errorCreatingWith": "Failed to create product {name}. Please try again.",
+    "@products_createProductDialog_errorCreatingWith": {
+        "description": "products_createProductDialog_errorCreatingWith",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "products_createProductDialog_createProduct": "Create Product",
+    "products_createProductDialog_nameLabel": "Name",
+    "products_createProductDialog_nameRequired": "Name is required",
+    "products_createProductDialog_namePlaceholder": "My cool new 100 billion dollar product",
+    "products_createProductDialog_descriptionLabel": "Description",
+    "products_createProductDialog_descriptionRequired": "Description is required",
+    "products_createProductDialog_descriptionPlaceholder": "This is the best product ever",
+    "products_deleteProductDialog_deleteCheck": "Delete product?",
+    "products_deleteProductDialog_deleteCheckWith": "Are you sure you want to delete {name}? This action cannot be undone.",
+    "@products_deleteProductDialog_deleteCheckWith": {
+        "description": "products_deleteProductDialog_deleteCheckWith",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "products_deleteProductDialog_deletingProduct": "Deleting product",
+    "products_deleteProductDialog_deletingProductWith": "Deleting product {name}",
+    "@products_deleteProductDialog_deletingProductWith": {
+        "description": "products_deleteProductDialog_deletingProductWith",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "products_deleteProductDialog_errorDeleting": "Error deleting product",
+    "products_deleteProductDialog_errorDeletingWith": "Error deleting product {name}",
+    "@products_deleteProductDialog_errorDeletingWith": {
+        "description": "products_deleteProductDialog_errorDeletingWith",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "products_editProductDialog_updatingProduct": "Updating product",
+    "products_editProductDialog_updatingProductWith": "Updating product {id}",
+    "@products_editProductDialog_updatingProductWith": {
+        "description": "products_editProductDialog_updatingProductWith",
+        "placeholders": {
+            "id": {
+                "type": "int"
+            }
+        }
+    },
+    "products_editProductDialog_errorUpdating": "Failed to update product",
+    "products_editProductDialog_errorUpdatingWith": "Failed to update product {id}. Please try again.",
+    "@products_editProductDialog_errorUpdatingWith": {
+        "description": "products_editProductDialog_errorUpdatingWith",
+        "placeholders": {
+            "id": {
+                "type": "int"
+            }
+        }
+    },
+    "products_editProductDialog_editProductWithID": "Edit product {id}",
+    "@products_editProductDialog_editProductWithID": {
+        "description": "products_editProductDialog_editProductWithID",
+        "placeholders": {
+            "id": {
+                "type": "int"
+            }
+        }
+    },
+    "products_editProductDialog_updateProduct": "Update product"
 }

@@ -94,7 +94,7 @@ class _EditCustomerDialogState extends State<EditCustomerDialog> {
     return AlertDialog(
       title: Text(t.customers_editCustomerDialog_editCustomerWithId(widget.customer.id.toString())),
       content: SizedBox(
-        width: 400,
+        width: 500,
         child: Form(
           child: FormTableLayout(
             rows: [

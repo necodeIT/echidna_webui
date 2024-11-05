@@ -30,7 +30,7 @@ class AppWidget extends StatelessWidget {
     return ShadcnApp.router(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorSchemes.darkZinc(),
+        colorScheme: ColorSchemes.lightZinc(),
         radius: 0.5,
       ),
       routeInformationParser: Modular.routeInformationParser,

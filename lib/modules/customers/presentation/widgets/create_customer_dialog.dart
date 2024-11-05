@@ -75,7 +75,7 @@ class _CreateCustomerDialogState extends State<CreateCustomerDialog> {
         ),
       );
     } catch (e) {
-      Future.delayed(const Duration(milliseconds: 300), loader.close);
+      loader.close();
 
       widget.showToast(
         (_, toast) => SurfaceCard(
@@ -83,10 +83,7 @@ class _CreateCustomerDialogState extends State<CreateCustomerDialog> {
             title: Text(context.t.customers_createCustomerDialog_failedToCreate),
             subtitle: Text(context.t.customers_createCustomerDialog_failedToCreateTryAgain),
             trailingAlignment: Alignment.center,
-            trailing: IconButton.ghost(
-              icon: const Icon(RadixIcons.cross2),
-              onPressed: toast.close,
-            ),
+            trailing: Icon(RadixIcons.check, color: context.theme.colorScheme.primary),
           ),
         ),
       );
@@ -102,7 +99,7 @@ class _CreateCustomerDialogState extends State<CreateCustomerDialog> {
     return AlertDialog(
       title: Text(context.t.customers_createCustomerDialog_createNewCustomer),
       content: SizedBox(
-        width: 400,
+        width: 500,
         child: Form(
           controller: formController,
           child: FormTableLayout(
@@ -140,10 +137,3 @@ class _CreateCustomerDialogState extends State<CreateCustomerDialog> {
     );
   }
 }
-
-/// {@template show_toast}
-/// A function that shows a toast overlay.
-///
-/// Used to avoid unmounted errors when showing a toast after the dialog is closed.
-/// {@endtemplate}
-typedef ShowToast = ToastOverlay Function(Widget Function(BuildContext, ToastOverlay) builder, [Duration? showDuration]);

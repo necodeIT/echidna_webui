@@ -1,33 +1,33 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:license_server_admin_panel/modules/app/app.dart';
 import 'package:license_server_admin_panel/modules/customers/customers.dart';
+import 'package:license_server_admin_panel/modules/products/products.dart';
 import 'package:license_server_rest/license_server_rest.dart';
 import 'package:shadcn_flutter/shadcn_flutter.dart';
-import 'package:uicons_updated/icons/uicons_solid.dart';
-import 'package:url_launcher/url_launcher.dart';
 
-/// Displays a card with information about a given customer.
-class CustomerCard extends StatelessWidget {
-  /// Displays a card with information about a given customer.
-  const CustomerCard({super.key, required this.customer});
+/// Renders a product.
+class ProductCard extends StatelessWidget {
+  /// The product to render.
+  final Product product;
 
-  /// Displays a card with information about a given customer.
-  CustomerCard.withoutKey(this.customer) : super(key: ValueKey(customer.id));
+  /// Renders a product.
+  const ProductCard({super.key, required this.product});
 
-  /// The customer to display.
-  final Customer customer;
+  /// Renders a product.
+  ProductCard.withoutKey(this.product) : super(key: ValueKey(product.id));
 
-  /// The width of the card.
-  static const width = 350.0;
+  /// Height of the card.
+  static const height = 200.0;
 
   @override
   Widget build(BuildContext context) {
     return Clickable(
       onPressed: () {
-        Modular.to.navigate('/customers/${customer.id}');
+        Modular.to.navigate('/products/${product.id}');
       },
       child: SizedBox(
-        width: width,
+        width: CustomerCard.width,
+        height: height,
         child: Card(
           padding: const EdgeInsets.all(15),
           child: Column(
@@ -36,7 +36,7 @@ class CustomerCard extends StatelessWidget {
               Row(
                 children: [
                   Avatar(
-                    initials: Avatar.getInitials(customer.name),
+                    initials: Avatar.getInitials(product.name),
                   ),
                   const SizedBox(width: 12),
                   Expanded(
@@ -44,7 +44,7 @@ class CustomerCard extends StatelessWidget {
                       delayDuration: const Duration(seconds: 5),
                       duration: const Duration(seconds: 10),
                       child: Text(
-                        customer.name,
+                        product.name,
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
@@ -58,8 +58,8 @@ class CustomerCard extends StatelessWidget {
                     onPressed: () {
                       showDialog(
                         context: context,
-                        builder: (_) => EditCustomerDialog(
-                          customer: customer,
+                        builder: (_) => EditProductDialog(
+                          product: product,
                           showToast: createShowToastHandler(context),
                         ),
                       );
@@ -68,43 +68,25 @@ class CustomerCard extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 20),
-              Button.link(
-                onPressed: () {
-                  launchUrl(Uri.parse('mailto:${customer.email}'));
-                },
-                child: Row(
-                  children: [
-                    Icon(
-                      UiconsSolid.password_email,
-                      size: 16,
-                      color: context.theme.colorScheme.mutedForeground,
-                    ),
-                    const SizedBox(width: 5),
-                    Expanded(
-                      child: Text(
-                        customer.email,
-                        style: context.theme.typography.small.copyWith(
-                          color: context.theme.colorScheme.mutedForeground,
-                        ),
-                        overflow: TextOverflow.ellipsis,
-                      ).textLeft(),
-                    ),
-                  ],
+              Expanded(
+                child: OverflowMarquee(
+                  delayDuration: const Duration(seconds: 5),
+                  duration: const Duration(seconds: 10),
+                  direction: Axis.vertical,
+                  child: Text(
+                    product.description,
+                  ),
                 ),
               ),
               const SizedBox(height: 10),
-              Divider(
-                height: 20,
-                color: context.theme.colorScheme.border,
-              ),
               Align(
                 alignment: Alignment.centerRight,
                 child: TextButton(
                   onPressed: () {
                     showDialog(
                       context: context,
-                      builder: (_) => DeleteCustomerDialog(
-                        customer: customer,
+                      builder: (_) => DeleteProductDialog(
+                        product: product,
                         showToast: createShowToastHandler(context),
                       ),
                     );

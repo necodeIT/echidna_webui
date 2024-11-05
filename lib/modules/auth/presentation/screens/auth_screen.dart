@@ -8,15 +8,29 @@ import 'package:shadcn_flutter/shadcn_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 /// Displays a login form.
-class AuthScreen extends StatelessWidget {
+class AuthScreen extends StatefulWidget {
   /// Displays a login form.
   const AuthScreen({super.key});
+
+  @override
+  State<AuthScreen> createState() => _AuthScreenState();
+}
+
+class _AuthScreenState extends State<AuthScreen> {
+  late final Quote quote;
+
+  @override
+  void initState() {
+    quote = Modular.get<Quoter>().getRandomQuote();
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     final token = context.watch<TokenRepository>();
     final idp = context.watch<IdentityProvider>();
-    final quote = Modular.get<Quoter>().getRandomQuote();
+
     final theme = context.theme;
 
     if (token.state.hasData) {

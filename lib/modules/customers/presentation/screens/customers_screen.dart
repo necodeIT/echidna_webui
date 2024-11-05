@@ -55,7 +55,7 @@ class _CustomersScreenState extends State<CustomersScreen> {
                 onPressed: () {
                   showDialog(
                     context: context,
-                    builder: (_) => CreateCustomerDialog(showToast: createShowTostHandler(context)),
+                    builder: (_) => CreateCustomerDialog(showToast: createShowToastHandler(context)),
                   );
                 },
               ),
@@ -75,15 +75,4 @@ class _CustomersScreenState extends State<CustomersScreen> {
             ),
     );
   }
-}
-
-/// Creates a [ShowToast] handler for the given [context].
-ShowToast createShowTostHandler(BuildContext context) {
-  return (Widget Function(BuildContext, ToastOverlay) builder, [Duration? showDuration]) {
-    return showToast(
-      context: context,
-      builder: builder,
-      showDuration: showDuration ?? const Duration(seconds: 5),
-    );
-  };
 }
