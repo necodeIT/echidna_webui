@@ -42,9 +42,9 @@ class _AuthScreenState extends State<AuthScreen> {
         children: [
           Expanded(
             child: DefaultTextStyle(
-              style: theme.typography.normal.copyWith(color: theme.colorScheme.primaryForeground),
+              style: theme.typography.normal.copyWith(color: theme.colorScheme.accent),
               child: Container(
-                color: theme.colorScheme.primary,
+                color: theme.colorScheme.accentForeground,
                 padding: const EdgeInsets.all(20),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -68,13 +68,13 @@ class _AuthScreenState extends State<AuthScreen> {
                       TextSpan(
                         children: [
                           WidgetSpan(
-                            child: Icon(RadixIcons.quote, color: theme.colorScheme.primaryForeground),
+                            child: Icon(RadixIcons.quote, color: theme.colorScheme.accent),
                           ),
                           const WidgetSpan(child: SizedBox(width: 5)),
                           TextSpan(text: quote.quotation, style: theme.typography.x3Large),
                           const WidgetSpan(child: SizedBox(width: 5)),
                           WidgetSpan(
-                            child: Icon(RadixIcons.quote, color: theme.colorScheme.primaryForeground),
+                            child: Icon(RadixIcons.quote, color: theme.colorScheme.accent),
                           ),
                           const WidgetSpan(child: SizedBox(width: 10)),
                           TextSpan(text: quote.quotee, style: theme.typography.small.copyWith(fontStyle: FontStyle.italic)),

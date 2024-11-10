@@ -17,15 +17,94 @@ class LicensesRepository extends Repository<AsyncValue<List<License>>> {
 
   @override
   FutureOr<void> build(Type trigger) async {
-    final licenses = await _datasource.getLicenses(_tokenRepository.state.data!.token);
+    log('Loading licenses');
 
-    emit(AsyncValue.data(licenses));
+    return guard(
+      () => _datasource.getLicenses(_tokenRepository.state.data!.token),
+      onData: (licenses) {
+        log('Loaded licenses');
+
+        data(licenses);
+      },
+      onError: (e, s) {
+        log('Failed to load licenses', e, s);
+
+        error('Failed to load licenses');
+      },
+    );
   }
 
   @override
   void dispose() {
-    _datasource.dispose();
-
     super.dispose();
+
+    _datasource.dispose();
+  }
+
+  /// Updates the license with the given [licenseKey].
+  Future<void> updateLicense({
+    required String licenseKey,
+    String? userId,
+    int? productId,
+    int? customerId,
+  }) async {
+    log('Updating license with license key $licenseKey');
+
+    if (!state.hasData) {
+      log('Cannot update license: ${state.error}');
+
+      return;
+    }
+
+    try {
+      final old = state.requireData.firstWhere((license) => license.licenseKey == licenseKey);
+
+      if (old.userId == userId && old.productId == productId && old.customerId == customerId) {
+        log('No changes detected. Skipping update');
+
+        return;
+      }
+
+      final license = await _datasource.updateLicense(
+        _tokenRepository.state.requireData.token,
+        license: old.copyWith(
+          userId: userId ?? old.userId,
+          productId: productId ?? old.productId,
+          customerId: customerId ?? old.customerId,
+        ),
+      );
+
+      log('Successfully updated license with license key $licenseKey');
+
+      data(state.requireData.map((l) => l.licenseKey == licenseKey ? license : l).toList());
+    } catch (e, s) {
+      log('Failed to update license with license key $licenseKey', e, s);
+
+      rethrow;
+    }
+  }
+
+  /// Revokes the license with the given [licenseKey].
+  Future<void> revokeLicense({
+    required String licenseKey,
+    required String revocationReason,
+  }) async {
+    log('Revoking license with license key $licenseKey');
+
+    if (!state.hasData) {
+      log('Cannot revoke license: ${state.error}');
+
+      return;
+    }
+
+    try {
+      await _datasource.revokeLicense(_tokenRepository.state.requireData.token, licenseKey: licenseKey, revocationReason: revocationReason);
+
+      log('Successfully revoked license with license key $licenseKey');
+    } catch (e, s) {
+      log('Failed to revoke license with license key $licenseKey', e, s);
+
+      rethrow;
+    }
   }
 }

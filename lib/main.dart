@@ -17,6 +17,8 @@ void main() async {
 
   loadEnv();
 
+  ColorSchemeRepository.debugOverride = ColorSchemes.darkZinc();
+
   runApp(ModularApp(module: AppModule(), child: const AppWidget()));
 }
 
@@ -27,10 +29,12 @@ class AppWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = context.watch<ColorSchemeRepository>();
+
     return ShadcnApp.router(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorSchemes.lightZinc(),
+        colorScheme: colorScheme.state,
         radius: 0.5,
       ),
       routeInformationParser: Modular.routeInformationParser,

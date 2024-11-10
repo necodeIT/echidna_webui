@@ -156,7 +156,9 @@
     "dashboard_dashboardScreen_title": "Dashboard",
     "@dashboard_dashboardScreen_title": {},
     "products_productsScreen_searchProducts": "Search products",
+    "@products_productsScreen_searchProducts": {},
     "products_createProductDialog_creatingProduct": "Creating product",
+    "@products_createProductDialog_creatingProduct": {},
     "products_createProductDialog_creatingProductWith": "Creating product {name}",
     "@products_createProductDialog_creatingProductWith": {
         "description": "products_createProductDialog_creatingProductWith",
@@ -167,6 +169,7 @@
         }
     },
     "products_createProductDialog_createdProduct": "Created product",
+    "@products_createProductDialog_createdProduct": {},
     "products_createProductDialog_createdProductWith": "Successfully created product {name}",
     "@products_createProductDialog_createdProductWith": {
         "description": "products_createProductDialog_createdProductWith",
@@ -177,6 +180,7 @@
         }
     },
     "products_createProductDialog_errorCreating": "Error creating product",
+    "@products_createProductDialog_errorCreating": {},
     "products_createProductDialog_errorCreatingWith": "Failed to create product {name}. Please try again.",
     "@products_createProductDialog_errorCreatingWith": {
         "description": "products_createProductDialog_errorCreatingWith",
@@ -187,13 +191,21 @@
         }
     },
     "products_createProductDialog_createProduct": "Create Product",
+    "@products_createProductDialog_createProduct": {},
     "products_createProductDialog_nameLabel": "Name",
+    "@products_createProductDialog_nameLabel": {},
     "products_createProductDialog_nameRequired": "Name is required",
+    "@products_createProductDialog_nameRequired": {},
     "products_createProductDialog_namePlaceholder": "My cool new 100 billion dollar product",
+    "@products_createProductDialog_namePlaceholder": {},
     "products_createProductDialog_descriptionLabel": "Description",
+    "@products_createProductDialog_descriptionLabel": {},
     "products_createProductDialog_descriptionRequired": "Description is required",
+    "@products_createProductDialog_descriptionRequired": {},
     "products_createProductDialog_descriptionPlaceholder": "This is the best product ever",
+    "@products_createProductDialog_descriptionPlaceholder": {},
     "products_deleteProductDialog_deleteCheck": "Delete product?",
+    "@products_deleteProductDialog_deleteCheck": {},
     "products_deleteProductDialog_deleteCheckWith": "Are you sure you want to delete {name}? This action cannot be undone.",
     "@products_deleteProductDialog_deleteCheckWith": {
         "description": "products_deleteProductDialog_deleteCheckWith",
@@ -203,6 +215,7 @@
             }
         }
     },
+    "@products_deleteProductDialog_deletingProduct": {},
     "products_deleteProductDialog_deletingProduct": "Deleting product",
     "products_deleteProductDialog_deletingProductWith": "Deleting product {name}",
     "@products_deleteProductDialog_deletingProductWith": {
@@ -213,6 +226,7 @@
             }
         }
     },
+    "@products_deleteProductDialog_errorDeleting": {},
     "products_deleteProductDialog_errorDeleting": "Error deleting product",
     "products_deleteProductDialog_errorDeletingWith": "Error deleting product {name}",
     "@products_deleteProductDialog_errorDeletingWith": {
@@ -224,6 +238,7 @@
         }
     },
     "products_editProductDialog_updatingProduct": "Updating product",
+    "@products_editProductDialog_updatingProduct": {},
     "products_editProductDialog_updatingProductWith": "Updating product {id}",
     "@products_editProductDialog_updatingProductWith": {
         "description": "products_editProductDialog_updatingProductWith",
@@ -234,6 +249,7 @@
         }
     },
     "products_editProductDialog_errorUpdating": "Failed to update product",
+    "@products_editProductDialog_errorUpdating": {},
     "products_editProductDialog_errorUpdatingWith": "Failed to update product {id}. Please try again.",
     "@products_editProductDialog_errorUpdatingWith": {
         "description": "products_editProductDialog_errorUpdatingWith",
@@ -252,5 +268,69 @@
             }
         }
     },
-    "products_editProductDialog_updateProduct": "Update product"
+    "products_editProductDialog_updateProduct": "Update product",
+    "@products_editProductDialog_updateProduct": {},
+    "licenses_licensesTable_groupByCustomers": "Group by customers",
+    "@licenses_licensesTable_groupByCustomers": {},
+    "licenses_licensesTable_groupByProducts": "Group by products",
+    "@licenses_licensesTable_groupByProducts": {},
+    "licenses_licensesTable_disableGrouping": "Disable grouping",
+    "@licenses_licensesTable_disableGrouping": {},
+    "licenses_licensesTable_licenseKeyHeader": "License Key",
+    "@licenses_licensesTable_licenseKeyHeader": {},
+    "licenses_licensesTable_customerHeader": "Customer",
+    "@licenses_licensesTable_customerHeader": {},
+    "licenses_licensesTable_productHeader": "Product",
+    "@licenses_licensesTable_productHeader": {},
+    "licenses_licensesTable_expirationDateHeader": "Expiration Date",
+    "@licenses_licensesTable_expirationDateHeader": {},
+    "licenses_licensesTable_revokedHeader": "Revoked",
+    "@licenses_licensesTable_revokedHeader": {},
+    "licenses_licensesTableRow_details": "Details",
+    "@licenses_licensesTableRow_details": {},
+    "licenses_licensesTableRow_revoke": "Revoke",
+    "@licenses_licensesTableRow_revoke": {},
+    "licenses_revokeLicenseDialog_revokingLicense": "Revoking license",
+    "@licenses_revokeLicenseDialog_revokingLicense": {},
+    "licenses_revokeLicenseDialog_revokingLicenseWith": "Revoking license {licenseKey}",
+    "@licenses_revokeLicenseDialog_revokingLicenseWith": {
+        "description": "licenses_revokeLicenseDialog_revokingLicenseWith",
+        "placeholders": {
+            "licenseKey": {
+                "type": "String"
+            }
+        }
+    },
+    "licenses_revokeLicenseDialog_revokedLicense": "Revoked license",
+    "@licenses_revokeLicenseDialog_revokedLicense": {},
+    "licenses_revokeLicenseDialog_revokedLicenseWith": "Revoked license {licenseKey}",
+    "@licenses_revokeLicenseDialog_revokedLicenseWith": {
+        "description": "licenses_revokeLicenseDialog_revokedLicenseWith",
+        "placeholders": {
+            "licenseKey": {
+                "type": "String"
+            }
+        }
+    },
+    "licenses_revokeLicenseDialog_errorRevoking": "Error revoking license",
+    "@licenses_revokeLicenseDialog_errorRevoking": {},
+    "licenses_revokeLicenseDialog_errorRevokingWith": "Error revoking license {licenseKey}",
+    "@licenses_revokeLicenseDialog_errorRevokingWith": {
+        "description": "licenses_revokeLicenseDialog_errorRevokingWith",
+        "placeholders": {
+            "licenseKey": {
+                "type": "String"
+            }
+        }
+    },
+    "licenses_revokeLicenseDialog_revokeLicense": "Revoke license",
+    "@licenses_revokeLicenseDialog_revokeLicense": {},
+    "licenses_revokeLicenseDialog_revocationReasonLabel": "Revocation reason",
+    "@licenses_revokeLicenseDialog_revocationReasonLabel": {},
+    "licenses_revokeLicenseDialog_revocationReasonRequired": "A revocation reason is required",
+    "@licenses_revokeLicenseDialog_revocationReasonRequired": {},
+    "licenses_revokeLicenseDialog_revocationReasonPlaceholder": "Revocation Reason",
+    "@licenses_revokeLicenseDialog_revocationReasonPlaceholder": {},
+    "licenses_revokeLicenseDialog_revoke": "Revoke",
+    "@licenses_revokeLicenseDialog_revoke": {}
 }

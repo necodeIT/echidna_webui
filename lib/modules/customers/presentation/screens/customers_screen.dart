@@ -32,12 +32,7 @@ class _CustomersScreenState extends State<CustomersScreen> {
       loadingProgressIndeterminate: customers.state.isLoading,
       headers: [
         AppBar(
-          title: Breadcrumb(
-            separator: Breadcrumb.arrowSeparator,
-            children: [
-              Text(context.t.customers_customersScreen_title),
-            ],
-          ),
+          title: Text(context.t.customers_customersScreen_title),
           trailing: [
             SizedBox(
               width: 300,

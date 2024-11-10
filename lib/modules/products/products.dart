@@ -35,12 +35,14 @@ class ProductsModule extends Module {
       ..child(
         '/',
         child: (_) => const ProductsScreen(),
+        transition: TransitionType.noTransition,
       )
       ..child(
         '/:id',
         child: (_) => ProductScreen(
           id: int.parse(r.args.params['id']),
         ),
+        transition: TransitionType.noTransition,
       );
   }
 }

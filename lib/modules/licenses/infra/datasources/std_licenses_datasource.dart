@@ -114,7 +114,7 @@ class StdLicensesDatasource extends LicensesDatasource {
         '/admin/licenses/revoke',
         pathParameter: licenseKey,
         token: token,
-        body: {'revocationReason': revocationReason},
+        body: {'reason': revocationReason},
       );
       response.raiseForStatusCode();
 

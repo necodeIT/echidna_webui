@@ -32,14 +32,14 @@ class _CreateProductDialogState extends State<CreateProductDialog> {
 
     isCreating = true;
 
-    Navigator.of(context).pop();
-
     final products = context.read<ProductsRepository>();
 
     final name = nameController.text;
     final description = descriptionController.text;
 
     final t = context.t;
+
+    Navigator.of(context).pop();
 
     final loader = widget.showToast(
       (_, __) => SurfaceCard(

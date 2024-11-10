@@ -38,7 +38,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
               width: 300,
               child: TextField(
                 controller: searchController,
-                placeholder: 'Search products',
+                placeholder: context.t.products_productsScreen_searchProducts,
               ),
             ),
             IconButton.outline(

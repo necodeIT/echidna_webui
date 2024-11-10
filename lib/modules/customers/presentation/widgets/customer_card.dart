@@ -51,7 +51,6 @@ class CustomerCard extends StatelessWidget {
                       ),
                     ),
                   ),
-                  // const SizedBox(width: 10),
                   IconButton(
                     icon: const Icon(RadixIcons.pencil1),
                     variance: ButtonVariance.ghost,

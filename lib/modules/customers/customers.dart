@@ -33,7 +33,15 @@ class CustomersModule extends Module {
   @override
   void routes(RouteManager r) {
     r
-      ..child('/', child: (_) => const CustomersScreen())
-      ..child('/:id', child: (_) => CustomerScreen(id: int.parse(r.args.params['id'])));
+      ..child(
+        '/',
+        child: (_) => const CustomersScreen(),
+        transition: TransitionType.noTransition,
+      )
+      ..child(
+        '/:id',
+        child: (_) => CustomerScreen(id: int.parse(r.args.params['id'])),
+        transition: TransitionType.noTransition,
+      );
   }
 }

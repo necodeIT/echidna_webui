@@ -56,7 +56,7 @@ class AuthModule extends Module {
               'quotee': 'Charles Darwin',
             },
             {
-              'quotation': "Matuturing is realizing you don't need fun to have alcohol.",
+              'quotation': "Maturing is realizing you don't need fun to have alcohol.",
               'quotee': 'Isaac Newton',
             },
             {
@@ -111,12 +111,19 @@ class AuthModule extends Module {
                   ),
                 ),
       )
-      ..addSerde<Token>(fromJson: Token.fromJson, toJson: (token) => token.toJson())
+      ..addSerde<Token>(
+        fromJson: Token.fromJson,
+        toJson: (token) => token.toJson(),
+      )
       ..addRepository<TokenRepository>(TokenRepository.new);
   }
 
   @override
   void routes(RouteManager r) {
-    r.child('/', child: (_) => const AuthScreen());
+    r.child(
+      '/',
+      child: (_) => const AuthScreen(),
+      transition: TransitionType.noTransition,
+    );
   }
 }
