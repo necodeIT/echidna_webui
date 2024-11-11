@@ -68,12 +68,20 @@ class AuthModule extends Module {
               'quotee': 'Wolfgang Amadeus Mozart',
             },
             {
-              'quotation': 'Lieber kritigunfähig als kreditunwürdig.',
-              'quotee': 'Sonnenschein Catering',
-            },
-            {
               'quotation': "I don't always have time to study, but when I do I still don't.",
               'quotee': 'Meng Manina',
+            },
+            {
+              'quotation': 'Sometimes I drink water to suprise my liver.',
+              'quotee': 'George W. Bush',
+            },
+            {
+              'quotation': "I'm not an alcoholic... Alcoholics need a drink. I already have one.",
+              'quotee': 'George Washington',
+            },
+            {
+              'quotation': 'You are not drunk if you can lie on the floor without holding on.',
+              'quotee': 'Karl Marx',
             },
           ],
         ),

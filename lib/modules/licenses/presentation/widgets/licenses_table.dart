@@ -6,6 +6,7 @@ import 'package:license_server_admin_panel/modules/customers/customers.dart';
 import 'package:license_server_admin_panel/modules/licenses/licenses.dart';
 import 'package:license_server_admin_panel/modules/products/products.dart';
 import 'package:license_server_rest/license_server_rest.dart';
+import 'package:mcquenji_core/mcquenji_core.dart';
 import 'package:shadcn_flutter/shadcn_flutter.dart';
 import 'package:tap_hover_toggle/tap_hover_toggle.dart';
 import 'package:uicons_updated/icons/uicons_solid.dart';
@@ -25,10 +26,19 @@ class _LicensesTableState extends State<LicensesTable> {
   CheckboxState selectionState = CheckboxState.unchecked;
 
   final searchController = TextEditingController();
-  final selectedItems = <String>[];
+  final selectedItems = <String>{};
+
+  @override
+  void initState() {
+    searchController.addListener(() {
+      setState(() {});
+    });
+
+    super.initState();
+  }
 
   void selectAll() {
-    final licenses = context.read<LicensesRepository>().state.requireData;
+    final licenses = context.read<LicensesRepository>().state.requireData.where((l) => l.licenseKey.containsIgnoreCase(searchController.text));
     selectedItems
       ..clear()
       ..addAll(licenses.map((e) => e.licenseKey));
@@ -84,10 +94,10 @@ class _LicensesTableState extends State<LicensesTable> {
 
     final grouped = <String, List<LicenseAggregate>>{};
 
-    final aggregated = licenses.state.requireData.connect(
-      products.state.requireData,
-      customers.state.requireData,
-    );
+    final aggregated = licenses.state.requireData.where((l) => l.licenseKey.containsIgnoreCase(searchController.text)).toList().connect(
+          products.state.requireData,
+          customers.state.requireData,
+        );
 
     for (final license in aggregated) {
       final key = _grouping == LicensesTableGrouping.customer
@@ -110,6 +120,58 @@ class _LicensesTableState extends State<LicensesTable> {
     return Left(grouped);
   }
 
+  void showBulkActions(BuildContext context) {
+    showDropdown(
+      context: context,
+      builder: (context) => DropdownMenu(
+        children: [
+          MenuLabel(
+            leading: const Icon(BootstrapIcons.stars),
+            child: Text('Bulk actions (${selectedItems.length})'),
+          ),
+          const MenuDivider(),
+          MenuButton(
+            leading: Icon(
+              UiconsSolid.gavel,
+              color: context.theme.colorScheme.destructive,
+            ),
+            child: Text(
+              'Revoke',
+              style: context.theme.typography.semiBold.copyWith(
+                color: context.theme.colorScheme.destructive,
+              ),
+            ),
+            onPressed: (context) {
+              // showDialog(
+              //   context: context,
+              //   builder: (_) => RevokeLicenseDialog(
+              //     license: license.license,
+              //     showToast: createShowToastHandler(context),
+              //   ),
+              // );
+            },
+          ),
+        ],
+      ),
+    );
+  }
+
+  void select(List<String> licenseKeys, {bool selected = true}) {
+    if (selected) {
+      selectedItems.addAll(licenseKeys);
+    } else {
+      selectedItems.removeWhere((element) => licenseKeys.contains(element));
+    }
+
+    setState(() {
+      selectionState = selectedItems.isEmpty
+          ? CheckboxState.unchecked
+          : selectedItems.length == context.read<LicensesRepository>().state.requireData.length
+              ? CheckboxState.checked
+              : CheckboxState.indeterminate;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final licenses = context.watch<LicensesRepository>();
@@ -119,6 +181,26 @@ class _LicensesTableState extends State<LicensesTable> {
     final state = licenses.state.join(products.state).join(customers.state);
 
     final items = _groupLicenses();
+
+    if (state.hasData && items.fold((e) => e.isEmpty, (e) => e.isEmpty)) {
+      return Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            RadixIcons.magnifyingGlass,
+            size: 50,
+            color: context.theme.colorScheme.mutedForeground,
+          ),
+          const SizedBox(height: 25),
+          Text(
+            'No licenses found',
+            style: context.theme.typography.medium.copyWith(
+              color: context.theme.colorScheme.mutedForeground,
+            ),
+          ),
+        ],
+      );
+    }
 
     return Column(
       children: [
@@ -143,6 +225,7 @@ class _LicensesTableState extends State<LicensesTable> {
                   maxHeight: 300,
                   maxWidth: 200,
                 ),
+                orderSelectedFirst: false,
                 children: [
                   SelectItemButton(
                     value: LicensesTableGrouping.customer,
@@ -227,39 +310,7 @@ class _LicensesTableState extends State<LicensesTable> {
                           icon: const Icon(RadixIcons.dotsHorizontal),
                           onPressed: selectedItems.isNotEmpty
                               ? () {
-                                  showDropdown(
-                                    context: context,
-                                    builder: (context) => DropdownMenu(
-                                      children: [
-                                        MenuLabel(
-                                          leading: const Icon(BootstrapIcons.stars),
-                                          child: Text('Bulk actions (${selectedItems.length})'),
-                                        ),
-                                        const MenuDivider(),
-                                        MenuButton(
-                                          leading: Icon(
-                                            UiconsSolid.gavel,
-                                            color: context.theme.colorScheme.destructive,
-                                          ),
-                                          child: Text(
-                                            'Revoke',
-                                            style: context.theme.typography.semiBold.copyWith(
-                                              color: context.theme.colorScheme.destructive,
-                                            ),
-                                          ),
-                                          onPressed: (context) {
-                                            // showDialog(
-                                            //   context: context,
-                                            //   builder: (_) => RevokeLicenseDialog(
-                                            //     license: license.license,
-                                            //     showToast: createShowToastHandler(context),
-                                            //   ),
-                                            // );
-                                          },
-                                        ),
-                                      ],
-                                    ),
-                                  );
+                                  showBulkActions(context);
                                 }
                               : null,
                         );
@@ -300,6 +351,18 @@ class _LicensesTableState extends State<LicensesTable> {
                                 ),
                                 child: Row(
                                   children: [
+                                    Checkbox(
+                                      state: selectedItems.containsAll(en.value.map((e) => e.license.licenseKey).toList())
+                                          ? CheckboxState.checked
+                                          : selectedItems.any((element) => en.value.map((e) => e.license.licenseKey).contains(element))
+                                              ? CheckboxState.indeterminate
+                                              : CheckboxState.unchecked,
+                                      onChanged: (state) => select(
+                                        en.value.map((e) => e.license.licenseKey).toList(),
+                                        selected: state == CheckboxState.checked,
+                                      ),
+                                    ),
+                                    const SizedBox(width: 25),
                                     Icon(_grouping == LicensesTableGrouping.customer ? BootstrapIcons.peopleFill : BootstrapIcons.boxSeamFill),
                                     const SizedBox(width: 8),
                                     Text(en.key),
@@ -331,6 +394,7 @@ class _LicensesTableState extends State<LicensesTable> {
     return licenses
         .map(
           (license) => LicensesTableRow(
+            key: ValueKey(license.hashCode),
             license: license,
             selected: selectedItems.contains(license.license.licenseKey),
             onSelect: (selected) => selectLicense(selected, license.license.licenseKey),

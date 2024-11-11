@@ -15,13 +15,13 @@ class ColorSchemeRepository extends Repository<ColorScheme> {
   final PlatformBrightnessRepository _platformBrightness;
 
   /// Holds the color scheme preference of the current platform.
-  ColorSchemeRepository(this._platformBrightness) : super(ColorSchemes.darkRose()) {
+  ColorSchemeRepository(this._platformBrightness) : super(ColorSchemes.darkZinc()) {
     watch(_platformBrightness);
   }
 
   @override
   FutureOr<void> build(Type trigger) {
-    emit(_platformBrightness.state == Brightness.dark ? ColorSchemes.darkRose() : ColorSchemes.lightRose());
+    emit(_platformBrightness.state == Brightness.dark ? ColorSchemes.darkZinc() : ColorSchemes.lightZinc());
 
     if (kDebugMode && debugOverride != null) {
       emit(debugOverride!);
