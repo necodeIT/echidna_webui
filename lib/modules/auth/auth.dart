@@ -86,12 +86,12 @@ class AuthModule extends Module {
             {
               'quotation':
                   'When you have a bad day, give up, go home and sleep. Fuck it, try again tomorrow. Not every bad day can become a good day. Some days are fucked and cannot be unfucked.',
-              'quotee': 'Rohit Kumar',
+              'quotee': 'Mmasood Boomgaard',
             },
             {
               'quotation':
                   'When have a day that is fucked beyond repair that is the universe speaking to you sending you a message. Listen to the universe: go home, save your energy. Tomorrow is another day. For now just fucking chill.',
-              'quotee': 'Rohit Kumar',
+              'quotee': 'Mmasood Boomgaard',
             },
           ],
         ),
