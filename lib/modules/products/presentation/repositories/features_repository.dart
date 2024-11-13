@@ -120,6 +120,19 @@ class FeaturesRepository extends Repository<AsyncValue<List<Feature>>> {
     }
   }
 
+  List<Feature> filterByProduct({required int productId}) {
+    if (!state.hasData) {
+      return [];
+    }
+
+    return state.requireData.where((feature) {
+      if (feature.productId == productId) {
+        return true;
+      }
+      return false;
+    }).toList();
+  }
+
   @override
   void dispose() {
     super.dispose();

@@ -5,15 +5,12 @@ import 'package:license_server_rest/license_server_rest.dart';
 import 'package:shadcn_flutter/shadcn_flutter.dart';
 
 /// Confirm dialog for revoking a license.
-class RevokeLicenseDialog extends StatefulWidget {
+class RevokeLicenseDialog extends ToastConsumer {
   /// License to revoke.
   final License license;
 
-  /// {@macro show_toast}
-  final ShowToast showToast;
-
   /// Confirm dialog for revoking a license.
-  const RevokeLicenseDialog({super.key, required this.license, required this.showToast});
+  const RevokeLicenseDialog({super.key, required this.license, required super.showToast});
 
   @override
   State<RevokeLicenseDialog> createState() => _RevokeLicenseDialogState();
@@ -43,45 +40,26 @@ class _RevokeLicenseDialogState extends State<RevokeLicenseDialog> {
 
     Navigator.of(context).pop();
 
-    final loader = widget.showToast(
-      (_, __) => SurfaceCard(
-        child: Basic(
-          title: Text(t.licenses_revokeLicenseDialog_revokingLicense),
-          subtitle: Text(t.licenses_revokeLicenseDialog_revokingLicenseWith(widget.license.licenseKey)),
-          trailingAlignment: Alignment.center,
-          trailing: const CircularProgressIndicator(),
-        ),
-      ),
-      const Duration(minutes: 1),
+    final loader = showLoadingToast(
+      title: t.licenses_revokeLicenseDialog_revokingLicense,
+      subtitle: t.licenses_revokeLicenseDialog_revokingLicenseWith(widget.license.licenseKey),
     );
 
     try {
       await licenses.revokeLicense(licenseKey: widget.license.licenseKey, revocationReason: revocationReason);
 
-      widget.showToast(
-        (_, __) => SurfaceCard(
-          child: Basic(
-            title: Text(t.licenses_revokeLicenseDialog_revokedLicense),
-            subtitle: Text(t.licenses_revokeLicenseDialog_revokedLicenseWith(widget.license.licenseKey)),
-            trailingAlignment: Alignment.center,
-            trailing: Icon(RadixIcons.check, color: context.theme.colorScheme.primary),
-          ),
-        ),
+      showSuccessToast(
+        title: t.licenses_revokeLicenseDialog_revokedLicense,
+        subtitle: t.licenses_revokeLicenseDialog_revokedLicenseWith(widget.license.licenseKey),
       );
 
       loader.close();
     } catch (e) {
       loader.close();
 
-      widget.showToast(
-        (_, __) => SurfaceCard(
-          child: Basic(
-            title: Text(t.licenses_revokeLicenseDialog_errorRevoking),
-            subtitle: Text(t.licenses_revokeLicenseDialog_errorRevokingWith(widget.license.licenseKey)),
-            trailingAlignment: Alignment.center,
-            trailing: const Icon(Icons.error),
-          ),
-        ),
+      showErrorToast(
+        title: t.licenses_revokeLicenseDialog_errorRevoking,
+        subtitle: t.licenses_revokeLicenseDialog_errorRevokingWith(widget.license.licenseKey),
       );
     } finally {
       isRevoking = false;

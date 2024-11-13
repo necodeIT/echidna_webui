@@ -5,15 +5,12 @@ import 'package:license_server_rest/license_server_rest.dart';
 import 'package:shadcn_flutter/shadcn_flutter.dart';
 
 /// Confirm dialog for deleting a product.
-class DeleteProductDialog extends StatefulWidget {
+class DeleteProductDialog extends ToastConsumer {
   /// Product to delete.
   final Product product;
 
-  /// {@macro show_toast}
-  final ShowToast showToast;
-
   /// Confirm dialog for deleting a product.
-  const DeleteProductDialog({super.key, required this.product, required this.showToast});
+  const DeleteProductDialog({super.key, required this.product, required super.showToast});
 
   @override
   State<DeleteProductDialog> createState() => _DeleteProductDialogState();
@@ -47,29 +44,17 @@ class _DeleteProductDialogState extends State<DeleteProductDialog> {
 
     Navigator.of(context).pop();
 
-    final loader = widget.showToast(
-      (_, __) => SurfaceCard(
-        child: Basic(
-          title: Text(t.products_deleteProductDialog_deletingProduct),
-          subtitle: Text(t.products_deleteProductDialog_deletingProductWith(widget.product.name)),
-          trailingAlignment: Alignment.center,
-          trailing: const CircularProgressIndicator(),
-        ),
-      ),
-      const Duration(minutes: 1),
+    final loader = showLoadingToast(
+      title: t.products_deleteProductDialog_deletingProduct,
+      subtitle: t.products_deleteProductDialog_deletingProductWith(widget.product.name),
     );
 
     try {
       await products.deleteProduct(widget.product.id);
     } catch (e) {
-      widget.showToast(
-        (_, __) => SurfaceCard(
-          child: Basic(
-            title: Text(t.products_deleteProductDialog_errorDeleting),
-            subtitle: Text(t.products_deleteProductDialog_errorDeletingWith(widget.product.name)),
-          ),
-        ),
-        const Duration(seconds: 5),
+      showErrorToast(
+        title: t.products_deleteProductDialog_errorDeleting,
+        subtitle: t.products_deleteProductDialog_errorDeletingWith(widget.product.name),
       );
     } finally {
       loader.close();

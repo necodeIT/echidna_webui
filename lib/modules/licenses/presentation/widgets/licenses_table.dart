@@ -363,7 +363,7 @@ class _LicensesTableState extends State<LicensesTable> {
                                       ),
                                     ),
                                     const SizedBox(width: 25),
-                                    Icon(_grouping == LicensesTableGrouping.customer ? BootstrapIcons.peopleFill : BootstrapIcons.boxSeamFill),
+                                    Icon(_grouping == LicensesTableGrouping.customer ? BootstrapIcons.peopleFill : RadixIcons.code),
                                     const SizedBox(width: 8),
                                     Text(en.key),
                                   ],

@@ -4,12 +4,9 @@ import 'package:license_server_admin_panel/modules/products/products.dart';
 import 'package:shadcn_flutter/shadcn_flutter.dart';
 
 /// Prompts the user to enter details for a new product.
-class CreateProductDialog extends StatefulWidget {
+class CreateProductDialog extends ToastConsumer {
   /// Prompts the user to enter details for a new product.
-  const CreateProductDialog({super.key, required this.showToast});
-
-  /// {@macro show_toast}
-  final ShowToast showToast;
+  const CreateProductDialog({super.key, required super.showToast});
 
   @override
   State<CreateProductDialog> createState() => _CreateProductDialogState();
@@ -41,16 +38,9 @@ class _CreateProductDialogState extends State<CreateProductDialog> {
 
     Navigator.of(context).pop();
 
-    final loader = widget.showToast(
-      (_, __) => SurfaceCard(
-        child: Basic(
-          title: Text(t.products_createProductDialog_creatingProduct),
-          subtitle: Text(t.products_createProductDialog_creatingProductWith(name)),
-          trailingAlignment: Alignment.center,
-          trailing: const CircularProgressIndicator(),
-        ),
-      ),
-      const Duration(minutes: 1),
+    final loader = showLoadingToast(
+      title: t.products_createProductDialog_creatingProduct,
+      subtitle: t.products_createProductDialog_creatingProductWith(name),
     );
 
     try {
@@ -59,30 +49,18 @@ class _CreateProductDialogState extends State<CreateProductDialog> {
         description: description,
       );
 
-      widget.showToast(
-        (_, __) => SurfaceCard(
-          child: Basic(
-            title: Text(t.products_createProductDialog_createdProduct),
-            subtitle: Text(t.products_createProductDialog_createdProductWith(name)),
-            trailingAlignment: Alignment.center,
-            trailing: Icon(RadixIcons.check, color: context.theme.colorScheme.primary),
-          ),
-        ),
+      showSuccessToast(
+        title: t.products_createProductDialog_createdProduct,
+        subtitle: t.products_createProductDialog_createdProductWith(name),
       );
 
       loader.close();
     } catch (e) {
       loader.close();
 
-      widget.showToast(
-        (_, __) => SurfaceCard(
-          child: Basic(
-            title: Text(t.products_createProductDialog_errorCreating),
-            subtitle: Text(t.products_createProductDialog_errorCreatingWith(name)),
-            trailingAlignment: Alignment.center,
-            trailing: const Icon(Icons.error),
-          ),
-        ),
+      showErrorToast(
+        title: t.products_createProductDialog_errorCreating,
+        subtitle: t.products_createProductDialog_errorCreatingWith(name),
       );
     } finally {
       isCreating = false;

@@ -32,7 +32,12 @@ class _ProductsScreenState extends State<ProductsScreen> {
       loadingProgressIndeterminate: products.state.isLoading,
       headers: [
         AppBar(
-          title: Text(t.products_productsScreen_title),
+          title: Breadcrumb(
+            separator: Breadcrumb.arrowSeparator,
+            children: [
+              Text(t.products_productsScreen_title),
+            ],
+          ),
           trailing: [
             SizedBox(
               width: 300,

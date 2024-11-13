@@ -35,10 +35,6 @@ class ProductCard extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Avatar(
-                    initials: Avatar.getInitials(product.name),
-                  ),
-                  const SizedBox(width: 12),
                   Expanded(
                     child: OverflowMarquee(
                       delayDuration: const Duration(seconds: 5),

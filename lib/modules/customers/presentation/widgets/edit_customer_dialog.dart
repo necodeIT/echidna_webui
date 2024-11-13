@@ -5,15 +5,12 @@ import 'package:license_server_rest/license_server_rest.dart';
 import 'package:shadcn_flutter/shadcn_flutter.dart';
 
 /// A dialog that allows the user to edit a given [customer].
-class EditCustomerDialog extends StatefulWidget {
+class EditCustomerDialog extends ToastConsumer {
   /// A dialog that allows the user to edit a given [customer].
-  const EditCustomerDialog({super.key, required this.customer, required this.showToast});
+  const EditCustomerDialog({super.key, required this.customer, required super.showToast});
 
   /// The customer to edit.
   final Customer customer;
-
-  /// {@macro show_toast}
-  final ShowToast showToast;
 
   @override
   State<EditCustomerDialog> createState() => _EditCustomerDialogState();
@@ -50,16 +47,9 @@ class _EditCustomerDialogState extends State<EditCustomerDialog> {
 
     Navigator.of(context).pop();
 
-    final loader = widget.showToast(
-      (_, __) => SurfaceCard(
-        child: Basic(
-          title: Text(t.customers_editCustomerDialog_updatingCustomer),
-          subtitle: Text(t.customers_editCustomerDialog_updatingCustomerWith(widget.customer.id.toString())),
-          trailingAlignment: Alignment.center,
-          trailing: const CircularProgressIndicator(),
-        ),
-      ),
-      const Duration(minutes: 1),
+    final loader = showLoadingToast(
+      title: t.customers_editCustomerDialog_updatingCustomer,
+      subtitle: t.customers_editCustomerDialog_updatingCustomerWith(widget.customer.id.toString()),
     );
 
     final name = nameController.text;
@@ -75,14 +65,9 @@ class _EditCustomerDialogState extends State<EditCustomerDialog> {
       loader.close();
     } catch (e) {
       loader.close();
-      widget.showToast(
-        (_, __) => SurfaceCard(
-          child: Basic(
-            title: Text(t.customers_editCustomerDialog_errorUpdating),
-            subtitle: Text(t.customers_editCustomerDialog_errorUpdatingWith(widget.customer.id.toString())),
-          ),
-        ),
-        const Duration(seconds: 5),
+      showErrorToast(
+        title: t.customers_editCustomerDialog_errorUpdating,
+        subtitle: t.customers_editCustomerDialog_errorUpdatingWith(widget.customer.id.toString()),
       );
     } finally {
       isUpdating = false;

@@ -5,12 +5,9 @@ import 'package:license_server_rest/license_server_rest.dart';
 import 'package:shadcn_flutter/shadcn_flutter.dart';
 
 /// Edit product dialog.
-class EditProductDialog extends StatefulWidget {
+class EditProductDialog extends ToastConsumer {
   /// Edit product dialog.
-  const EditProductDialog({super.key, required this.showToast, required this.product});
-
-  /// {@macro show_toast}
-  final ShowToast showToast;
+  const EditProductDialog({super.key, required super.showToast, required this.product});
 
   /// Product to edit.
   final Product product;
@@ -45,16 +42,9 @@ class _EditProductDialogState extends State<EditProductDialog> {
 
     final t = context.t;
 
-    final loader = widget.showToast(
-      (_, __) => SurfaceCard(
-        child: Basic(
-          title: Text(t.products_editProductDialog_updatingProduct),
-          subtitle: Text(t.products_editProductDialog_updatingProductWith(widget.product.id)),
-          trailingAlignment: Alignment.center,
-          trailing: const CircularProgressIndicator(),
-        ),
-      ),
-      const Duration(minutes: 1),
+    final loader = showLoadingToast(
+      title: t.products_editProductDialog_updatingProduct,
+      subtitle: t.products_editProductDialog_updatingProductWith(widget.product.id),
     );
 
     try {
@@ -64,16 +54,9 @@ class _EditProductDialogState extends State<EditProductDialog> {
         description: description,
       );
     } catch (e) {
-      widget.showToast(
-        (_, __) => SurfaceCard(
-          child: Basic(
-            title: Text(t.products_editProductDialog_errorUpdating),
-            subtitle: Text(t.products_editProductDialog_errorUpdatingWith(widget.product.id)),
-            trailingAlignment: Alignment.center,
-            trailing: const Icon(Icons.error, color: Colors.red),
-          ),
-        ),
-        const Duration(seconds: 3),
+      showErrorToast(
+        title: t.products_editProductDialog_errorUpdating,
+        subtitle: t.products_editProductDialog_errorUpdatingWith(widget.product.id),
       );
     } finally {
       loader.close();

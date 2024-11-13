@@ -22,7 +22,12 @@ class LicensesScreen extends StatelessWidget {
       loadingProgressIndeterminate: state.isLoading,
       headers: [
         AppBar(
-          title: Text(context.t.licenses_licensesScreen_title),
+          title: Breadcrumb(
+            separator: Breadcrumb.arrowSeparator,
+            children: [
+              Text(context.t.licenses_licensesScreen_title),
+            ],
+          ),
         ),
       ],
       child: const Padding(

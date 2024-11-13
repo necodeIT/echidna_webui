@@ -46,8 +46,8 @@ class _NavbarState extends State<Navbar> {
           NavigationLabel(child: Text(context.t.gloabal_adminPanel)),
           _item(context.t.dashboard_dashboardScreen_title, UiconsSolid.chart_simple, '/dashboard'),
           _item(context.t.customers_customersScreen_title, BootstrapIcons.peopleFill, '/customers'),
-          _item(context.t.licenses_licensesScreen_title, BootstrapIcons.fileEarmarkTextFill, '/licenses'),
-          _item(context.t.products_productsScreen_title, BootstrapIcons.boxSeamFill, '/products'),
+          _item(context.t.licenses_licensesScreen_title, BootstrapIcons.keyFill, '/licenses'),
+          _item(context.t.products_productsScreen_title, RadixIcons.code, '/products'),
         ],
       ),
     );

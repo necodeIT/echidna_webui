@@ -23,6 +23,9 @@ class AppModule extends Module {
         CoreModule(),
         ApiModule(),
         AuthModule(),
+        CustomersModule(),
+        LicensesModule(),
+        ProductsModule(),
       ];
 
   @override

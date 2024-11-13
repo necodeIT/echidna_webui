@@ -5,15 +5,12 @@ import 'package:license_server_rest/license_server_rest.dart';
 import 'package:shadcn_flutter/shadcn_flutter.dart';
 
 /// A dialog that prompts the user to confirm the deletion of a given [customer].
-class DeleteCustomerDialog extends StatefulWidget {
+class DeleteCustomerDialog extends ToastConsumer {
   /// A dialog that prompts the user to confirm the deletion of a given [customer].
-  const DeleteCustomerDialog({super.key, required this.customer, required this.showToast});
+  const DeleteCustomerDialog({super.key, required this.customer, required super.showToast});
 
   /// The customer to delete.
   final Customer customer;
-
-  /// {@macro show_toast}
-  final ShowToast showToast;
 
   @override
   State<DeleteCustomerDialog> createState() => _DeleteCustomerDialogState();
@@ -35,29 +32,17 @@ class _DeleteCustomerDialogState extends State<DeleteCustomerDialog> {
 
     Navigator.of(context).pop();
 
-    final loader = widget.showToast(
-      (_, __) => SurfaceCard(
-        child: Basic(
-          title: Text(t.customers_deleteCustomerDialog_deletingCustomer),
-          subtitle: Text(t.customers_deleteCustomerDialog_deletingCustomerWith(widget.customer.name)),
-          trailingAlignment: Alignment.center,
-          trailing: const CircularProgressIndicator(),
-        ),
-      ),
-      const Duration(minutes: 1),
+    final loader = showLoadingToast(
+      title: t.customers_deleteCustomerDialog_deletingCustomer,
+      subtitle: t.customers_deleteCustomerDialog_deletingCustomerWith(widget.customer.name),
     );
 
     try {
       await customers.deleteCustomer(widget.customer.id);
     } catch (e) {
-      widget.showToast(
-        (_, __) => SurfaceCard(
-          child: Basic(
-            title: Text(t.customers_deleteCustomerDialog_errorDeleting),
-            subtitle: Text(t.customers_deleteCustomerDialog_errorDeletingWith(widget.customer.name)),
-          ),
-        ),
-        const Duration(seconds: 5),
+      showErrorToast(
+        title: t.customers_deleteCustomerDialog_errorDeleting,
+        subtitle: t.customers_deleteCustomerDialog_errorDeletingWith(widget.customer.name),
       );
     } finally {
       loader.close();

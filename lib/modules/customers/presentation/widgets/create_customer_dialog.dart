@@ -4,12 +4,9 @@ import 'package:license_server_admin_panel/modules/customers/customers.dart';
 import 'package:shadcn_flutter/shadcn_flutter.dart';
 
 /// A dialog that allows the user to create a new customer.
-class CreateCustomerDialog extends StatefulWidget {
+class CreateCustomerDialog extends ToastConsumer {
   /// A dialog that allows the user to create a new customer.
-  const CreateCustomerDialog({super.key, required this.showToast});
-
-  /// {@macro show_toast}
-  final ShowToast showToast;
+  const CreateCustomerDialog({super.key, required super.showToast});
 
   @override
   State<CreateCustomerDialog> createState() => _CreateCustomerDialogState();
@@ -33,8 +30,6 @@ class _CreateCustomerDialogState extends State<CreateCustomerDialog> {
 
     isCreating = true;
 
-    Navigator.of(context).pop();
-
     final customers = context.read<CustomersRepository>();
 
     final name = nameController.text;
@@ -42,16 +37,11 @@ class _CreateCustomerDialogState extends State<CreateCustomerDialog> {
 
     final t = context.t;
 
-    final loader = widget.showToast(
-      (_, __) => SurfaceCard(
-        child: Basic(
-          title: Text(t.customers_createCustomerDialog_creatingCustomer),
-          subtitle: Text(t.customers_createCustomerDialog_creatingCustomerWith(name, email)),
-          trailingAlignment: Alignment.center,
-          trailing: const CircularProgressIndicator(),
-        ),
-      ),
-      const Duration(minutes: 1),
+    Navigator.of(context).pop();
+
+    final loader = showLoadingToast(
+      title: t.customers_createCustomerDialog_creatingCustomer,
+      subtitle: t.customers_createCustomerDialog_creatingCustomerWith(name, email),
     );
 
     try {
@@ -60,36 +50,17 @@ class _CreateCustomerDialogState extends State<CreateCustomerDialog> {
         email: email,
       );
 
-      Future.delayed(const Duration(milliseconds: 300), loader.close);
-      widget.showToast(
-        (_, toast) => SurfaceCard(
-          child: Basic(
-            title: Text(t.customers_createCustomerDialog_customerCreated),
-            subtitle: Text(t.customers_createCustomerDialog_successfullyCreated(name, email)),
-            trailingAlignment: Alignment.center,
-            trailing: IconButton.ghost(
-              icon: const Icon(RadixIcons.cross2),
-              onPressed: toast.close,
-            ),
-          ),
-        ),
+      showSuccessToast(
+        title: t.customers_createCustomerDialog_customerCreated,
+        subtitle: t.customers_createCustomerDialog_successfullyCreated(name, email),
       );
     } catch (e) {
-      loader.close();
-
-      widget.showToast(
-        (_, toast) => SurfaceCard(
-          child: Basic(
-            title: Text(context.t.customers_createCustomerDialog_failedToCreate),
-            subtitle: Text(context.t.customers_createCustomerDialog_failedToCreateTryAgain),
-            trailingAlignment: Alignment.center,
-            trailing: Icon(RadixIcons.check, color: context.theme.colorScheme.primary),
-          ),
-        ),
+      showErrorToast(
+        title: t.customers_createCustomerDialog_failedToCreate,
+        subtitle: t.customers_createCustomerDialog_failedToCreateTryAgain,
       );
-
-      isCreating = false;
     } finally {
+      loader.close();
       isCreating = false;
     }
   }

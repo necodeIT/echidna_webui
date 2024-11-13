@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:collection/collection.dart';
 import 'package:license_server_admin_panel/modules/auth/auth.dart';
 import 'package:license_server_admin_panel/modules/products/products.dart';
 import 'package:license_server_rest/license_server_rest.dart';
@@ -119,6 +120,15 @@ class ProductsRepository extends Repository<AsyncValue<List<Product>>> {
           (e) => e.name.containsIgnoreCase(query) || e.description.containsIgnoreCase(query),
         )
         .toList();
+  }
+
+  /// Returns a product by its ID.
+  Product? byId(int id) {
+    if (!state.hasData) {
+      return null;
+    }
+
+    return state.requireData.firstWhereOrNull((element) => element.id == id);
   }
 
   @override
