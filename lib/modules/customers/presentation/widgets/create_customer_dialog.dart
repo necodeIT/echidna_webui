@@ -1,6 +1,6 @@
+import 'package:echidna_webui/modules/app/app.dart';
+import 'package:echidna_webui/modules/customers/customers.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:license_server_admin_panel/modules/app/app.dart';
-import 'package:license_server_admin_panel/modules/customers/customers.dart';
 import 'package:shadcn_flutter/shadcn_flutter.dart';
 
 /// A dialog that allows the user to create a new customer.

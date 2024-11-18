@@ -1,6 +1,6 @@
-import 'package:license_server_admin_panel/modules/api/api.dart';
-import 'package:license_server_admin_panel/modules/dashboard/dashboard.dart';
-import 'package:license_server_rest/license_server_rest.dart';
+import 'package:echidna_dto/echidna_dto.dart';
+import 'package:echidna_webui/modules/api/api.dart';
+import 'package:echidna_webui/modules/dashboard/dashboard.dart';
 
 /// Standart Implementation of [PaymentsDatasource]
 class StdPaymentsDatasource extends PaymentsDatasource {

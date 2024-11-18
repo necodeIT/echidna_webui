@@ -7,9 +7,9 @@
   "dart.debugExternalPackageLibraries": true,
   "dart.flutterRunAdditionalArgs": [
     "--dart-define-from-file=.env",
-    "--web-port 5000",
+    "--web-port 5000"
   ],
   "dart.flutterTestAdditionalArgs": [
-    "--dart-define-from-file=.env",
-  ],
+    "--dart-define-from-file=.env"
+  ]
 }

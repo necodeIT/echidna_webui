@@ -1,13 +1,12 @@
-import 'package:license_server_rest/license_server_rest.dart';
-import 'package:mcquenji_core/mcquenji_core.dart';
-import 'package:flutter_modular/flutter_modular.dart';
-import 'package:license_server_admin_panel/modules/products/products.dart';
-import 'package:flutter_animate/flutter_animate.dart';
+import 'package:echidna_dto/echidna_dto.dart';
 import 'package:shadcn_flutter/shadcn_flutter.dart';
 
+/// Displays a step by step guide to install the client SDK for a product.
 class InstallClientSdk extends StatelessWidget {
+  /// Displays a step by step guide to install the client SDK for a product.
   const InstallClientSdk({super.key, required this.product});
 
+  /// The product to install the client SDK for.
   final Product product;
 
   @override

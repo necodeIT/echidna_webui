@@ -1,6 +1,6 @@
+import 'package:echidna_webui/modules/app/app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:license_server_admin_panel/modules/app/app.dart';
 
 /// Wraps the application with a side navigation bar.
 class NavbarScreen extends StatelessWidget {

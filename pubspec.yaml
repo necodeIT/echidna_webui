@@ -1,4 +1,4 @@
-name: license_server_admin_panel
+name: echidna_webui
 description: "A new Flutter project." # TODO: edit this
 publish_to: none
 
@@ -14,6 +14,9 @@ dependencies:
   collection: ^1.18.0
   cupertino_icons: ^1.0.6
   dotenv: ^4.2.0
+  echidna_dto:
+    git:
+      url: https://github.com/necodeIT/echidna_dto.git
   either_dart: ^1.0.0
   flutter:
     sdk: flutter
@@ -26,9 +29,6 @@ dependencies:
   freezed_annotation: ^2.4.4
   intl: any
   json_annotation: ^4.9.0
-  license_server_rest:
-    git:
-      url: https://github.com/necodeIT/license_server_rest.git
   logging: ^1.2.0
   mcquenji_core:
     git:

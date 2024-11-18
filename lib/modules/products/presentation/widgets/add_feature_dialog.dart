@@ -1,14 +1,17 @@
 import 'package:awesome_extensions/awesome_extensions.dart';
+import 'package:echidna_dto/echidna_dto.dart';
+import 'package:echidna_webui/modules/app/app.dart';
+import 'package:echidna_webui/modules/products/products.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:license_server_admin_panel/modules/app/app.dart';
-import 'package:license_server_admin_panel/modules/products/products.dart';
-import 'package:license_server_rest/license_server_rest.dart';
 import 'package:shadcn_flutter/shadcn_flutter.dart';
 
+/// Dialog to add a feature to a product.
 class AddFeatureDialog extends ToastConsumer {
-  final Product product;
-
+  /// Dialog to add a feature to a product.
   const AddFeatureDialog({super.key, required this.product, required super.showToast});
+
+  /// The product to add the feature to.
+  final Product product;
 
   @override
   State<AddFeatureDialog> createState() => _AddFeatureDialogState();
@@ -79,7 +82,7 @@ class _AddFeatureDialogState extends State<AddFeatureDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text("Add feature"),
+      title: const Text('Add feature'),
       content: Expanded(
         child: SingleChildScrollView(
           child: SizedBox(
@@ -89,8 +92,8 @@ class _AddFeatureDialogState extends State<AddFeatureDialog> {
                 rows: [
                   FormField<String>(
                     key: const FormKey(#name),
-                    label: Text('Name'),
-                    validator: NotEmptyValidator(message: 'Name is required'),
+                    label: const Text('Name'),
+                    validator: const NotEmptyValidator(message: 'Name is required'),
                     child: TextField(
                       controller: nameController,
                       placeholder: 'Feature Name',
@@ -98,7 +101,7 @@ class _AddFeatureDialogState extends State<AddFeatureDialog> {
                   ),
                   FormField<FeatureType>(
                     key: const FormKey(#type),
-                    label: Text('Type'),
+                    label: const Text('Type'),
                     child: Select<FeatureType>(
                       itemBuilder: (context, item) {
                         return Text(
@@ -126,14 +129,14 @@ class _AddFeatureDialogState extends State<AddFeatureDialog> {
                   ),
                   if (type == FeatureType.paid)
                     FormField<int>(
-                      key: FormKey(#trialPeriod),
-                      label: Text('Trial period (days)'),
+                      key: const FormKey(#trialPeriod),
+                      label: const Text('Trial period (days)'),
                       child: NumberInput(controller: trialPeriodController),
                     ),
                   FormField<String>(
                     key: const FormKey(#description),
-                    label: Text('Description'),
-                    validator: NotEmptyValidator(message: 'Description is required'),
+                    label: const Text('Description'),
+                    validator: const NotEmptyValidator(message: 'Description is required'),
                     child: TextArea(
                       controller: descriptionController,
                       placeholder: 'description',
@@ -155,7 +158,7 @@ class _AddFeatureDialogState extends State<AddFeatureDialog> {
             Navigator.of(context).pop();
           },
           child: Text(context.t.global_cancel),
-        )
+        ),
       ],
     );
   }

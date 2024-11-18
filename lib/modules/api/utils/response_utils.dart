@@ -1,5 +1,5 @@
+import 'package:echidna_webui/modules/api/api.dart';
 import 'package:either_dart/either.dart';
-import 'package:license_server_admin_panel/modules/api/api.dart';
 import 'package:mcquenji_core/mcquenji_core.dart';
 
 /// Provides utilties for handling an [HttpResponse] from the [ApiService].

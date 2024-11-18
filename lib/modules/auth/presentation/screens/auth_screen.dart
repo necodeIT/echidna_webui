@@ -1,8 +1,8 @@
+import 'package:echidna_dto/echidna_dto.dart';
+import 'package:echidna_webui/gen/assets.gen.dart';
+import 'package:echidna_webui/modules/app/app.dart';
+import 'package:echidna_webui/modules/auth/auth.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:license_server_admin_panel/gen/assets.gen.dart';
-import 'package:license_server_admin_panel/modules/app/app.dart';
-import 'package:license_server_admin_panel/modules/auth/auth.dart';
-import 'package:license_server_rest/license_server_rest.dart';
 import 'package:quoter/quoter.dart';
 import 'package:shadcn_flutter/shadcn_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';

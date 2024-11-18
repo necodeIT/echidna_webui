@@ -1,4 +1,4 @@
-import 'package:license_server_admin_panel/modules/auth/auth.dart';
+import 'package:echidna_webui/modules/auth/auth.dart';
 
 /// Implements [AuthService] for debugging purposes.
 class DebugAuthService extends AuthService {

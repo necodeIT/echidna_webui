@@ -1,8 +1,8 @@
 import 'package:dotenv/dotenv.dart';
+import 'package:echidna_dto/echidna_dto.dart';
+import 'package:echidna_webui/config/config.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:license_server_admin_panel/config/config.dart';
-import 'package:license_server_rest/license_server_rest.dart';
 import 'package:mcquenji_core/mcquenji_core.dart';
 import 'package:mcquenji_local_storage/mcquenji_local_storage.dart';
 import 'package:quoter/data/data.dart';

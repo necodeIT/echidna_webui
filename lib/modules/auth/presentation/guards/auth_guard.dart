@@ -1,5 +1,5 @@
+import 'package:echidna_webui/modules/auth/auth.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:license_server_admin_panel/modules/auth/auth.dart';
 
 /// Ensures that the user is authenticated before accessing a route.
 class AuthGuard extends RouteGuard {

@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:license_server_admin_panel/modules/auth/auth.dart';
-import 'package:license_server_admin_panel/modules/products/products.dart';
-import 'package:license_server_rest/license_server_rest.dart';
+import 'package:echidna_dto/echidna_dto.dart';
+import 'package:echidna_webui/modules/auth/auth.dart';
+import 'package:echidna_webui/modules/products/products.dart';
 import 'package:mcquenji_core/mcquenji_core.dart';
 
 /// Provides a list of all features.
@@ -120,16 +120,50 @@ class FeaturesRepository extends Repository<AsyncValue<List<Feature>>> {
     }
   }
 
-  List<Feature> filterByProduct({required int productId}) {
+  /// Filters the features based on the specified properties.
+  ///
+  /// This method applies all provided conditions to filter the features.
+  /// Any condition that is not provided will be ignored.
+  ///
+  /// As the parameters are lists, the method will return features that match any of the provided values.
+  List<Feature> filter({
+    List<int>? productIds,
+    List<int>? ids,
+    List<String>? names,
+    List<String>? descriptions,
+    List<FeatureType>? types,
+    List<int>? trialPeriods,
+  }) {
     if (!state.hasData) {
       return [];
     }
 
     return state.requireData.where((feature) {
-      if (feature.productId == productId) {
-        return true;
+      if (productIds != null) {
+        if (!productIds.any((pid) => pid == feature.productId)) return false;
       }
-      return false;
+
+      if (ids != null) {
+        if (!ids.any((id) => id == feature.id)) return false;
+      }
+
+      if (names != null) {
+        if (!names.any((name) => feature.name.containsIgnoreCase(name))) return false;
+      }
+
+      if (descriptions != null) {
+        if (!descriptions.any((desc) => feature.description.containsIgnoreCase(desc))) return false;
+      }
+
+      if (types != null) {
+        if (!types.any((type) => type == feature.type)) return false;
+      }
+
+      if (trialPeriods != null) {
+        if (!trialPeriods.any((tp) => tp == feature.trialPeriod)) return false;
+      }
+
+      return true;
     }).toList();
   }
 

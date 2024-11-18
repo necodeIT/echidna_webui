@@ -1,8 +1,8 @@
+import 'package:echidna_webui/config/config.dart';
+import 'package:echidna_webui/modules/app/app.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:license_server_admin_panel/config/config.dart';
-import 'package:license_server_admin_panel/modules/app/app.dart';
 import 'package:logging/logging.dart';
 import 'package:mcquenji_core/mcquenji_core.dart';
 import 'package:shadcn_flutter/shadcn_flutter.dart';

@@ -1,15 +1,16 @@
-import 'package:license_server_admin_panel/modules/app/app.dart';
-import 'package:license_server_rest/license_server_rest.dart';
-import 'package:mcquenji_core/mcquenji_core.dart';
+import 'package:echidna_dto/echidna_dto.dart';
+import 'package:echidna_webui/modules/app/app.dart';
+import 'package:echidna_webui/modules/products/products.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:license_server_admin_panel/modules/products/products.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:shadcn_flutter/shadcn_flutter.dart';
 import 'package:uicons_updated/icons/uicons_solid.dart';
 
+/// Displays the features of a product.
 class ProductFeatures extends StatefulWidget {
+  /// Displays the features of a product.
   const ProductFeatures({super.key, required this.product});
 
+  /// The product to display the features of.
   final Product product;
 
   @override
@@ -27,7 +28,7 @@ class _ProductFeaturesState extends State<ProductFeatures> {
       );
     }
 
-    final releatedFeatures = features.filterByProduct(productId: widget.product.id);
+    final releatedFeatures = features.filter(productIds: [widget.product.id]);
 
     return Card(
       child: Column(
@@ -82,7 +83,7 @@ class _ProductFeaturesState extends State<ProductFeatures> {
                                     children: [
                                       MenuButton(
                                         leading: const Icon(RadixIcons.pencil1),
-                                        child: Text('Edit'),
+                                        child: const Text('Edit'),
                                         onPressed: (context) {
                                           // TODO: show edit dialog
                                         },

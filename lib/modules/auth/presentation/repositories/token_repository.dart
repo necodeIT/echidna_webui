@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:license_server_admin_panel/modules/auth/auth.dart';
+import 'package:echidna_webui/modules/auth/auth.dart';
 import 'package:mcquenji_core/mcquenji_core.dart';
 import 'package:mcquenji_local_storage/mcquenji_local_storage.dart';
 

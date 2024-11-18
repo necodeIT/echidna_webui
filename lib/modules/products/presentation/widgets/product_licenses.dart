@@ -1,17 +1,18 @@
-import 'package:license_server_admin_panel/modules/app/app.dart';
-import 'package:license_server_admin_panel/modules/customers/customers.dart';
-import 'package:license_server_admin_panel/modules/licenses/licenses.dart';
-import 'package:license_server_rest/license_server_rest.dart';
-import 'package:mcquenji_core/mcquenji_core.dart';
+import 'package:echidna_dto/echidna_dto.dart';
+import 'package:echidna_webui/modules/app/app.dart';
+import 'package:echidna_webui/modules/customers/customers.dart';
+import 'package:echidna_webui/modules/licenses/licenses.dart';
+import 'package:echidna_webui/modules/products/products.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:license_server_admin_panel/modules/products/products.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:shadcn_flutter/shadcn_flutter.dart';
 import 'package:uicons_updated/icons/uicons_solid.dart';
 
+/// Displays the licenses of a product.
 class ProductLicenses extends StatefulWidget {
+  /// Displays the licenses of a product.
   const ProductLicenses({super.key, required this.product});
 
+  /// The product to display the licenses of.
   final Product product;
 
   @override
@@ -75,7 +76,7 @@ class _ProductLicensesState extends State<ProductLicenses> {
                                     children: [
                                       MenuButton(
                                         leading: const Icon(BootstrapIcons.infoCircle),
-                                        child: Text('Details'),
+                                        child: const Text('Details'),
                                         onPressed: (context) {
                                           Modular.to.navigate('/licenses/${license.licenseKey}');
                                         },

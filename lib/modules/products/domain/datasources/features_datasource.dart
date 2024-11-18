@@ -1,4 +1,4 @@
-import 'package:license_server_rest/license_server_rest.dart';
+import 'package:echidna_dto/echidna_dto.dart';
 import 'package:mcquenji_core/mcquenji_core.dart';
 
 /// Maps the features api endpoints.

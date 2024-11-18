@@ -1,8 +1,4 @@
-import 'package:license_server_rest/license_server_rest.dart';
-import 'package:mcquenji_core/mcquenji_core.dart';
-import 'package:flutter_modular/flutter_modular.dart';
-import 'package:license_server_admin_panel/modules/products/products.dart';
-import 'package:flutter_animate/flutter_animate.dart';
+import 'package:echidna_dto/echidna_dto.dart';
 import 'package:shadcn_flutter/shadcn_flutter.dart';
 import 'package:uicons_updated/icons/uicons_solid.dart';
 
@@ -45,7 +41,7 @@ class FeatureCard extends StatelessWidget {
                   if ((feature.trialPeriod ?? 0) > 0)
                     Text('This feature has a trial period of ${feature.trialPeriod} days')
                   else
-                    Text('This feature does not have a trial period'),
+                    const Text('This feature does not have a trial period'),
                 ],
               ),
           ],

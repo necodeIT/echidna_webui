@@ -1,12 +1,12 @@
-library license_server_admin_panel.modules.app;
+library echidna_webui.modules.app;
 
+import 'package:echidna_webui/modules/api/api.dart';
+import 'package:echidna_webui/modules/auth/auth.dart';
+import 'package:echidna_webui/modules/customers/customers.dart';
+import 'package:echidna_webui/modules/dashboard/dashboard.dart';
+import 'package:echidna_webui/modules/licenses/licenses.dart';
+import 'package:echidna_webui/modules/products/products.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:license_server_admin_panel/modules/api/api.dart';
-import 'package:license_server_admin_panel/modules/auth/auth.dart';
-import 'package:license_server_admin_panel/modules/customers/customers.dart';
-import 'package:license_server_admin_panel/modules/dashboard/dashboard.dart';
-import 'package:license_server_admin_panel/modules/licenses/licenses.dart';
-import 'package:license_server_admin_panel/modules/products/products.dart';
 import 'package:mcquenji_core/mcquenji_core.dart';
 
 import 'presentation/presentation.dart';

@@ -1,6 +1,6 @@
 import 'package:dotenv/dotenv.dart';
+import 'package:echidna_webui/config/config.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:license_server_admin_panel/config/config.dart';
 import 'package:mcquenji_core/mcquenji_core.dart';
 
 import 'domain/domain.dart';

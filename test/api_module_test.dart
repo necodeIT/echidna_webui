@@ -1,7 +1,7 @@
+import 'package:echidna_webui/config/config.dart';
+import 'package:echidna_webui/modules/api/api.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:license_server_admin_panel/config/config.dart';
-import 'package:license_server_admin_panel/modules/api/api.dart';
 import 'package:logging/logging.dart';
 import 'package:mcquenji_core/mcquenji_core.dart';
 

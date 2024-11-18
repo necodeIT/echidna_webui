@@ -1,16 +1,16 @@
-import 'package:mcquenji_core/mcquenji_core.dart';
+import 'package:echidna_webui/modules/app/app.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:license_server_admin_panel/modules/app/app.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:shadcn_flutter/shadcn_flutter.dart';
 
+/// Shown when the user navigates to a non-existent route.
 class NotFoundScreen extends StatelessWidget {
+  /// Shown when the user navigates to a non-existent route.
   const NotFoundScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      headers: [
+      headers: const [
         AppBar(
           title: Text('404'),
         ),
@@ -25,15 +25,15 @@ class NotFoundScreen extends StatelessWidget {
               size: 100,
             ),
             const SizedBox(height: 20),
-            Text('404').h1(),
-            Text("Sorry, couldn't find what you're looking for!").h2(),
+            const Text('404').h1(),
+            const Text("Sorry, couldn't find what you're looking for!").h2(),
             const SizedBox(height: 20),
             PrimaryButton(
               onPressed: () {
                 Modular.to.navigate('/');
               },
               leading: const Icon(Icons.home),
-              child: Text('Go to home'),
+              child: const Text('Go to home'),
             ),
           ],
         ),

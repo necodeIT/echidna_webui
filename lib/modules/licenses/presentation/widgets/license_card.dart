@@ -1,14 +1,16 @@
-import 'package:license_server_admin_panel/modules/app/app.dart';
-import 'package:license_server_admin_panel/modules/customers/customers.dart';
-import 'package:license_server_rest/license_server_rest.dart';
-import 'package:shadcn_flutter/shadcn_flutter.dart';
-
 import 'dart:math';
 
-/// Displays features unlocked by a license.
+import 'package:echidna_dto/echidna_dto.dart';
+import 'package:echidna_webui/modules/app/app.dart';
+import 'package:echidna_webui/modules/customers/customers.dart';
+import 'package:shadcn_flutter/shadcn_flutter.dart';
+
+/// Displays a summary of a [license].
 class LicenseCard extends StatelessWidget {
+  /// Displays a summary of a [license].
   const LicenseCard({super.key, required this.license});
 
+  /// The license to summarize.
   final License license;
 
   @override
@@ -24,7 +26,7 @@ class LicenseCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('License overview').medium().bold(),
+            const Text('License overview').medium().bold(),
             const SizedBox(height: 10),
             Text('License key: ${license.licenseKey}').ellipsis(),
             const SizedBox(height: 10),

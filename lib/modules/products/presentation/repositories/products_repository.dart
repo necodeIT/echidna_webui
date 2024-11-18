@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:collection/collection.dart';
-import 'package:license_server_admin_panel/modules/auth/auth.dart';
-import 'package:license_server_admin_panel/modules/products/products.dart';
-import 'package:license_server_rest/license_server_rest.dart';
+import 'package:echidna_dto/echidna_dto.dart';
+import 'package:echidna_webui/modules/auth/auth.dart';
+import 'package:echidna_webui/modules/products/products.dart';
 import 'package:mcquenji_core/mcquenji_core.dart';
 
 /// Provides a list of all stored products.
