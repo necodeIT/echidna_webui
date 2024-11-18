@@ -1,16 +1,28 @@
-# License Server Admin Panel
+# Echidna WebUI
 
-A new Flutter project.
+A fully functional software licensing server written in Dart. This is the frontend for the server. The server can be found [here](https://github.com/necodeIT/echidna_server).
 
-## Getting Started
+# Development
 
-This project is a starting point for a Flutter application.
+Make sure you have the server running before you start the webui. You can find instructions on how to run the server [here](https://github.com/necodeIT/echidna_server?tab=readme-ov-file#debugging-the-server).
 
-A few resources to get you started if this is your first Flutter project:
+## Running the webui
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+1. Copy the `.env.example` file to `.env` and edit the file to your liking.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+   ```bash
+    cp .env.example .env
+    ```
+
+2. Use your favorite IDE to run the webui. You can also run the following command:
+
+   ```bash
+   flutter run -d chrome
+   ```
+
+# Deployment
+
+> [!NOTE]
+> Docker deployment is coming soon.
+
+This project is supposed to be deployed together with the [echidna_server](https://github.com/necodeIT/echidna_server). The server is the backend for the webui.
