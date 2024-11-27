@@ -1,96 +1,94 @@
 import 'package:echidna_dto/echidna_dto.dart';
 import 'package:echidna_webui/modules/app/app.dart';
+import 'package:echidna_webui/modules/customers/customers.dart';
+import 'package:echidna_webui/modules/licenses/licenses.dart';
 import 'package:echidna_webui/modules/products/products.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:shadcn_flutter/shadcn_flutter.dart';
 import 'package:uicons_updated/icons/uicons_solid.dart';
 
-/// Displays the features of a product.
-class ProductFeatures extends StatefulWidget {
-  /// Displays the features of a product.
-  const ProductFeatures({super.key, required this.product});
+class CustomerLicenses extends StatefulWidget {
+  const CustomerLicenses({super.key, required this.customer});
 
-  /// The product to display the features of.
-  final Product product;
+  final Customer customer;
 
   @override
-  State<ProductFeatures> createState() => _ProductFeaturesState();
+  State<CustomerLicenses> createState() => _CustomerLicensesState();
 }
 
-class _ProductFeaturesState extends State<ProductFeatures> {
+class _CustomerLicensesState extends State<CustomerLicenses> {
+  final searchController = TextEditingController();
+
+  @override
+  void initState() {
+    searchController.addListener(() {
+      setState(() {});
+    });
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    final features = context.watch<FeaturesRepository>();
+    final licenses = context.watch<LicensesRepository>();
+    final products = context.watch<ProductsRepository>();
 
-    if (!features.state.hasData) {
+    final state = products.state.join(licenses.state);
+
+    if (!state.hasData) {
       return const Center(
         child: CircularProgressIndicator(),
       );
     }
 
-    final relatedFeatures = features.filter(productIds: [widget.product.id]);
+    final customer = CustomerAggregate.join(
+      customer: widget.customer,
+      products: products.state.requireData,
+      licenses: licenses.state.requireData,
+    );
 
     return Card(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(context.t.products_productFeatures_productFeatures(relatedFeatures.length.toString())).medium().bold(),
-              IconButton.ghost(
-                icon: const Icon(Icons.add),
-                onPressed: () {
-                  showDialog(
-                    context: context,
-                    builder: (_) => AddFeatureDialog(
-                      product: widget.product,
-                      showToast: createShowToastHandler(context),
-                    ),
-                  );
-                },
-              ),
-            ],
-          ),
+          Text(context.t.customers_customerLicensesWidget_licensesForCustomer(customer.licenses.length.toString())).medium().bold(),
+          const SizedBox(height: 10),
           ListView(
-            padding: const EdgeInsets.all(8),
             children: [
-              for (final feature in relatedFeatures)
+              for (final license in customer.licenses)
                 Row(
                   children: [
-                    if (feature.type == FeatureType.free) const Icon(UiconsSolid.hands_heart) else const Icon(UiconsSolid.coin),
+                    const Icon(BootstrapIcons.keyFill),
                     const SizedBox(width: 10),
                     HoverCard(
-                      child: Text(feature.name),
-                      hoverBuilder: (context) => SizedBox(
-                        height: 150,
-                        child: FeatureCard(
-                          feature: feature,
-                        ),
+                      child: Text(license.licenseKey).ellipsis(),
+                      hoverBuilder: (context) => LicenseCard(
+                        license: license,
                       ),
                     ).expanded(),
+                    const SizedBox(width: 10),
                     Builder(
-                      builder: (context) {
+                      builder: (_context) {
                         return IconButton.ghost(
                           icon: const Icon(RadixIcons.dotsHorizontal),
                           onPressed: () {
                             showDropdown(
-                              context: context,
+                              context: _context,
                               builder: (_) {
                                 return SizedBox(
                                   width: 100,
                                   child: DropdownMenu(
                                     children: [
                                       MenuButton(
-                                        leading: const Icon(RadixIcons.pencil1),
-                                        child: Text(context.t.global_edit),
+                                        leading: const Icon(BootstrapIcons.infoCircle),
+                                        child: Text(context.t.global_details),
                                         onPressed: (context) {
-                                          // TODO: show edit dialog
+                                          Modular.to.navigate('/licenses/${license.licenseKey}');
                                         },
                                       ),
                                       MenuButton(
                                         leading: Icon(
-                                          RadixIcons.trash,
+                                          UiconsSolid.gavel,
                                           color: context.theme.colorScheme.destructive,
                                         ),
                                         child: Text(
@@ -100,7 +98,13 @@ class _ProductFeaturesState extends State<ProductFeatures> {
                                           ),
                                         ),
                                         onPressed: (_) {
-                                          // TODO: show confirmation dialog
+                                          showDialog(
+                                            context: context,
+                                            builder: (_) => RevokeLicenseDialog(
+                                              license: license,
+                                              showToast: createShowToastHandler(context),
+                                            ),
+                                          );
                                         },
                                       ),
                                     ],

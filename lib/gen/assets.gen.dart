@@ -27,10 +27,54 @@ class $AssetsBrandingGen {
   List<SvgGenImage> get values => [logoHoriz, logoIconBackground];
 }
 
+class $AssetsFrameworksGen {
+  const $AssetsFrameworksGen();
+
+  /// File path: assets/frameworks/angular-svgrepo-com.svg
+  SvgGenImage get angularSvgrepoCom =>
+      const SvgGenImage('assets/frameworks/angular-svgrepo-com.svg');
+
+  /// File path: assets/frameworks/dart-svgrepo-com.svg
+  SvgGenImage get dartSvgrepoCom =>
+      const SvgGenImage('assets/frameworks/dart-svgrepo-com.svg');
+
+  /// File path: assets/frameworks/flutter-svgrepo-com.svg
+  SvgGenImage get flutterSvgrepoCom =>
+      const SvgGenImage('assets/frameworks/flutter-svgrepo-com.svg');
+
+  /// File path: assets/frameworks/javascript-svgrepo-com.svg
+  SvgGenImage get javascriptSvgrepoCom =>
+      const SvgGenImage('assets/frameworks/javascript-svgrepo-com.svg');
+
+  /// File path: assets/frameworks/react-svgrepo-com.svg
+  SvgGenImage get reactSvgrepoCom =>
+      const SvgGenImage('assets/frameworks/react-svgrepo-com.svg');
+
+  /// File path: assets/frameworks/svelte-svgrepo-com.svg
+  SvgGenImage get svelteSvgrepoCom =>
+      const SvgGenImage('assets/frameworks/svelte-svgrepo-com.svg');
+
+  /// File path: assets/frameworks/vue-vuejs-javascript-js-framework-svgrepo-com.svg
+  SvgGenImage get vueVuejsJavascriptJsFrameworkSvgrepoCom => const SvgGenImage(
+      'assets/frameworks/vue-vuejs-javascript-js-framework-svgrepo-com.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [
+        angularSvgrepoCom,
+        dartSvgrepoCom,
+        flutterSvgrepoCom,
+        javascriptSvgrepoCom,
+        reactSvgrepoCom,
+        svelteSvgrepoCom,
+        vueVuejsJavascriptJsFrameworkSvgrepoCom
+      ];
+}
+
 class Assets {
   Assets._();
 
   static const $AssetsBrandingGen branding = $AssetsBrandingGen();
+  static const $AssetsFrameworksGen frameworks = $AssetsFrameworksGen();
 }
 
 class SvgGenImage {

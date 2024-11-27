@@ -7,19 +7,16 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mcquenji_core/mcquenji_core.dart';
 import 'package:shadcn_flutter/shadcn_flutter.dart';
 
-/// Displays the customers of a product.
-class ProductCustomers extends StatefulWidget {
-  /// Displays the customers of a product.
-  const ProductCustomers({super.key, required this.product});
+class CustomerProducts extends StatefulWidget {
+  const CustomerProducts({super.key, required this.customer});
 
-  /// The product to display the customers of.
-  final Product product;
+  final Customer customer;
 
   @override
-  State<ProductCustomers> createState() => _ProductCustomersState();
+  State<CustomerProducts> createState() => _CustomerProductsState();
 }
 
-class _ProductCustomersState extends State<ProductCustomers> {
+class _CustomerProductsState extends State<CustomerProducts> {
   final searchController = TextEditingController();
 
   @override
@@ -33,10 +30,10 @@ class _ProductCustomersState extends State<ProductCustomers> {
 
   @override
   Widget build(BuildContext context) {
-    final customers = context.watch<CustomersRepository>();
     final licenses = context.watch<LicensesRepository>();
+    final products = context.watch<ProductsRepository>();
 
-    final state = customers.state.join(licenses.state);
+    final state = products.state.join(licenses.state);
 
     if (!state.hasData) {
       return const Center(
@@ -44,10 +41,10 @@ class _ProductCustomersState extends State<ProductCustomers> {
       );
     }
 
-    final product = ProductAggregate.join(
-      product: widget.product,
+    final customer = CustomerAggregate.join(
+      customer: widget.customer,
+      products: products.state.requireData,
       licenses: licenses.state.requireData,
-      customers: customers.state.requireData,
     );
 
     return Card(
@@ -56,28 +53,28 @@ class _ProductCustomersState extends State<ProductCustomers> {
         children: [
           Row(
             children: [
-              Text(context.t.products_productCustomers_productCustomers(product.customers.length.toString())).medium().bold(),
+              Text(context.t.customers_customerProductsWidget_customerProducts).medium().bold(),
               const SizedBox(width: 50),
               TextField(
                 controller: searchController,
-                placeholder: Text(t.customers_customersScreen_searchCustomers),
+                placeholder: Text(context.t.customers_customerProductsWidget_searchProducts),
               ).expanded(),
             ],
           ),
           const SizedBox(height: 10),
           ListView(
             children: [
-              for (final customer in product.customers.where((c) => c.name.containsIgnoreCase(searchController.text)))
+              for (final product in customer.products.where((p) => p.name.containsIgnoreCase(searchController.text)))
                 Row(
                   children: [
-                    const Icon(Icons.person),
+                    const Icon(RadixIcons.code),
                     const SizedBox(width: 10),
                     HoverCard(
-                      child: Text(customer.name),
+                      child: Text(product.name),
                       hoverBuilder: (context) => SizedBox(
                         height: 150,
-                        child: CustomerCard(
-                          customer: customer,
+                        child: ProductCard(
+                          product: product,
                           enableActions: false,
                         ),
                       ),
@@ -98,7 +95,7 @@ class _ProductCustomersState extends State<ProductCustomers> {
                                         leading: const Icon(BootstrapIcons.infoCircle),
                                         child: Text(context.t.global_details),
                                         onPressed: (context) {
-                                          Modular.to.navigate('/customers/${customer.id}');
+                                          Modular.to.navigate('/products/${product.id}');
                                         },
                                       ),
                                     ],

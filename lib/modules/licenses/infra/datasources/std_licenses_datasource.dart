@@ -146,4 +146,27 @@ class StdLicensesDatasource extends LicensesDatasource {
       rethrow;
     }
   }
+
+  @override
+  Future<LicenseStatus> getLicenseStatus(String token, {required String licenseKey}) async {
+    log('Getting status of license $licenseKey');
+
+    try {
+      final response = await _apiService.get(
+        '/admin/licenses/status',
+        pathParameter: licenseKey,
+        token: token,
+      );
+      response.raiseForStatusCode();
+
+      final status = LicenseStatus.fromJson(response.json);
+
+      log('Successfully returned status of license $licenseKey');
+
+      return status;
+    } catch (e, s) {
+      log('Failed to get status of license $licenseKey', e, s);
+      rethrow;
+    }
+  }
 }

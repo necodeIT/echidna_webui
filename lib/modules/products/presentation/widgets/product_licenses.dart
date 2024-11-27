@@ -43,7 +43,7 @@ class _ProductLicensesState extends State<ProductLicenses> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Licenses for this product (${product.licenses.length})').medium().bold(),
+          Text(context.t.products_productLicenses_productLicenses(product.licenses.length.toString())).medium().bold(),
           const SizedBox(height: 10),
           ListView(
             children: [
@@ -54,11 +54,8 @@ class _ProductLicensesState extends State<ProductLicenses> {
                     const SizedBox(width: 10),
                     HoverCard(
                       child: Text(license.licenseKey).ellipsis(),
-                      hoverBuilder: (context) => SizedBox(
-                        height: 150,
-                        child: LicenseCard(
-                          license: license,
-                        ),
+                      hoverBuilder: (context) => LicenseCard(
+                        license: license,
                       ),
                     ).expanded(),
                     const SizedBox(width: 10),
@@ -76,7 +73,7 @@ class _ProductLicensesState extends State<ProductLicenses> {
                                     children: [
                                       MenuButton(
                                         leading: const Icon(BootstrapIcons.infoCircle),
-                                        child: const Text('Details'),
+                                        child: Text(context.t.global_details),
                                         onPressed: (context) {
                                           Modular.to.navigate('/licenses/${license.licenseKey}');
                                         },

@@ -1,4 +1,4 @@
-import 'package:awesome_extensions/awesome_extensions.dart';
+import 'package:awesome_extensions/awesome_extensions.dart' hide ThemeExt;
 import 'package:echidna_webui/modules/app/app.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:shadcn_flutter/shadcn_flutter.dart';
@@ -19,6 +19,17 @@ class _NavbarState extends State<Navbar> {
   final List<String> _routes = [];
 
   void _syncRoute(Duration _) {
+    didChangeRoute();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    Modular.to.addListener(didChangeRoute);
+  }
+
+  void didChangeRoute() {
     final index = _routes.indexWhere((r) => Modular.to.path.startsWith(r));
 
     if (index != -1 && index != selectedIndex) {
@@ -29,6 +40,13 @@ class _NavbarState extends State<Navbar> {
   }
 
   @override
+  void dispose() {
+    Modular.to.removeListener(didChangeRoute);
+
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback(_syncRoute);
 
@@ -36,6 +54,7 @@ class _NavbarState extends State<Navbar> {
       width: 200,
       height: context.height,
       child: NavigationSidebar(
+        backgroundColor: context.theme.colorScheme.background,
         onSelected: (index) {
           setState(() {
             selectedIndex = index;

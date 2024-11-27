@@ -4,11 +4,13 @@ import 'package:echidna_dto/echidna_dto.dart';
 import 'package:echidna_webui/modules/auth/auth.dart';
 import 'package:echidna_webui/modules/licenses/licenses.dart';
 import 'package:mcquenji_core/mcquenji_core.dart';
+import 'package:memory_cache/memory_cache.dart';
 
 /// Provides all licenses.
 class LicensesRepository extends Repository<AsyncValue<List<License>>> {
   final LicensesDatasource _datasource;
   final TokenRepository _tokenRepository;
+  final MemoryCache _cache = MemoryCache();
 
   /// Provides all licenses.
   LicensesRepository(this._datasource, this._tokenRepository) : super(AsyncValue.loading()) {
@@ -103,6 +105,43 @@ class LicensesRepository extends Repository<AsyncValue<List<License>>> {
       log('Successfully revoked license with license key $licenseKey');
     } catch (e, s) {
       log('Failed to revoke license with license key $licenseKey', e, s);
+
+      rethrow;
+    }
+  }
+
+  /// Gets the status of the license with the given [license].
+  Future<LicenseStatus?> getStatus(License license) async {
+    if (!state.hasData) {
+      log('Cannot get status for license with license key ${license.licenseKey}: State has no data');
+
+      return null;
+    }
+
+    final cached = _cache.read(license.licenseKey);
+
+    if (cached != null) {
+      log('Got status for license with license key ${license.licenseKey} from cache');
+
+      return cached;
+    }
+
+    log('Getting status for license with license key ${license.licenseKey}');
+
+    try {
+      final status = await _datasource.getLicenseStatus(_tokenRepository.state.requireData.token, licenseKey: license.licenseKey);
+
+      log('Got status for license with license key ${license.licenseKey}');
+
+      _cache.create(
+        license.licenseKey,
+        status,
+        expiry: const Duration(minutes: 5),
+      );
+
+      return status;
+    } catch (e, s) {
+      log('Failed to get status for license with license key ${license.licenseKey}', e, s);
 
       rethrow;
     }

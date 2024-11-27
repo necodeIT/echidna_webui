@@ -38,7 +38,7 @@ class _CustomersScreenState extends State<CustomersScreen> {
               width: 300,
               child: TextField(
                 controller: searchController,
-                placeholder: context.t.customers_customersScreen_searchCustomers,
+                placeholder: Text(context.t.customers_customersScreen_searchCustomers),
                 leading: const Icon(RadixIcons.magnifyingGlass),
               ),
             ),

@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mcquenji_core/mcquenji_core.dart';
 import 'package:mcquenji_local_storage/mcquenji_local_storage.dart';
+import 'package:memory_cache/memory_cache.dart';
 import 'package:quoter/data/data.dart';
 import 'package:quoter/quoter.dart';
 // quoter package does not export the repository
@@ -99,6 +100,7 @@ class AuthModule extends Module {
       ..add<Quoter>((QuoteRepository q) => Quoter(quoteRepository: q))
       ..add<DotEnv>(() => env)
       ..add<IdentityProvider>(IdentityProvider.fromEnvironment)
+      ..addLazySingleton<MemoryCache>(MemoryCache.new)
       ..add<AuthService>(
         kDebugMode
             ? DebugAuthService.new

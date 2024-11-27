@@ -23,4 +23,7 @@ abstract class LicensesDatasource extends Datasource {
 
   /// Gets the payment history of a license.
   Future<List<Payment>> getLicenseHistory(String token, {required String licenseKey});
+
+  /// Gets the status of a license.
+  Future<LicenseStatus> getLicenseStatus(String token, {required String licenseKey});
 }

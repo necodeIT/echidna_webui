@@ -73,22 +73,22 @@ class _EditProductDialogState extends State<EditProductDialog> {
           child: FormTableLayout(
             rows: [
               FormField<String>(
-                label: Text(t.products_createProductDialog_nameLabel),
+                label: Text(t.global_name),
                 key: const FormKey(#name),
-                validator: NotEmptyValidator(message: t.products_createProductDialog_nameRequired),
+                validator: NotEmptyValidator(message: t.global_nameRequired),
                 child: TextField(
                   controller: nameController,
-                  placeholder: t.products_createProductDialog_namePlaceholder,
+                  placeholder: Text(t.products_createProductDialog_namePlaceholder),
                   initialValue: widget.product.name,
                 ),
               ),
               FormField<String>(
-                label: Text(t.products_createProductDialog_descriptionLabel),
+                label: Text(t.global_description),
                 key: const FormKey(#description),
-                validator: NotEmptyValidator(message: t.products_createProductDialog_descriptionRequired),
+                validator: NotEmptyValidator(message: t.global_descriptionRequired),
                 child: TextArea(
                   controller: descriptionController,
-                  placeholder: t.products_createProductDialog_descriptionPlaceholder,
+                  placeholder: Text(t.products_createProductDialog_descriptionPlaceholder),
                   initialValue: widget.product.description,
                 ),
               ),

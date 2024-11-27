@@ -77,11 +77,11 @@ class _CreateCustomerDialogState extends State<CreateCustomerDialog> {
             rows: [
               FormField<String>(
                 key: const FormKey(#name),
-                label: Text(context.t.customers_createCustomerDialog_nameLabel),
-                validator: NotEmptyValidator(message: context.t.customers_createCustomerDialog_nameRequired),
+                label: Text(context.t.global_name),
+                validator: NotEmptyValidator(message: context.t.global_nameRequired),
                 child: TextField(
                   controller: nameController,
-                  placeholder: context.t.customers_createCustomerDialog_namePlaceholder,
+                  placeholder: Text(context.t.customers_createCustomerDialog_namePlaceholder),
                 ),
               ),
               FormField<String>(
@@ -91,7 +91,7 @@ class _CreateCustomerDialogState extends State<CreateCustomerDialog> {
                     EmailValidator(message: context.t.customers_createCustomerDialog_invalidEmail),
                 child: TextField(
                   controller: emailController,
-                  placeholder: context.t.customers_createCustomerDialog_emailPlaceholder,
+                  placeholder: Text(context.t.customers_createCustomerDialog_emailPlaceholder),
                 ),
               ),
             ],

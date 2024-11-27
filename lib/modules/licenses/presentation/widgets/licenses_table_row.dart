@@ -108,7 +108,7 @@ class LicensesTableRow extends StatelessWidget {
                                 children: [
                                   MenuButton(
                                     leading: const Icon(BootstrapIcons.infoCircle),
-                                    child: Text(context.t.licenses_licensesTableRow_details),
+                                    child: Text(context.t.global_details),
                                     onPressed: (context) {
                                       _goToLicenseDetails();
                                     },

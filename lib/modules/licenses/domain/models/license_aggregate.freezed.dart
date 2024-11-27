@@ -16,8 +16,13 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$LicenseAggregate {
+  /// The license.
   License get license => throw _privateConstructorUsedError;
+
+  /// The product associated with this license.
   Product get product => throw _privateConstructorUsedError;
+
+  /// The customer associated with this license.
   Customer get customer => throw _privateConstructorUsedError;
 
   /// Create a copy of LicenseAggregate
@@ -34,6 +39,10 @@ abstract class $LicenseAggregateCopyWith<$Res> {
       _$LicenseAggregateCopyWithImpl<$Res, LicenseAggregate>;
   @useResult
   $Res call({License license, Product product, Customer customer});
+
+  $LicenseCopyWith<$Res> get license;
+  $ProductCopyWith<$Res> get product;
+  $CustomerCopyWith<$Res> get customer;
 }
 
 /// @nodoc
@@ -51,24 +60,54 @@ class _$LicenseAggregateCopyWithImpl<$Res, $Val extends LicenseAggregate>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? license = freezed,
-    Object? product = freezed,
-    Object? customer = freezed,
+    Object? license = null,
+    Object? product = null,
+    Object? customer = null,
   }) {
     return _then(_value.copyWith(
-      license: freezed == license
+      license: null == license
           ? _value.license
           : license // ignore: cast_nullable_to_non_nullable
               as License,
-      product: freezed == product
+      product: null == product
           ? _value.product
           : product // ignore: cast_nullable_to_non_nullable
               as Product,
-      customer: freezed == customer
+      customer: null == customer
           ? _value.customer
           : customer // ignore: cast_nullable_to_non_nullable
               as Customer,
     ) as $Val);
+  }
+
+  /// Create a copy of LicenseAggregate
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $LicenseCopyWith<$Res> get license {
+    return $LicenseCopyWith<$Res>(_value.license, (value) {
+      return _then(_value.copyWith(license: value) as $Val);
+    });
+  }
+
+  /// Create a copy of LicenseAggregate
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ProductCopyWith<$Res> get product {
+    return $ProductCopyWith<$Res>(_value.product, (value) {
+      return _then(_value.copyWith(product: value) as $Val);
+    });
+  }
+
+  /// Create a copy of LicenseAggregate
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CustomerCopyWith<$Res> get customer {
+    return $CustomerCopyWith<$Res>(_value.customer, (value) {
+      return _then(_value.copyWith(customer: value) as $Val);
+    });
   }
 }
 
@@ -81,6 +120,13 @@ abstract class _$$LicenseAggregateImplCopyWith<$Res>
   @override
   @useResult
   $Res call({License license, Product product, Customer customer});
+
+  @override
+  $LicenseCopyWith<$Res> get license;
+  @override
+  $ProductCopyWith<$Res> get product;
+  @override
+  $CustomerCopyWith<$Res> get customer;
 }
 
 /// @nodoc
@@ -96,20 +142,20 @@ class __$$LicenseAggregateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? license = freezed,
-    Object? product = freezed,
-    Object? customer = freezed,
+    Object? license = null,
+    Object? product = null,
+    Object? customer = null,
   }) {
     return _then(_$LicenseAggregateImpl(
-      license: freezed == license
+      license: null == license
           ? _value.license
           : license // ignore: cast_nullable_to_non_nullable
               as License,
-      product: freezed == product
+      product: null == product
           ? _value.product
           : product // ignore: cast_nullable_to_non_nullable
               as Product,
-      customer: freezed == customer
+      customer: null == customer
           ? _value.customer
           : customer // ignore: cast_nullable_to_non_nullable
               as Customer,
@@ -124,10 +170,15 @@ class _$LicenseAggregateImpl extends _LicenseAggregate {
       {required this.license, required this.product, required this.customer})
       : super._();
 
+  /// The license.
   @override
   final License license;
+
+  /// The product associated with this license.
   @override
   final Product product;
+
+  /// The customer associated with this license.
   @override
   final Customer customer;
 
@@ -141,17 +192,14 @@ class _$LicenseAggregateImpl extends _LicenseAggregate {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LicenseAggregateImpl &&
-            const DeepCollectionEquality().equals(other.license, license) &&
-            const DeepCollectionEquality().equals(other.product, product) &&
-            const DeepCollectionEquality().equals(other.customer, customer));
+            (identical(other.license, license) || other.license == license) &&
+            (identical(other.product, product) || other.product == product) &&
+            (identical(other.customer, customer) ||
+                other.customer == customer));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(license),
-      const DeepCollectionEquality().hash(product),
-      const DeepCollectionEquality().hash(customer));
+  int get hashCode => Object.hash(runtimeType, license, product, customer);
 
   /// Create a copy of LicenseAggregate
   /// with the given fields replaced by the non-null parameter values.
@@ -170,10 +218,15 @@ abstract class _LicenseAggregate extends LicenseAggregate {
       required final Customer customer}) = _$LicenseAggregateImpl;
   const _LicenseAggregate._() : super._();
 
+  /// The license.
   @override
   License get license;
+
+  /// The product associated with this license.
   @override
   Product get product;
+
+  /// The customer associated with this license.
   @override
   Customer get customer;
 

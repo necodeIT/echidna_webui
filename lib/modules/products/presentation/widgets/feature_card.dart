@@ -1,4 +1,5 @@
 import 'package:echidna_dto/echidna_dto.dart';
+import 'package:echidna_webui/modules/app/app.dart';
 import 'package:shadcn_flutter/shadcn_flutter.dart';
 import 'package:uicons_updated/icons/uicons_solid.dart';
 
@@ -21,7 +22,7 @@ class FeatureCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(feature.name).medium().bold(),
+            Text('${feature.name} (#${feature.id})').medium().bold(),
             const SizedBox(height: 10),
             Text(feature.description),
             const SizedBox(height: 10),
@@ -29,7 +30,7 @@ class FeatureCard extends StatelessWidget {
               children: [
                 if (free) const Icon(UiconsSolid.hands_heart) else const Icon(UiconsSolid.coin),
                 const SizedBox(width: 10),
-                Text(free ? 'This feature is free' : 'This feature is paid'),
+                Text(free ? context.t.products_featureCard_freeFeature : context.t.products_featureCard_paidFeature),
               ],
             ),
             if (paid) const SizedBox(height: 10),
@@ -39,9 +40,9 @@ class FeatureCard extends StatelessWidget {
                   const Icon(BootstrapIcons.calendar2HeartFill),
                   const SizedBox(width: 10),
                   if ((feature.trialPeriod ?? 0) > 0)
-                    Text('This feature has a trial period of ${feature.trialPeriod} days')
+                    Text(context.t.products_featureCard_hasTrial(feature.trialPeriod.toString()))
                   else
-                    const Text('This feature does not have a trial period'),
+                    Text(context.t.products_featureCard_noTrial),
                 ],
               ),
           ],

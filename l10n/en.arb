@@ -14,6 +14,15 @@
     "@global_cancel": {},
     "global_delete": "Delete",
     "@global_delete": {},
+    "global_edit": "Edit",
+    "global_details": "Details",
+    "@global_details": {},
+    "global_name": "Name",
+    "@global_name": {},
+    "global_nameRequired": "Name is required",
+    "@global_nameRequired": {},
+    "global_description": "Description",
+    "global_descriptionRequired": "Description is required",
     "auth_authScreen_poweredBy": "Developed by ",
     "@auth_authScreen_poweredBy": {},
     "auth_authScreen_loginToContinue": "Login to continue",
@@ -37,8 +46,6 @@
     "@customers_customersScreen_searchCustomers": {},
     "customers_createCustomerDialog_createNewCustomer": "Create new customer",
     "@customers_createCustomerDialog_createNewCustomer": {},
-    "customers_createCustomerDialog_nameLabel": "Name",
-    "@customers_createCustomerDialog_nameLabel": {},
     "customers_createCustomerDialog_namePlaceholder": "John Smith",
     "@customers_createCustomerDialog_namePlaceholder": {},
     "customers_createCustomerDialog_emailLabel": "Email",
@@ -73,8 +80,6 @@
             }
         }
     },
-    "customers_createCustomerDialog_nameRequired": "Name is required",
-    "@customers_createCustomerDialog_nameRequired": {},
     "customers_createCustomerDialog_emailRequired": "Email is required",
     "@customers_createCustomerDialog_emailRequired": {},
     "customers_createCustomerDialog_invalidEmail": "Invalid email address",
@@ -149,6 +154,17 @@
     },
     "customers_editCustomerDialog_updateCustomer": "Update customer",
     "@customers_editCustomerDialog_updateCustomer": {},
+    "customers_customerLicensesWidget_licensesForCustomer": "Licenses for this customer ({length})",
+    "@customers_customerLicensesWidget_licensesForCustomer": {
+        "description": "customers_customerLicensesWidget_licensesForCustomer",
+        "placeholders": {
+            "length": {
+                "type": "String"
+            }
+        }
+    },
+    "customers_customerProductsWidget_customerProducts": "Products this customer is using",
+    "customers_customerProductsWidget_searchProducts": "Search products...",
     "licenses_licensesScreen_title": "Licenses",
     "@licenses_licensesScreen_title": {},
     "products_productsScreen_title": "Products",
@@ -192,16 +208,8 @@
     },
     "products_createProductDialog_createProduct": "Create Product",
     "@products_createProductDialog_createProduct": {},
-    "products_createProductDialog_nameLabel": "Name",
-    "@products_createProductDialog_nameLabel": {},
-    "products_createProductDialog_nameRequired": "Name is required",
-    "@products_createProductDialog_nameRequired": {},
     "products_createProductDialog_namePlaceholder": "My cool new 100 billion dollar product",
     "@products_createProductDialog_namePlaceholder": {},
-    "products_createProductDialog_descriptionLabel": "Description",
-    "@products_createProductDialog_descriptionLabel": {},
-    "products_createProductDialog_descriptionRequired": "Description is required",
-    "@products_createProductDialog_descriptionRequired": {},
     "products_createProductDialog_descriptionPlaceholder": "This is the best product ever",
     "@products_createProductDialog_descriptionPlaceholder": {},
     "products_deleteProductDialog_deleteCheck": "Delete product?",
@@ -270,6 +278,92 @@
     },
     "products_editProductDialog_updateProduct": "Update product",
     "@products_editProductDialog_updateProduct": {},
+    "products_addFeatureDialog_creatingFeature": "Creating feature",
+    "products_addFeatureDialog_creatingFeatureWith": "Creating feature {name}",
+    "@products_addFeatureDialog_creatingFeatureWith": {
+        "description": "products_addFeatureDialog_creatingFeatureWith",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "products_addFeatureDialog_createdFeature": "Created feature",
+    "products_addFeatureDialog_createdFeatureWith": "Successfully created feature with {name}",
+    "@products_addFeatureDialog_createdFeatureWith": {
+        "description": "products_addFeatureDialog_createdFeatureWith",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "products_addFeatureDialog_errorCreatingFeature": "Failed to create feature",
+    "products_addFeatureDialog_errorCreatingFeatureWith": "Failed to create feature {name}",
+    "@products_addFeatureDialog_errorCreatingFeatureWith": {
+        "description": "products_addFeatureDialog_errorCreatingFeatureWith",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "products_addFeatureDialog_addFeature": "Add feature",
+    "products_addFeatureDialog_namePlaceholder": "Feature name",
+    "products_addFeatureDialog_typeLabel": "Type",
+    "products_addFeatureDialog_typePlaceholder": "Select a type",
+    "products_addFeatureDialog_typeFree": "Free",
+    "products_addFeatureDialog_typePaid": "Paid",
+    "products_addFeatureDialog_trailPeriodLabel": "Trial period (days)",
+    "products_addFeatureDialog_descriptionPlaceholder": "This is a feature",
+    "products_featureCard_freeFeature": "This feature is free",
+    "products_featureCard_paidFeature": "This feature is paid",
+    "products_featureCard_hasTrial": "This feature has a trial period of {trialPeriod} days",
+    "@products_featureCard_hasTrial": {
+        "description": "products_featureCard_hasTrial",
+        "placeholders": {
+            "trialPeriod": {
+                "type": "String"
+            }
+        }
+    },
+    "products_featureCard_noTrial": "This feature does not have a trial period",
+    "products_installClientSDK_installFor": "Install client SDK for {name}",
+    "@products_installClientSDK_installFor": {
+        "description": "products_installClientSDK_installFor",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "products_productCustomers_productCustomers": "Customers using this product ({length})",
+    "@products_productCustomers_productCustomers": {
+        "description": "products_productCustomers_productCustomers",
+        "placeholders": {
+            "length": {
+                "type": "String"
+            }
+        }
+    },
+    "products_productFeatures_productFeatures": "Product features ({length})",
+    "@products_productFeatures_productFeatures": {
+        "description": "products_productFeatures_productFeatures",
+        "placeholders": {
+            "length": {
+                "type": "String"
+            }
+        }
+    },
+    "products_productLicenses_productLicenses": "Licenses for this product ({length})",
+    "@products_productLicenses_productLicenses": {
+        "description": "products_productLicenses_productLicenses",
+        "placeholders": {
+            "length": {
+                "type": "String"
+            }
+        }
+    },
     "licenses_licensesTable_groupByCustomers": "Group by customer",
     "@licenses_licensesTable_groupByCustomers": {},
     "licenses_licensesTable_groupByProducts": "Group by product",
@@ -286,8 +380,6 @@
     "@licenses_licensesTable_expirationDateHeader": {},
     "licenses_licensesTable_revokedHeader": "Revoked",
     "@licenses_licensesTable_revokedHeader": {},
-    "licenses_licensesTableRow_details": "Details",
-    "@licenses_licensesTableRow_details": {},
     "licenses_licensesTableRow_revoke": "Revoke",
     "@licenses_licensesTableRow_revoke": {},
     "licenses_revokeLicenseDialog_revokingLicense": "Revoking license",
@@ -332,5 +424,48 @@
     "licenses_revokeLicenseDialog_revocationReasonPlaceholder": "Revocation Reason",
     "@licenses_revokeLicenseDialog_revocationReasonPlaceholder": {},
     "licenses_revokeLicenseDialog_revoke": "Revoke",
-    "@licenses_revokeLicenseDialog_revoke": {}
+    "@licenses_revokeLicenseDialog_revoke": {},
+    "licenses_licenseCard_customerWideLicense": "Customer-wide license",
+    "licenses_licenseCard_userId": "User ID: {userId}",
+    "@licenses_licenseCard_userId": {
+        "description": "licenses_licenseCard_userID",
+        "placeholders": {
+            "userId": {
+                "type": "String"
+            }
+        }
+    },
+    "licenses_licenseCard_active": "Active",
+    "licenses_licenseCard_inactive": "Inactive",
+    "licenses_licenseCard_activatedOn": "Activated on {activationDate}",
+    "@licenses_licenseCard_activatedOn": {
+        "description": "licenses_licenseCard_activatedOn",
+        "placeholders": {
+            "activationDate": {
+                "type": "String"
+            }
+        }
+    },
+    "licenses_licenseCard_expiresOn": "Expires on {expirationDate}",
+    "@licenses_licenseCard_expiresOn": {
+        "description": "licenses_licenseCard_expiresOn",
+        "placeholders": {
+            "expirationDate": {
+                "type": "String"
+            }
+        }
+    },
+    "licenses_licenseCard_featuresUnlocked": "Features unlocked",
+    "licenses_licenseCard_customerWide": "Customer-wide",
+    "licenses_licensesTable_bulkActions": "Bulk actions ({length})",
+    "@licenses_licensesTable_bulkActions": {
+        "description": "licenses_licensesTable_bulkActions",
+        "placeholders": {
+            "length": {
+                "type": "String"
+            }
+        }
+    },
+    "licenses_licensesTable_noLicensesFound": "No licenses found",
+    "licenses_licensesTable_filterIDs": "Filter IDs..."
 }

@@ -48,8 +48,8 @@ class _AddFeatureDialogState extends State<AddFeatureDialog> {
     Navigator.of(context).pop();
 
     final loader = showLoadingToast(
-      title: 'Creating feature',
-      subtitle: 'Creating feature $name',
+      title: t.products_addFeatureDialog_creatingFeature,
+      subtitle: t.products_addFeatureDialog_creatingFeatureWith(name),
     );
 
     try {
@@ -64,15 +64,15 @@ class _AddFeatureDialogState extends State<AddFeatureDialog> {
       loader.close();
 
       showSuccessToast(
-        title: 'Created feature',
-        subtitle: 'Created feature $name',
+        title: t.products_addFeatureDialog_createdFeature,
+        subtitle: t.products_addFeatureDialog_createdFeatureWith(name),
       );
     } catch (e) {
       loader.close();
 
       showErrorToast(
-        title: 'Created feature',
-        subtitle: 'Successfully created feature with $name',
+        title: t.products_addFeatureDialog_errorCreatingFeature,
+        subtitle: t.products_addFeatureDialog_errorCreatingFeatureWith(name),
       );
     } finally {
       isCreating = false;
@@ -82,7 +82,7 @@ class _AddFeatureDialogState extends State<AddFeatureDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text('Add feature'),
+      title: Text(t.products_addFeatureDialog_addFeature),
       content: Expanded(
         child: SingleChildScrollView(
           child: SizedBox(
@@ -92,16 +92,16 @@ class _AddFeatureDialogState extends State<AddFeatureDialog> {
                 rows: [
                   FormField<String>(
                     key: const FormKey(#name),
-                    label: const Text('Name'),
-                    validator: const NotEmptyValidator(message: 'Name is required'),
+                    label: Text(t.global_name),
+                    validator: NotEmptyValidator(message: t.global_nameRequired),
                     child: TextField(
                       controller: nameController,
-                      placeholder: 'Feature Name',
+                      placeholder: Text(t.products_addFeatureDialog_namePlaceholder),
                     ),
                   ),
                   FormField<FeatureType>(
                     key: const FormKey(#type),
-                    label: const Text('Type'),
+                    label: Text(t.products_addFeatureDialog_typeLabel),
                     child: Select<FeatureType>(
                       itemBuilder: (context, item) {
                         return Text(
@@ -120,7 +120,7 @@ class _AddFeatureDialogState extends State<AddFeatureDialog> {
                       },
                       orderSelectedFirst: false,
                       value: type,
-                      placeholder: const Text('Select a type'),
+                      placeholder: Text(t.products_addFeatureDialog_typePlaceholder),
                       children: [
                         SelectItemButton(value: FeatureType.free, child: Text(FeatureType.free.translate(context))),
                         SelectItemButton(value: FeatureType.paid, child: Text(FeatureType.paid.translate(context))),
@@ -130,16 +130,16 @@ class _AddFeatureDialogState extends State<AddFeatureDialog> {
                   if (type == FeatureType.paid)
                     FormField<int>(
                       key: const FormKey(#trialPeriod),
-                      label: const Text('Trial period (days)'),
+                      label: Text(t.products_addFeatureDialog_trailPeriodLabel),
                       child: NumberInput(controller: trialPeriodController),
                     ),
                   FormField<String>(
                     key: const FormKey(#description),
-                    label: const Text('Description'),
-                    validator: const NotEmptyValidator(message: 'Description is required'),
+                    label: Text(t.global_description),
+                    validator: NotEmptyValidator(message: t.global_descriptionRequired),
                     child: TextArea(
                       controller: descriptionController,
-                      placeholder: 'description',
+                      placeholder: Text(t.products_addFeatureDialog_descriptionPlaceholder),
                     ),
                   ),
                 ],
@@ -167,8 +167,8 @@ class _AddFeatureDialogState extends State<AddFeatureDialog> {
 extension on FeatureType {
   String translate(BuildContext context) {
     return switch (this) {
-      FeatureType.free => 'Free',
-      FeatureType.paid => 'Paid',
+      FeatureType.free => context.t.products_addFeatureDialog_typeFree,
+      FeatureType.paid => context.t.products_addFeatureDialog_typePaid,
     };
   }
 }

@@ -11,6 +11,8 @@ void main() async {
   Logger.root.level = Level.ALL;
   Logger.root.onRecord.listen(debugLogHandler);
 
+  WidgetsFlutterBinding.ensureInitialized();
+
   Modular.setInitialRoute('/dashboard');
 
   CoreModule.isWeb = kIsWeb;

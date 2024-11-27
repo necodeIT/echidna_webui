@@ -12,6 +12,7 @@ dependencies:
   awesome_extensions: ^2.0.19
   bloc: ^8.1.4
   collection: ^1.18.0
+  crypto: ^3.0.6
   cupertino_icons: ^1.0.6
   dotenv: ^4.2.0
   echidna_dto:
@@ -21,8 +22,10 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_animate: ^4.5.0
+  flutter_highlighting: ^0.9.0+11.8.0
   flutter_localizations:
     sdk: flutter
+  flutter_markdown: ^0.7.4+3
   flutter_modular: ^6.3.4
   flutter_sticky_header: ^0.7.0
   flutter_svg: ^2.0.10+1
@@ -36,12 +39,14 @@ dependencies:
   mcquenji_local_storage:
     git:
       url: https://github.com/mcquenji/mcquenji_local_storage.git
+  memory_cache: ^1.2.0
   path: ^1.9.0
   quoter: ^0.0.1
   shadcn_flutter: ^0.0.21
   tap_hover_toggle: ^0.0.1
   uicons_updated: ^0.0.5
   url_launcher: ^6.3.1
+  uuid: ^4.5.1
   vector_graphics: any
 
 dev_dependencies:
@@ -71,6 +76,8 @@ flutter:
   assets:
     - assets/
     - assets/branding/
+    - assets/frameworks/
+
   fonts:
     - family: GeistSans
       fonts:

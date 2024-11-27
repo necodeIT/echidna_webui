@@ -78,20 +78,20 @@ class _CreateProductDialogState extends State<CreateProductDialog> {
             rows: [
               FormField<String>(
                 key: const FormKey(#name),
-                label: Text(t.products_createProductDialog_nameLabel),
-                validator: NotEmptyValidator(message: t.products_createProductDialog_nameRequired),
+                label: Text(t.global_name),
+                validator: NotEmptyValidator(message: t.global_nameRequired),
                 child: TextField(
                   controller: nameController,
-                  placeholder: t.products_createProductDialog_namePlaceholder,
+                  placeholder: Text(t.products_createProductDialog_namePlaceholder),
                 ),
               ),
               FormField<String>(
                 key: const FormKey(#description),
-                label: Text(t.products_createProductDialog_descriptionLabel),
-                validator: NotEmptyValidator(message: t.products_createProductDialog_descriptionRequired),
+                label: Text(t.global_description),
+                validator: NotEmptyValidator(message: t.global_descriptionRequired),
                 child: TextArea(
                   controller: descriptionController,
-                  placeholder: t.products_createProductDialog_descriptionPlaceholder,
+                  placeholder: Text(t.products_createProductDialog_descriptionPlaceholder),
                 ),
               ),
             ],

@@ -127,7 +127,7 @@ class _LicensesTableState extends State<LicensesTable> {
         children: [
           MenuLabel(
             leading: const Icon(BootstrapIcons.stars),
-            child: Text('Bulk actions (${selectedItems.length})'),
+            child: Text(context.t.licenses_licensesTable_bulkActions(selectedItems.length.toString())),
           ),
           const MenuDivider(),
           MenuButton(
@@ -136,7 +136,7 @@ class _LicensesTableState extends State<LicensesTable> {
               color: context.theme.colorScheme.destructive,
             ),
             child: Text(
-              'Revoke',
+              context.t.licenses_revokeLicenseDialog_revoke,
               style: context.theme.typography.semiBold.copyWith(
                 color: context.theme.colorScheme.destructive,
               ),
@@ -193,7 +193,7 @@ class _LicensesTableState extends State<LicensesTable> {
           ),
           const SizedBox(height: 25),
           Text(
-            'No licenses found',
+            context.t.licenses_licensesTable_noLicensesFound,
             style: context.theme.typography.medium.copyWith(
               color: context.theme.colorScheme.mutedForeground,
             ),
@@ -212,7 +212,7 @@ class _LicensesTableState extends State<LicensesTable> {
               width: 500,
               child: TextField(
                 controller: searchController,
-                placeholder: 'Filter IDs...',
+                placeholder: Text(context.t.licenses_licensesTable_filterIDs),
               ),
             ),
             SizedBox(

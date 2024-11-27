@@ -81,7 +81,7 @@ class _RevokeLicenseDialogState extends State<RevokeLicenseDialog> {
                 validator: NotEmptyValidator(message: context.t.licenses_revokeLicenseDialog_revocationReasonRequired),
                 child: TextArea(
                   controller: revocationReasonController,
-                  placeholder: context.t.licenses_revokeLicenseDialog_revocationReasonPlaceholder,
+                  placeholder: Text(context.t.licenses_revokeLicenseDialog_revocationReasonPlaceholder),
                 ),
               ),
             ],

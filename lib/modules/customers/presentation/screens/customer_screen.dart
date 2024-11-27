@@ -2,6 +2,8 @@ import 'package:echidna_webui/modules/app/app.dart';
 import 'package:echidna_webui/modules/customers/customers.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:shadcn_flutter/shadcn_flutter.dart';
+import 'package:uicons_updated/uicons.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 /// Displays advanced details of a customer.
 class CustomerScreen extends StatelessWidget {
@@ -36,7 +38,54 @@ class CustomerScreen extends StatelessWidget {
           ),
         ),
       ],
-      child: const SizedBox(),
+      child: customer != null
+          ? Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  customer.name,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  textAlign: TextAlign.start,
+                ),
+                Button.link(
+                  onPressed: () {
+                    launchUrl(Uri.parse('mailto:${customer.email}'));
+                  },
+                  child: Row(
+                    children: [
+                      Icon(
+                        UiconsSolid.password_email,
+                        size: 16,
+                        color: context.theme.colorScheme.mutedForeground,
+                      ),
+                      const SizedBox(width: 5),
+                      Expanded(
+                        child: Text(
+                          customer.email,
+                          style: context.theme.typography.small.copyWith(
+                            color: context.theme.colorScheme.mutedForeground,
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                        ).textLeft(),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CustomerProducts(customer: customer).expanded(),
+                    const SizedBox(height: 20),
+                    CustomerPayments().expanded(),
+                    const SizedBox(height: 20),
+                    CustomerLicenses(customer: customer).expanded(),
+                  ],
+                ).expanded(),
+              ],
+            ).withPadding(all: 20)
+          : const SizedBox(),
     );
   }
 }

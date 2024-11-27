@@ -1,4 +1,5 @@
 import 'package:echidna_webui/modules/api/api.dart';
+import 'package:echidna_webui/modules/app/app.dart';
 import 'package:echidna_webui/modules/auth/auth.dart';
 import 'package:echidna_webui/modules/products/presentation/presentation.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -25,8 +26,11 @@ class ProductsModule extends Module {
     i
       ..add<ProductsDatasource>(StdProductsDatasource.new)
       ..add<FeaturesDatasource>(StdFeaturesDatasource.new)
+      ..add<ClientSdkDatasource>(StdClientSdkDatasource.new)
+      ..add<ClientKeyDatasource>(StdClientKeyDatasource.new)
       ..addRepository<FeaturesRepository>(FeaturesRepository.new)
-      ..addRepository<ProductsRepository>(ProductsRepository.new);
+      ..addRepository<ProductsRepository>(ProductsRepository.new)
+      ..addRepository<ClientSdkRepository>(ClientSdkRepository.new);
   }
 
   @override
