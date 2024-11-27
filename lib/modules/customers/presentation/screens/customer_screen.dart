@@ -77,10 +77,10 @@ class CustomerScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     CustomerProducts(customer: customer).expanded(),
-                    const SizedBox(height: 20),
-                    CustomerPayments().expanded(),
-                    const SizedBox(height: 20),
+                    const SizedBox(width: 20),
                     CustomerLicenses(customer: customer).expanded(),
+                    const SizedBox(width: 20),
+                    CustomerPayments(customer: customer).expanded(),
                   ],
                 ).expanded(),
               ],

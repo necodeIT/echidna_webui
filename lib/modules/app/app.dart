@@ -25,6 +25,7 @@ class AppModule extends Module {
         ApiModule(),
         AuthModule(),
         CustomersModule(),
+        DashboardModule(),
         LicensesModule(),
         ProductsModule(),
       ];
