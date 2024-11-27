@@ -1,0 +1,35 @@
+{
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "The name of the client sdk"
+        },
+        "framework": {
+            "enum": [
+                "react",
+                "flutter",
+                "dart",
+                "angular",
+                "vue",
+                "svelte",
+                "vanillaJS"
+            ]
+        },
+        "gettingStarted": {
+            "type": "object",
+            "patternProperties": {
+                "^[a-z]{2}$": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "The URL to the getting started guide for the specified language"
+                }
+            },
+            "additionalProperties": false,
+            "description": "Language code (ISO 639-1) and to getting started guide"
+        }
+    },
+    "required": [
+        "name",
+        "framework"
+    ]
+}
