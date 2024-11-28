@@ -1,7 +1,7 @@
 // ignore_for_file: invalid_annotation_target
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:echidna_webui/modules/products/products.dart';
+import 'package:echidna_webui/products.dart';
 import 'package:echidna_webui/gen/assets.gen.dart';
 
 part 'client_sdk.freezed.dart';

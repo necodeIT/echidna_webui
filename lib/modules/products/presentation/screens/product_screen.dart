@@ -1,5 +1,5 @@
 import 'package:echidna_webui/modules/app/app.dart';
-import 'package:echidna_webui/modules/products/products.dart';
+import 'package:echidna_webui/products.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:shadcn_flutter/shadcn_flutter.dart';
 
@@ -81,7 +81,10 @@ class ProductScreen extends StatelessWidget {
                           ],
                         ).expanded(),
                         const SizedBox(height: 20),
-                        InstallClientSdk(product: product).expanded(flex: 2),
+                        InstallClientSdk(
+                          product: product,
+                          showToast: createShowToastHandler(context),
+                        ).expanded(flex: 2),
                       ],
                     ).expanded(flex: 2),
                     const SizedBox(width: 20),

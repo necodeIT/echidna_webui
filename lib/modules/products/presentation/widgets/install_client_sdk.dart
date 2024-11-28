@@ -2,16 +2,17 @@ import 'package:echidna_dto/echidna_dto.dart';
 import 'package:echidna_webui/modules/app/app.dart';
 import 'package:echidna_webui/modules/customers/customers.dart';
 import 'package:echidna_webui/modules/licenses/licenses.dart';
-import 'package:echidna_webui/modules/products/products.dart';
+import 'package:echidna_webui/products.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mcquenji_core/mcquenji_core.dart';
 import 'package:shadcn_flutter/shadcn_flutter.dart';
 
 /// Displays a step by step guide to install the client SDK for a product.
-class InstallClientSdk extends StatefulWidget {
+class InstallClientSdk extends ToastConsumer {
   /// Displays a step by step guide to install the client SDK for a product.
-  const InstallClientSdk({super.key, required this.product});
+  const InstallClientSdk({super.key, required this.product, required super.showToast});
 
   /// The product to install the client SDK for.
   final Product product;
@@ -26,6 +27,7 @@ class _InstallClientSdkState extends State<InstallClientSdk> {
   List<MapEntry<String, String>>? _instructions;
   StepperController _controller = StepperController();
   Customer? _customer;
+  ClientKey? _clientKey;
 
   Future<void> _onSelect(ClientSdk? sdk) async {
     if (sdk != _sdk) {
@@ -49,7 +51,8 @@ class _InstallClientSdkState extends State<InstallClientSdk> {
 
     if (mounted) {
       setState(() {
-        _instructions = instructions.entries.toList();
+        _instructions = instructions.$1.entries.toList();
+        _clientKey = instructions.$2;
       });
     }
   }
@@ -58,6 +61,15 @@ class _InstallClientSdkState extends State<InstallClientSdk> {
     _customer = customer;
 
     _onSelect(_sdk);
+  }
+
+  void _copy(String data) {
+    Clipboard.setData(ClipboardData(text: data));
+    showIconToast(
+      title: 'Copied to clipboard',
+      subtitle: 'Codesnippet has been copied to clipboard!',
+      icon: BootstrapIcons.clipboard2CheckFill,
+    );
   }
 
   @override
@@ -119,32 +131,60 @@ class _InstallClientSdkState extends State<InstallClientSdk> {
                   title: Text('Select customer'),
                   contentBuilder: (context) => StepContainer(
                     actions: [
-                      SecondaryButton(
-                        child: Text('Prev'),
+                      Select<Customer>(
+                        popupConstraints: const BoxConstraints(maxWidth: 150),
+                        value: _customer,
+                        onChanged: _selectCustomer,
+                        itemBuilder: (context, c) => Text(c.name),
+                        searchFilter: (sdk, query) => sdk.name.containsIgnoreCase(query) ? 1 : 0,
+                        placeholder: const Text('Select customer'),
+                        children: [
+                          for (final c in product.customers)
+                            SelectItemButton(
+                              value: c,
+                              child: Text(c.name),
+                            ),
+                        ],
                       ),
                       PrimaryButton(
                         onPressed: _customer != null ? _controller.nextStep : null,
                         child: Text('Next'),
                       ),
                     ],
-                    child: Row(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Select the customer you want to install the SDK for:'),
-                        const SizedBox(width: 10),
-                        Select<Customer>(
-                          popupConstraints: const BoxConstraints(maxWidth: 150),
-                          value: _customer,
-                          onChanged: _selectCustomer,
-                          itemBuilder: (context, c) => Text(c.name),
-                          searchFilter: (sdk, query) => sdk.name.containsIgnoreCase(query) ? 1 : 0,
-                          children: [
-                            for (final c in product.customers)
-                              SelectItemButton(
-                                value: c,
-                                child: Text(c.name),
-                              ),
-                          ],
+                        Text(
+                          'Select the customer you want to install the SDK for.',
                         ),
+                        if (_clientKey != null) ...[
+                          const SizedBox(height: 10),
+                          Row(
+                            children: [
+                              const Icon(Icons.info),
+                              const SizedBox(width: 10),
+                              Text('Your client id: ${_clientKey!.id}'),
+                              const SizedBox(width: 5),
+                              IconButton.ghost(
+                                icon: const Icon(BootstrapIcons.clipboard2),
+                                onPressed: () => _copy(_clientKey!.id.toString()),
+                              ),
+                            ],
+                          ),
+                          // const SizedBox(height: 5),
+                          Row(
+                            children: [
+                              const Icon(Icons.info),
+                              const SizedBox(width: 10),
+                              Text('Your client key: ${_clientKey!.key}'),
+                              const SizedBox(width: 5),
+                              IconButton.ghost(
+                                icon: const Icon(BootstrapIcons.clipboard2),
+                                onPressed: () => _copy(_clientKey!.key),
+                              ),
+                            ],
+                          ),
+                        ],
                       ],
                     ),
                   ),
@@ -200,5 +240,11 @@ class _InstallClientSdkState extends State<InstallClientSdk> {
         Text(sdk.name),
       ],
     );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 }

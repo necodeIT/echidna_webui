@@ -5,7 +5,7 @@ import 'package:echidna_webui/modules/auth/auth.dart';
 import 'package:echidna_webui/modules/customers/customers.dart';
 import 'package:echidna_webui/modules/dashboard/dashboard.dart';
 import 'package:echidna_webui/modules/licenses/licenses.dart';
-import 'package:echidna_webui/modules/products/products.dart';
+import 'package:echidna_webui/products.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mcquenji_core/mcquenji_core.dart';
 import 'package:memory_cache/memory_cache.dart';

@@ -1,6 +1,6 @@
 import 'package:echidna_dto/echidna_dto.dart';
 import 'package:echidna_webui/modules/api/api.dart';
-import 'package:echidna_webui/modules/products/products.dart';
+import 'package:echidna_webui/products.dart';
 
 /// Standard implementation of  [ProductsDatasource].
 class StdProductsDatasource extends ProductsDatasource {
