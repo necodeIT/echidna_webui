@@ -4,8 +4,9 @@ import 'package:flutter_highlighting/flutter_highlighting.dart';
 import 'package:flutter_highlighting/themes/github-dark.dart';
 import 'package:flutter_highlighting/themes/github.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
-import 'package:markdown/markdown.dart' hide Text;
+import 'package:markdown/markdown.dart' hide Text, Node;
 import 'package:shadcn_flutter/shadcn_flutter.dart' hide Element;
+import 'package:highlighting/highlighting.dart';
 
 /// Markdown builder for code blocks.
 class CodeBlockBuilder extends MarkdownElementBuilder {
@@ -33,6 +34,8 @@ class _CodeBlock extends ToastConsumer {
 }
 
 class __CodeBlockState extends State<_CodeBlock> {
+  final focusNode = FocusNode();
+
   void _copy() {
     Clipboard.setData(ClipboardData(text: widget.code));
     showIconToast(
@@ -40,6 +43,36 @@ class __CodeBlockState extends State<_CodeBlock> {
       subtitle: 'Codesnippet has been copied to clipboard!',
       icon: BootstrapIcons.clipboard2CheckFill,
     );
+  }
+
+  List<TextSpan> _convert(List<Node> nodes, Map<String, TextStyle> theme) {
+    List<TextSpan> spans = [];
+    var currentSpans = spans;
+    List<List<TextSpan>> stack = [];
+
+    _traverse(Node node) {
+      if (node.value != null) {
+        currentSpans.add(node.className == null ? TextSpan(text: node.value) : TextSpan(text: node.value, style: theme[node.className]));
+      } else {
+        List<TextSpan> tmp = [];
+        currentSpans.add(TextSpan(children: tmp, style: theme[node.className]));
+        stack.add(currentSpans);
+        currentSpans = tmp;
+
+        node.children.forEach((n) {
+          _traverse(n);
+          if (n == node.children.last) {
+            currentSpans = stack.isEmpty ? spans : stack.removeLast();
+          }
+        });
+      }
+    }
+
+    for (var node in nodes) {
+      _traverse(node);
+    }
+
+    return spans;
   }
 
   @override
@@ -55,7 +88,7 @@ class __CodeBlockState extends State<_CodeBlock> {
 
     theme['root'] = TextStyle(
       color: theme['root']!.color,
-      backgroundColor: context.theme.colorScheme.background,
+      backgroundColor: context.theme.colorScheme.card,
     );
 
     return Container(
@@ -75,12 +108,15 @@ class __CodeBlockState extends State<_CodeBlock> {
               onPressed: _copy,
             ),
           ),
-          HighlightView(
-            widget.code.trim(),
-            textStyle: context.theme.typography.mono,
-            languageId: widget.language,
-            theme: theme,
-          ).expanded(),
+          SelectableText.rich(
+            TextSpan(
+              children: _convert(
+                // ignore: invalid_use_of_internal_member
+                highlight.highlight(widget.language, widget.code.trim(), true).nodes ?? [],
+                theme,
+              ),
+            ),
+          ),
         ],
       ),
     );

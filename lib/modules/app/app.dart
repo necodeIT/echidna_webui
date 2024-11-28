@@ -5,6 +5,8 @@ import 'package:echidna_webui/modules/auth/auth.dart';
 import 'package:echidna_webui/modules/customers/customers.dart';
 import 'package:echidna_webui/modules/dashboard/dashboard.dart';
 import 'package:echidna_webui/modules/licenses/licenses.dart';
+import 'package:echidna_webui/modules/logs/logs.dart';
+import 'package:echidna_webui/modules/settings/settings.dart';
 import 'package:echidna_webui/products.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mcquenji_core/mcquenji_core.dart';
@@ -65,6 +67,14 @@ class AppModule extends Module {
           ModuleRoute(
             '/products',
             module: ProductsModule(),
+          ),
+          ModuleRoute(
+            '/settings',
+            module: SettingsModule(),
+          ),
+          ModuleRoute(
+            '/logs',
+            module: LogsModule(),
           ),
         ].applyDefaultTransition(),
         guards: [AuthGuard()],

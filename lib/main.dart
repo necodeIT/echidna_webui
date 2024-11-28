@@ -19,7 +19,7 @@ void main() async {
 
   loadEnv();
 
-  ColorSchemeRepository.debugOverride = ColorSchemes.darkZinc();
+  ColorSchemeRepository.debugOverride = ColorSchemes.darkRose();
 
   runApp(ModularApp(module: AppModule(), child: const AppWidget()));
 }

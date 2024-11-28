@@ -26,8 +26,22 @@ class _InstallClientSdkState extends State<InstallClientSdk> {
 
   List<MapEntry<String, String>>? _instructions;
   StepperController _controller = StepperController();
+  final _scrollController = ScrollController();
+
+  final _stepper = GlobalKey();
+
   Customer? _customer;
   ClientKey? _clientKey;
+  final _steps = <GlobalKey>[];
+  int _currentStep = 0;
+
+  GlobalKey _stepKey(int index) {
+    if (_steps.length <= index) {
+      _steps.add(GlobalKey());
+    }
+
+    return _steps[index];
+  }
 
   Future<void> _onSelect(ClientSdk? sdk) async {
     if (sdk != _sdk) {
@@ -35,6 +49,22 @@ class _InstallClientSdkState extends State<InstallClientSdk> {
         _sdk = sdk;
         _instructions = null;
         _controller = StepperController();
+        _steps.clear();
+        _currentStep = 0;
+      });
+
+      _controller.addListener(() async {
+        _currentStep = _controller.value.currentStep;
+
+        final context = _stepKey(_currentStep).currentContext;
+        final stepperContext = _stepper.currentContext;
+
+        if (context == null || stepperContext == null) return;
+
+        // wait for the stepper to hide the previous next step (kDefaultDuration) but subtract a few milliseconds for smooth transition
+        await Future.delayed(kDefaultDuration - const Duration(milliseconds: 10));
+
+        await Scrollable.ensureVisible(context, duration: const Duration(milliseconds: 100));
       });
     }
 
@@ -123,12 +153,19 @@ class _InstallClientSdkState extends State<InstallClientSdk> {
         const SizedBox(height: 10),
         Expanded(
           child: SingleChildScrollView(
+            key: _stepper,
+            controller: _scrollController,
             child: Stepper(
               controller: _controller,
               direction: Axis.vertical,
               steps: [
                 Step(
-                  title: Text('Select customer'),
+                  icon: StepNumber(
+                    key: _stepKey(0),
+                  ),
+                  title: Text(
+                    'Select customer',
+                  ),
                   contentBuilder: (context) => StepContainer(
                     actions: [
                       Select<Customer>(
@@ -171,7 +208,6 @@ class _InstallClientSdkState extends State<InstallClientSdk> {
                               ),
                             ],
                           ),
-                          // const SizedBox(height: 5),
                           Row(
                             children: [
                               const Icon(Icons.info),
@@ -192,7 +228,12 @@ class _InstallClientSdkState extends State<InstallClientSdk> {
                 if (_instructions != null)
                   for (int i = 0; i < _instructions!.length; i++)
                     Step(
-                      title: Text(_instructions![i].key),
+                      icon: StepNumber(
+                        key: _stepKey(i + 1),
+                      ),
+                      title: Text(
+                        _instructions![i].key,
+                      ),
                       contentBuilder: (context) => StepContainer(
                         actions: [
                           SecondaryButton(

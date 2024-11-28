@@ -67,6 +67,9 @@ class _NavbarState extends State<Navbar> {
           _item(context.t.customers_customersScreen_title, BootstrapIcons.peopleFill, '/customers'),
           _item(context.t.licenses_licensesScreen_title, BootstrapIcons.keyFill, '/licenses'),
           _item(context.t.products_productsScreen_title, RadixIcons.code, '/products'),
+          NavigationGap(context.height - 300), // may fail on smallers screens
+          _item('Server Logs', BootstrapIcons.fileTextFill, '/logs'),
+          _item('Settings', BootstrapIcons.gearWideConnected, '/settings'),
         ],
       ),
     );
