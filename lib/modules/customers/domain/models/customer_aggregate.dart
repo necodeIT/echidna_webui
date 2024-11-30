@@ -2,12 +2,13 @@
 
 import 'package:echidna_dto/echidna_dto.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:echidna_webui/modules/customers/customers.dart';
 
 part 'customer_aggregate.freezed.dart';
 
+/// An aggregate of a customer and their products and licenses.
 @freezed
 class CustomerAggregate with _$CustomerAggregate {
+  /// An aggregate of a customer and their products and licenses.
   const factory CustomerAggregate({
     required Customer customer,
     required List<Product> products,
@@ -16,6 +17,7 @@ class CustomerAggregate with _$CustomerAggregate {
 
   const CustomerAggregate._();
 
+  /// Joins the customer with their products and licenses.
   factory CustomerAggregate.join({
     required Customer customer,
     required List<Product> products,
@@ -28,7 +30,9 @@ class CustomerAggregate with _$CustomerAggregate {
       );
 }
 
+/// Extension methods for [List<Customer>].
 extension SmartCustomer on List<Customer> {
+  /// Connects the customers with their products and licenses.
   List<CustomerAggregate> connect(List<Product> products, List<License> licenses) {
     return map(
       (customer) => CustomerAggregate.join(

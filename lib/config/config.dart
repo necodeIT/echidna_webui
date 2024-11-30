@@ -19,6 +19,7 @@ void loadEnv() {
     'OIDC_AUTHORIZATION_URL': String.fromEnvironment('OIDC_AUTHORIZATION_URL'),
     'OIDC_REDIRECT_URI': String.fromEnvironment('OIDC_REDIRECT_URI'),
     'OIDC_SCOPES': String.fromEnvironment('OIDC_SCOPES'),
+    'SERVER_WEBSOCKET': String.fromEnvironment('SERVER_WEBSOCKET'),
   };
 
   env.addAll(compileTimeEnv);

@@ -1,16 +1,15 @@
 import 'package:echidna_webui/modules/api/api.dart';
-import 'package:echidna_webui/modules/app/app.dart';
 import 'package:echidna_webui/modules/auth/auth.dart';
 import 'package:echidna_webui/modules/products/presentation/presentation.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mcquenji_core/mcquenji_core.dart';
 
-import 'modules/products/domain/domain.dart';
-import 'modules/products/infra/infra.dart';
+import 'domain/domain.dart';
+import 'infra/infra.dart';
 
-export 'modules/products/domain/domain.dart';
-export 'modules/products/presentation/presentation.dart';
-export 'modules/products/utils/utils.dart';
+export 'domain/domain.dart';
+export 'presentation/presentation.dart';
+export 'utils/utils.dart';
 
 /// Implements product management.
 class ProductsModule extends Module {

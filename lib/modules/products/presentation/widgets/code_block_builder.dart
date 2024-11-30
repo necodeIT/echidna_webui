@@ -4,9 +4,9 @@ import 'package:flutter_highlighting/flutter_highlighting.dart';
 import 'package:flutter_highlighting/themes/github-dark.dart';
 import 'package:flutter_highlighting/themes/github.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:highlighting/highlighting.dart';
 import 'package:markdown/markdown.dart' hide Text, Node;
 import 'package:shadcn_flutter/shadcn_flutter.dart' hide Element;
-import 'package:highlighting/highlighting.dart';
 
 /// Markdown builder for code blocks.
 class CodeBlockBuilder extends MarkdownElementBuilder {
@@ -45,30 +45,31 @@ class __CodeBlockState extends State<_CodeBlock> {
     );
   }
 
+  /// copied from [HighlightView._convert]
   List<TextSpan> _convert(List<Node> nodes, Map<String, TextStyle> theme) {
-    List<TextSpan> spans = [];
+    final spans = <TextSpan>[];
     var currentSpans = spans;
-    List<List<TextSpan>> stack = [];
+    final stack = <List<TextSpan>>[];
 
-    _traverse(Node node) {
+    void _traverse(Node node) {
       if (node.value != null) {
         currentSpans.add(node.className == null ? TextSpan(text: node.value) : TextSpan(text: node.value, style: theme[node.className]));
       } else {
-        List<TextSpan> tmp = [];
+        final tmp = <TextSpan>[];
         currentSpans.add(TextSpan(children: tmp, style: theme[node.className]));
         stack.add(currentSpans);
         currentSpans = tmp;
 
-        node.children.forEach((n) {
+        for (final n in node.children) {
           _traverse(n);
           if (n == node.children.last) {
             currentSpans = stack.isEmpty ? spans : stack.removeLast();
           }
-        });
+        }
       }
     }
 
-    for (var node in nodes) {
+    for (final node in nodes) {
       _traverse(node);
     }
 

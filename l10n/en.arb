@@ -23,6 +23,9 @@
     "@global_nameRequired": {},
     "global_description": "Description",
     "global_descriptionRequired": "Description is required",
+    "app_notFound_404": "404",
+    "app_notFound_notFound": "Sorry, couldn't find what you're looking for!",
+    "app_notFound_goToHome": "Go to home",
     "auth_authScreen_poweredBy": "Developed by ",
     "@auth_authScreen_poweredBy": {},
     "auth_authScreen_loginToContinue": "Login to continue",
@@ -165,6 +168,26 @@
     },
     "customers_customerProductsWidget_customerProducts": "Products this customer is using",
     "customers_customerProductsWidget_searchProducts": "Search products...",
+    "customers_customerPaymentsWidget_customerPayments": "Payments from this customer ({licenseKey})",
+    "@customers_customerPaymentsWidget_customerPayments": {
+        "description": "customers_customerPaymentsWidget_customerPayments",
+        "placeholders": {
+            "licenseKey": {
+                "type": "String"
+            }
+        }
+    },
+    "customers_customerPayments_noPaymentReference": "No payment reference",
+    "customers_customerPayments_revokedFor": "Revoked: {reason}",
+    "@customers_customerPayments_revokedFor": {
+        "description": "customers_customerPayments_revokedFor",
+        "placeholders": {
+            "reason": {
+                "type": "String"
+            }
+        }
+    },
+    "customers_customerPayments_noReasonProvided": "No reason provided",
     "licenses_licensesScreen_title": "Licenses",
     "@licenses_licensesScreen_title": {},
     "products_productsScreen_title": "Products",
@@ -364,6 +387,31 @@
             }
         }
     },
+    "products_installClientSdk_copiedToClipboard": "Copied to clipboard",
+    "products_installClientSdk_copiedCodesnippedToClipboard": "Codesnippet has been copied to clipboard!",
+    "products_installClientSdk_selectCustomer": "Select customer",
+    "products_installClientSdk_next": "Next",
+    "products_installClientSdk_prev": "Prev",
+    "products_installClientSdk_finish": "Finish",
+    "products_installClientSdk_selectCustomerForClientSdk": "Select the customer you want to install the SDK for.",
+    "products_installClientSdk_yourClientId": "Your client id: {id}",
+    "@products_installClientSdk_yourClientId": {
+        "description": "products_installClientSdk_yourClientId",
+        "placeholders": {
+            "id": {
+                "type": "String"
+            }
+        }
+    },
+    "products_installClientSdk_yourClientKey": "Your client key: {key}",
+    "@products_installClientSdk_yourClientKey": {
+        "description": "products_installClientSdk_yourClientKey",
+        "placeholders": {
+            "key": {
+                "type": "String"
+            }
+        }
+    },
     "licenses_licensesTable_groupByCustomers": "Group by customer",
     "@licenses_licensesTable_groupByCustomers": {},
     "licenses_licensesTable_groupByProducts": "Group by product",
@@ -467,5 +515,11 @@
         }
     },
     "licenses_licensesTable_noLicensesFound": "No licenses found",
-    "licenses_licensesTable_filterIDs": "Filter IDs..."
+    "licenses_licensesTable_filterIDs": "Filter IDs...",
+    "licenses_licenseScreen_customerLabel": "Customer:",
+    "licenses_licenseScreen_productLabel": "Product:",
+    "licenses_licenseFeatures_noFeaturesUnlocked": "No features unlocked.",
+    "logs_logsScreen_serverLogs": "Server logs",
+    "settings_settingsScreen_settings": "Settings",
+    "settings_settingsScreen_colorScheme": "Color scheme"
 }

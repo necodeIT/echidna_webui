@@ -1,11 +1,9 @@
 import 'package:dotenv/dotenv.dart';
 import 'package:echidna_dto/echidna_dto.dart';
 import 'package:echidna_webui/modules/auth/auth.dart';
+import 'package:echidna_webui/modules/products/products.dart';
 import 'package:mcquenji_core/mcquenji_core.dart';
-import 'package:flutter_modular/flutter_modular.dart';
-import 'package:echidna_webui/products.dart';
 import 'package:shadcn_flutter/shadcn_flutter.dart';
-import 'dart:html';
 
 /// Holds the available client SDKs.
 class ClientSdkRepository extends Repository<AsyncValue<List<ClientSdk>>> {

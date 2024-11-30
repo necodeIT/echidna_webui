@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:collection/collection.dart';
 import 'package:echidna_dto/echidna_dto.dart';
 import 'package:echidna_webui/modules/auth/auth.dart';
 import 'package:echidna_webui/modules/licenses/licenses.dart';
@@ -145,5 +146,25 @@ class LicensesRepository extends Repository<AsyncValue<List<License>>> {
 
       rethrow;
     }
+  }
+
+  /// Gets the payment history of the license with the given [license].
+  Future<List<Payment>> getHistory(License license) {
+    if (!state.hasData) {
+      log('Cannot get history for license with license key ${license.licenseKey}: State has no data');
+
+      return Future.value([]);
+    }
+
+    return _datasource.getLicenseHistory(_tokenRepository.state.requireData.token, licenseKey: license.licenseKey);
+  }
+
+  /// Gets the license with the given [key].
+  License? byKey(String key) {
+    if (!state.hasData) {
+      return null;
+    }
+
+    return state.requireData.firstWhereOrNull((element) => element.licenseKey == key);
   }
 }

@@ -16,10 +16,9 @@ void main() async {
   Modular.setInitialRoute('/dashboard');
 
   CoreModule.isWeb = kIsWeb;
+  PlatformBrightnessRepository.debugOverride = Brightness.dark;
 
   loadEnv();
-
-  ColorSchemeRepository.debugOverride = ColorSchemes.darkRose();
 
   runApp(ModularApp(module: AppModule(), child: const AppWidget()));
 }

@@ -2,18 +2,17 @@ import 'package:awesome_extensions/awesome_extensions.dart' hide ExpandedExtensi
 import 'package:echidna_dto/echidna_dto.dart';
 import 'package:echidna_webui/modules/app/app.dart';
 import 'package:echidna_webui/modules/dashboard/dashboard.dart';
-
 import 'package:echidna_webui/modules/licenses/licenses.dart';
-import 'package:mcquenji_core/mcquenji_core.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:echidna_webui/modules/customers/customers.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:shadcn_flutter/shadcn_flutter.dart';
 import 'package:uicons_updated/icons/uicons_solid.dart';
 
+/// Displays the payment history of a customer.
 class CustomerPayments extends StatefulWidget {
+  /// Displays the payment history of a customer.
   const CustomerPayments({super.key, required this.customer});
 
+  /// The customer to display the payments for.
   final Customer customer;
 
   @override
@@ -27,7 +26,7 @@ class _CustomerPaymentsState extends State<CustomerPayments> {
     final payments = context.watch<PaymentsRepository>();
 
     if (!licenses.state.hasData || !payments.state.hasData) {
-      return Center(
+      return const Center(
         child: CircularProgressIndicator(),
       );
     }
@@ -38,7 +37,7 @@ class _CustomerPaymentsState extends State<CustomerPayments> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Payments from this customer (${customerLicense.licenseKey})').large().bold(),
+        Text(context.t.customers_customerPaymentsWidget_customerPayments(customerLicense.licenseKey)).large().bold(),
         const SizedBox(height: 30),
         SingleChildScrollView(
           child: Steps(
@@ -52,7 +51,7 @@ class _CustomerPaymentsState extends State<CustomerPayments> {
                       children: [
                         const Icon(BootstrapIcons.coin),
                         const SizedBox(width: 10),
-                        Text(payment.paymentReference ?? 'No payment reference'),
+                        Text(payment.paymentReference ?? context.t.customers_customerPayments_noPaymentReference),
                       ],
                     ),
                     const SizedBox(height: 10),
@@ -76,7 +75,11 @@ class _CustomerPaymentsState extends State<CustomerPayments> {
                             color: context.theme.colorScheme.destructive,
                           ),
                           const SizedBox(width: 10),
-                          Text('Revoked: ${payment.revocationReasoning ?? 'No reason provided'}').expanded(),
+                          Text(
+                            context.t.customers_customerPayments_revokedFor(
+                              payment.revocationReasoning ?? context.t.customers_customerPayments_noReasonProvided,
+                            ),
+                          ).expanded(),
                         ],
                       ),
                   ],

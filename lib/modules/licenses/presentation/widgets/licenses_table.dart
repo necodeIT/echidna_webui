@@ -2,7 +2,7 @@ import 'package:echidna_dto/echidna_dto.dart';
 import 'package:echidna_webui/modules/app/app.dart';
 import 'package:echidna_webui/modules/customers/customers.dart';
 import 'package:echidna_webui/modules/licenses/licenses.dart';
-import 'package:echidna_webui/products.dart';
+import 'package:echidna_webui/modules/products/products.dart';
 import 'package:either_dart/either.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_sticky_header/flutter_sticky_header.dart';

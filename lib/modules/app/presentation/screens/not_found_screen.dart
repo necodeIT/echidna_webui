@@ -10,9 +10,9 @@ class NotFoundScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      headers: const [
+      headers: [
         AppBar(
-          title: Text('404'),
+          title: Text(context.t.app_notFound_404),
         ),
       ],
       child: Center(
@@ -25,15 +25,15 @@ class NotFoundScreen extends StatelessWidget {
               size: 100,
             ),
             const SizedBox(height: 20),
-            const Text('404').h1(),
-            const Text("Sorry, couldn't find what you're looking for!").h2(),
+            Text(context.t.app_notFound_404).h1(),
+            Text(context.t.app_notFound_notFound).h2(),
             const SizedBox(height: 20),
             PrimaryButton(
               onPressed: () {
                 Modular.to.navigate('/');
               },
               leading: const Icon(Icons.home),
-              child: const Text('Go to home'),
+              child: Text(context.t.app_notFound_goToHome),
             ),
           ],
         ),

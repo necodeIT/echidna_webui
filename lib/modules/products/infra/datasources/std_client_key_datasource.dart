@@ -1,6 +1,6 @@
-import 'package:echidna_dto/src/client_key.dart';
+import 'package:echidna_dto/echidna_dto.dart';
 import 'package:echidna_webui/modules/api/api.dart';
-import 'package:echidna_webui/products.dart';
+import 'package:echidna_webui/modules/products/products.dart';
 
 /// Standard implementation of [ClientKeyDatasource].
 class StdClientKeyDatasource extends ClientKeyDatasource {

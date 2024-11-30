@@ -2,14 +2,17 @@ import 'package:echidna_dto/echidna_dto.dart';
 import 'package:echidna_webui/modules/app/app.dart';
 import 'package:echidna_webui/modules/customers/customers.dart';
 import 'package:echidna_webui/modules/licenses/licenses.dart';
-import 'package:echidna_webui/products.dart';
+import 'package:echidna_webui/modules/products/products.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mcquenji_core/mcquenji_core.dart';
 import 'package:shadcn_flutter/shadcn_flutter.dart';
 
+/// Displays the products used by a customer.
 class CustomerProducts extends StatefulWidget {
+  /// Displays the products used by a customer.
   const CustomerProducts({super.key, required this.customer});
 
+  /// The customer to display the products for.
   final Customer customer;
 
   @override

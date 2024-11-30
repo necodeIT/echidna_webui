@@ -2,7 +2,7 @@ import 'package:echidna_dto/echidna_dto.dart';
 import 'package:echidna_webui/modules/app/app.dart';
 import 'package:echidna_webui/modules/customers/customers.dart';
 import 'package:echidna_webui/modules/licenses/licenses.dart';
-import 'package:echidna_webui/products.dart';
+import 'package:echidna_webui/modules/products/products.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -64,7 +64,9 @@ class _InstallClientSdkState extends State<InstallClientSdk> {
         // wait for the stepper to hide the previous next step (kDefaultDuration) but subtract a few milliseconds for smooth transition
         await Future.delayed(kDefaultDuration - const Duration(milliseconds: 10));
 
-        await Scrollable.ensureVisible(context, duration: const Duration(milliseconds: 100));
+        if (context.mounted) {
+          await Scrollable.ensureVisible(context, duration: const Duration(milliseconds: 100));
+        }
       });
     }
 
@@ -96,8 +98,8 @@ class _InstallClientSdkState extends State<InstallClientSdk> {
   void _copy(String data) {
     Clipboard.setData(ClipboardData(text: data));
     showIconToast(
-      title: 'Copied to clipboard',
-      subtitle: 'Codesnippet has been copied to clipboard!',
+      title: context.t.products_installClientSdk_copiedToClipboard,
+      subtitle: context.t.products_installClientSdk_copiedCodesnippedToClipboard,
       icon: BootstrapIcons.clipboard2CheckFill,
     );
   }
@@ -132,7 +134,7 @@ class _InstallClientSdkState extends State<InstallClientSdk> {
       children: [
         Row(
           children: [
-            Text(context.t.products_installClientSDK_installFor(widget.product.name)).expanded(),
+            Text(context.t.products_installClientSDK_installFor(widget.product.name)).medium().expanded(),
             const SizedBox(width: 10),
             Select<ClientSdk>(
               popupConstraints: const BoxConstraints(maxWidth: 150),
@@ -164,7 +166,7 @@ class _InstallClientSdkState extends State<InstallClientSdk> {
                     key: _stepKey(0),
                   ),
                   title: Text(
-                    'Select customer',
+                    context.t.products_installClientSdk_selectCustomer,
                   ),
                   contentBuilder: (context) => StepContainer(
                     actions: [
@@ -174,7 +176,7 @@ class _InstallClientSdkState extends State<InstallClientSdk> {
                         onChanged: _selectCustomer,
                         itemBuilder: (context, c) => Text(c.name),
                         searchFilter: (sdk, query) => sdk.name.containsIgnoreCase(query) ? 1 : 0,
-                        placeholder: const Text('Select customer'),
+                        placeholder: Text(context.t.products_installClientSdk_selectCustomer),
                         children: [
                           for (final c in product.customers)
                             SelectItemButton(
@@ -185,14 +187,14 @@ class _InstallClientSdkState extends State<InstallClientSdk> {
                       ),
                       PrimaryButton(
                         onPressed: _customer != null ? _controller.nextStep : null,
-                        child: Text('Next'),
+                        child: Text(context.t.products_installClientSdk_next),
                       ),
                     ],
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Select the customer you want to install the SDK for.',
+                          context.t.products_installClientSdk_selectCustomerForClientSdk,
                         ),
                         if (_clientKey != null) ...[
                           const SizedBox(height: 10),
@@ -200,7 +202,7 @@ class _InstallClientSdkState extends State<InstallClientSdk> {
                             children: [
                               const Icon(Icons.info),
                               const SizedBox(width: 10),
-                              Text('Your client id: ${_clientKey!.id}'),
+                              Text(context.t.products_installClientSdk_yourClientId(_clientKey!.id.toString())),
                               const SizedBox(width: 5),
                               IconButton.ghost(
                                 icon: const Icon(BootstrapIcons.clipboard2),
@@ -212,7 +214,7 @@ class _InstallClientSdkState extends State<InstallClientSdk> {
                             children: [
                               const Icon(Icons.info),
                               const SizedBox(width: 10),
-                              Text('Your client key: ${_clientKey!.key}'),
+                              Text(context.t.products_installClientSdk_yourClientKey(_clientKey!.key)),
                               const SizedBox(width: 5),
                               IconButton.ghost(
                                 icon: const Icon(BootstrapIcons.clipboard2),
@@ -238,11 +240,13 @@ class _InstallClientSdkState extends State<InstallClientSdk> {
                         actions: [
                           SecondaryButton(
                             onPressed: _controller.previousStep,
-                            child: Text('Prev'),
+                            child: Text(context.t.products_installClientSdk_prev),
                           ),
                           PrimaryButton(
                             onPressed: _controller.nextStep,
-                            child: Text(i < _instructions!.length - 1 ? 'Next' : 'Finish'),
+                            child: Text(i < _instructions!.length - 1
+                                ? context.t.products_installClientSdk_next
+                                : context.t.products_installClientSdk_finish),
                           ),
                         ],
                         child: MarkdownBody(

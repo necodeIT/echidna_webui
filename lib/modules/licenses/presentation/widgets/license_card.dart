@@ -89,34 +89,9 @@ class LicenseCard extends StatelessWidget {
                           Text(context.t.licenses_licenseCard_expiresOn(formatter.format(status.expirationDate!))),
                         ],
                       ),
-                    if (status.featureClaims.isNotEmpty) const SizedBox.shrink(),
-                    if (status.featureClaims.isNotEmpty) Text(context.t.licenses_licenseCard_featuresUnlocked).bold(),
-                    if (status.featureClaims.isNotEmpty)
-                      Expanded(
-                        child: ListView(
-                          children: [
-                            for (final claim in status.featureClaims)
-                              Row(
-                                children: [
-                                  if (claim.feature.type == FeatureType.free) const Icon(UiconsSolid.hands_heart) else const Icon(UiconsSolid.coin),
-                                  const SizedBox(width: 10),
-                                  Text(claim.feature.name),
-                                  // if (claim.isCustomer && !license.isCustomerWide) const SizedBox(width: 5),
-                                  if (claim.isCustomer && !license.isCustomerWide)
-                                    Transform.scale(
-                                      scale: 0.8,
-                                      child: MouseRegion(
-                                        cursor: SystemMouseCursors.basic,
-                                        child: SecondaryBadge(
-                                          child: Text(context.t.licenses_licenseCard_customerWide),
-                                        ),
-                                      ),
-                                    ),
-                                ],
-                              ),
-                          ].separatedby(const SizedBox(height: 10)),
-                        ),
-                      ),
+                    Expanded(
+                      child: LicenseFeatures(license: license, status: status),
+                    ),
                   ].separatedby(const SizedBox(height: 15)),
                 );
               },

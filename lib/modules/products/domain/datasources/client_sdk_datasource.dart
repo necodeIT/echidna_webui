@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:echidna_webui/products.dart';
+import 'package:echidna_webui/modules/products/products.dart';
 import 'package:mcquenji_core/mcquenji_core.dart';
 
 /// Responsible for fetching a list of available client SDKs.

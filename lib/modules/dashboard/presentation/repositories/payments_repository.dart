@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:collection/collection.dart';
 import 'package:echidna_dto/echidna_dto.dart';
 import 'package:echidna_webui/modules/auth/auth.dart';
 import 'package:echidna_webui/modules/dashboard/dashboard.dart';

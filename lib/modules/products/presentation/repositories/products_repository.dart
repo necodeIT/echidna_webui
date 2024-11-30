@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:collection/collection.dart';
 import 'package:echidna_dto/echidna_dto.dart';
 import 'package:echidna_webui/modules/auth/auth.dart';
-import 'package:echidna_webui/products.dart';
+import 'package:echidna_webui/modules/products/products.dart';
 import 'package:mcquenji_core/mcquenji_core.dart';
 
 /// Provides a list of all stored products.

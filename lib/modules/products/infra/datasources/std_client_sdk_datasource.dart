@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:echidna_webui/products.dart';
+import 'package:echidna_webui/modules/products/products.dart';
 import 'package:mcquenji_core/mcquenji_core.dart';
 import 'package:memory_cache/memory_cache.dart';
 

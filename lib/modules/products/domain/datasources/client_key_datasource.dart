@@ -1,6 +1,5 @@
 import 'package:echidna_dto/echidna_dto.dart';
 import 'package:mcquenji_core/mcquenji_core.dart';
-import 'package:echidna_webui/products.dart';
 
 /// Responsible for fetching a client key.
 abstract class ClientKeyDatasource extends Datasource {

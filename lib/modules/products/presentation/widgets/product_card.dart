@@ -1,7 +1,7 @@
 import 'package:echidna_dto/echidna_dto.dart';
 import 'package:echidna_webui/modules/app/app.dart';
 import 'package:echidna_webui/modules/customers/customers.dart';
-import 'package:echidna_webui/products.dart';
+import 'package:echidna_webui/modules/products/products.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:shadcn_flutter/shadcn_flutter.dart';
 
@@ -10,6 +10,7 @@ class ProductCard extends StatelessWidget {
   /// The product to render.
   final Product product;
 
+  /// Whether to enable actions (edit and delete).
   final bool enableActions;
 
   /// Renders a product.
@@ -23,15 +24,18 @@ class ProductCard extends StatelessWidget {
   /// Height of the card.
   static const height = 200.0;
 
+  /// Used when [enableActions] is false.
+  static const heightSmall = 125.0;
+
   @override
   Widget build(BuildContext context) {
     return Clickable(
       onPressed: () {
-        if (enableActions) Modular.to.navigate('/products/${product.id}');
+        Modular.to.navigate('/products/${product.id}');
       },
       child: SizedBox(
         width: CustomerCard.width,
-        height: height,
+        height: enableActions ? height : heightSmall,
         child: Card(
           padding: const EdgeInsets.all(15),
           child: Column(
@@ -39,6 +43,8 @@ class ProductCard extends StatelessWidget {
             children: [
               Row(
                 children: [
+                  const Icon(RadixIcons.code),
+                  const SizedBox(width: 12),
                   Expanded(
                     child: OverflowMarquee(
                       delayDuration: const Duration(seconds: 5),
