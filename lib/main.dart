@@ -15,6 +15,7 @@ void main() async {
 
   Modular.setInitialRoute('/dashboard');
 
+  ConnectivityService.updateInterval = const Duration(seconds: 10);
   CoreModule.isWeb = kIsWeb;
   PlatformBrightnessRepository.debugOverride = Brightness.dark;
 
