@@ -23,7 +23,6 @@ void main() async {
   ConnectivityService.updateInterval = const Duration(seconds: 10);
 
   CoreModule.isWeb = kIsWeb;
-  PlatformBrightnessRepository.debugOverride = Brightness.dark;
 
   loadQueryParameters();
   setPathUrlStrategy();

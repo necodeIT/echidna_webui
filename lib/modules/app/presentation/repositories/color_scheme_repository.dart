@@ -33,7 +33,7 @@ class ColorSchemeRepository extends Repository<ColorScheme> {
 
   @override
   FutureOr<void> build(Type trigger) {
-    emit(_platformBrightness.state == Brightness.dark ? ColorSchemes.darkZinc() : ColorSchemes.lightZinc());
+    emit(_id.colorScheme(_platformBrightness.state));
   }
 
   /// Sets the color scheme to the given [ColorSchemeId].
