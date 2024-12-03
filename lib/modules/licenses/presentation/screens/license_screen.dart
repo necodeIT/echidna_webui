@@ -211,7 +211,7 @@ class LicenseScreen extends StatelessWidget {
                               ],
                             ).expanded(),
                           ],
-                        ).expanded();
+                        );
                       },
                     );
                   },
