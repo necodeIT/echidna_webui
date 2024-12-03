@@ -9,8 +9,12 @@ import 'package:shadcn_flutter/shadcn_flutter.dart';
 import 'package:url_strategy/url_strategy.dart';
 
 void main() async {
-  Logger.root.level = Level.ALL;
-  Logger.root.onRecord.listen(debugLogHandler);
+  loadEnv();
+
+  if (env['DEBUG'] == 'true') {
+    Logger.root.level = Level.ALL;
+    Logger.root.onRecord.listen(debugLogHandler);
+  }
 
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -21,7 +25,6 @@ void main() async {
   CoreModule.isWeb = kIsWeb;
   PlatformBrightnessRepository.debugOverride = Brightness.dark;
 
-  loadEnv();
   loadQueryParameters();
   setPathUrlStrategy();
 
