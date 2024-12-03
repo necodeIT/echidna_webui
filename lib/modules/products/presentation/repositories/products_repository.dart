@@ -79,6 +79,8 @@ class ProductsRepository extends Repository<AsyncValue<List<Product>>> {
         return;
       }
 
+      await _datasource.updateProduct(_tokenRepository.state.requireData.token, product: updatedProduct);
+
       data([...state.requireData.where((element) => element.id != product.id), updatedProduct]);
 
       log('Successfully updated product with ID ${product.id}');
