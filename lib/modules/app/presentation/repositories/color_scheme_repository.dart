@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:echidna_webui/modules/app/app.dart';
-import 'package:flutter/foundation.dart';
 import 'package:mcquenji_core/mcquenji_core.dart';
 import 'package:mcquenji_local_storage/mcquenji_local_storage.dart';
 import 'package:shadcn_flutter/shadcn_flutter.dart';
@@ -38,6 +37,8 @@ class ColorSchemeRepository extends Repository<ColorScheme> {
 
   /// Sets the color scheme to the given [ColorSchemeId].
   Future<void> setColorScheme(ColorSchemeId id) async {
+    if (_id == id) return;
+
     _id = id;
 
     emit(id.colorScheme(_platformBrightness.state));

@@ -1,4 +1,3 @@
-import 'package:awesome_extensions/awesome_extensions.dart' hide ExpandedExtension, ThemeExt;
 import 'package:echidna_dto/echidna_dto.dart';
 import 'package:echidna_webui/modules/app/app.dart';
 import 'package:echidna_webui/modules/customers/customers.dart';

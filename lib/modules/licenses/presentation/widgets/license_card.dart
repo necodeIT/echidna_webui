@@ -6,7 +6,6 @@ import 'package:echidna_webui/modules/licenses/licenses.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:intl/intl.dart';
 import 'package:shadcn_flutter/shadcn_flutter.dart';
-import 'package:uicons_updated/uicons.dart';
 
 /// Displays a summary of a [license].
 class LicenseCard extends StatelessWidget {

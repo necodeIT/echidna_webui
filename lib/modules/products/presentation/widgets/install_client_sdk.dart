@@ -246,7 +246,7 @@ class _InstallClientSdkState extends State<InstallClientSdk> {
                             onPressed: _controller.nextStep,
                             child: Text(i < _instructions!.length - 1
                                 ? context.t.products_installClientSdk_next
-                                : context.t.products_installClientSdk_finish),
+                                : context.t.products_installClientSdk_finish,),
                           ),
                         ],
                         child: MarkdownBody(

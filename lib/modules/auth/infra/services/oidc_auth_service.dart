@@ -1,14 +1,10 @@
 import 'dart:convert';
+import 'dart:html';
 
 import 'package:echidna_dto/echidna_dto.dart';
 import 'package:echidna_webui/modules/app/app.dart';
 import 'package:echidna_webui/modules/auth/auth.dart';
 import 'package:mcquenji_core/mcquenji_core.dart';
-
-import 'dart:html';
-
-import 'package:modular_core/modular_core.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 /// Handles third-party authentication using OpenID Connect.
 class OidcAuthService extends AuthService {

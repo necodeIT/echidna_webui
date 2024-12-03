@@ -1,8 +1,6 @@
-import 'package:mcquenji_core/mcquenji_core.dart';
-import 'package:flutter_modular/flutter_modular.dart';
-import 'package:flutter/material.dart';
 import 'package:echidna_webui/modules/auth/auth.dart';
-import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class OidcCallbackScreen extends StatelessWidget {
   const OidcCallbackScreen({super.key, required this.args});

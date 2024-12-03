@@ -1,8 +1,8 @@
 import 'package:awesome_extensions/awesome_extensions.dart' hide ThemeExt;
+import 'package:echidna_webui/modules/app/app.dart';
 import 'package:echidna_webui/modules/logs/logs.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:shadcn_flutter/shadcn_flutter.dart';
-import 'package:echidna_webui/modules/app/app.dart';
 
 /// Displays the server logs.
 class LogsScreen extends StatelessWidget {

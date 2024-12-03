@@ -1,9 +1,7 @@
-import 'dart:html';
 
 import 'package:echidna_webui/modules/app/utils/utils.dart';
 import 'package:echidna_webui/modules/auth/auth.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:modular_core/modular_core.dart';
 
 /// Implements [AuthService] for debugging purposes.
 class DebugAuthService extends AuthService {
