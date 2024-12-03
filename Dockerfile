@@ -9,6 +9,7 @@ RUN curl -fsSL https://fvm.app/install.sh | bash
 WORKDIR /app/
 
 COPY . /app/
+COPY nginx.conf /etc/nginx/nginx.conf
 
 # Install Flutter version via FVM (defined in the app's .fvmrc file)
 RUN fvm use -f
