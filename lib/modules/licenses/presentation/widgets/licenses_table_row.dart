@@ -53,7 +53,9 @@ class LicensesTableRow extends StatelessWidget {
           snapshot: snapshot,
           replacement: snapshot.hasData
               ? Text(
-                  snapshot.data!.expirationDate != null ? LicenseCard.formatter.format(snapshot.data!.expirationDate!) : 'N/A',
+                  snapshot.data!.expirationDate != null
+                      ? LicenseCard.formatter.format(snapshot.data!.expirationDate!)
+                      : context.t.licenses_licensesTableRow_na,
                 )
               : null,
         );
@@ -165,7 +167,7 @@ class LicensesTableRow extends StatelessWidget {
                                           showDialog(
                                             context: context,
                                             builder: (_) => RevokeLicenseDialog(
-                                              license: license.license,
+                                              licenses: [license.license],
                                               showToast: createShowToastHandler(context),
                                             ),
                                           );

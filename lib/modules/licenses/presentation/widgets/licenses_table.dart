@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:echidna_dto/echidna_dto.dart';
 import 'package:echidna_webui/modules/app/app.dart';
 import 'package:echidna_webui/modules/customers/customers.dart';
@@ -120,7 +121,7 @@ class _LicensesTableState extends State<LicensesTable> {
     return Left(grouped);
   }
 
-  void showBulkActions(BuildContext context) {
+  void showBulkActions(BuildContext context, {required List<LicenseAggregate> licenses}) {
     showDropdown(
       context: context,
       builder: (context) => DropdownMenu(
@@ -142,13 +143,13 @@ class _LicensesTableState extends State<LicensesTable> {
               ),
             ),
             onPressed: (context) {
-              // showDialog(
-              //   context: context,
-              //   builder: (_) => RevokeLicenseDialog(
-              //     license: license.license,
-              //     showToast: createShowToastHandler(context),
-              //   ),
-              // );
+              showDialog(
+                context: context,
+                builder: (_) => RevokeLicenseDialog(
+                  licenses: licenses.map((e) => e.license).toList().where((element) => selectedItems.contains(element.licenseKey)).toList(),
+                  showToast: createShowToastHandler(context),
+                ),
+              );
             },
           ),
         ],
@@ -310,7 +311,10 @@ class _LicensesTableState extends State<LicensesTable> {
                           icon: const Icon(RadixIcons.dotsHorizontal),
                           onPressed: selectedItems.isNotEmpty
                               ? () {
-                                  showBulkActions(context);
+                                  showBulkActions(
+                                    context,
+                                    licenses: items.fold((g) => g.values.toList().flattened.toList(), (l) => l),
+                                  );
                                 }
                               : null,
                         );

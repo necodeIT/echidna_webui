@@ -104,7 +104,7 @@ class _CustomerLicensesState extends State<CustomerLicenses> {
                                           showDialog(
                                             context: context,
                                             builder: (_) => RevokeLicenseDialog(
-                                              license: license,
+                                              licenses: [license],
                                               showToast: createShowToastHandler(context),
                                             ),
                                           );

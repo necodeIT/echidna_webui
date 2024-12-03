@@ -39,8 +39,8 @@ class __CodeBlockState extends State<_CodeBlock> {
   void _copy() {
     Clipboard.setData(ClipboardData(text: widget.code));
     showIconToast(
-      title: 'Copied to clipboard',
-      subtitle: 'Codesnippet has been copied to clipboard!',
+      title: t.products_installClientSdk_copiedToClipboard,
+      subtitle: t.products_installClientSdk_copiedCodesnippedToClipboard,
       icon: BootstrapIcons.clipboard2CheckFill,
     );
   }

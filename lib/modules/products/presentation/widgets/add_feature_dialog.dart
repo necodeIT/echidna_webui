@@ -164,7 +164,9 @@ class _AddFeatureDialogState extends State<AddFeatureDialog> {
   }
 }
 
-extension on FeatureType {
+/// Adds translation to [FeatureType].
+extension FeatureTypeX on FeatureType {
+  /// Translates this [FeatureType] to a string.
   String translate(BuildContext context) {
     return switch (this) {
       FeatureType.free => context.t.products_addFeatureDialog_typeFree,

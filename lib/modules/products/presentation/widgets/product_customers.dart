@@ -108,7 +108,7 @@ class _ProductCustomersState extends State<ProductCustomers> {
                                           color: context.theme.colorScheme.destructive,
                                         ),
                                         child: Text(
-                                          'Revoke Client Key',
+                                          context.t.products_productCustomers_revokeClientKey,
                                           style: context.theme.typography.semiBold.copyWith(
                                             color: context.theme.colorScheme.destructive,
                                           ),

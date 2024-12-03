@@ -28,8 +28,6 @@ class LogsRepository extends Repository<AsyncValue<List<ServerLog>>> {
   }
 
   /// Sorts the logs by the given parameters.
-  ///
-  /// Note:
   List<ServerLog> sortBy(SortServerLogsBy sort) {
     if (!state.hasData) {
       return [];

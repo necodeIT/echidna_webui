@@ -1,14 +1,15 @@
 const words = [
-    'Something is happening. Please wait.',
-    'Please be patient. This may take a while.',
-    'While you wait, please consider that this is a good time to take a break.',
-    'Please wait. This is a good time to go grab a cup of coffee.',
-    'Sometimes the things that are worth waiting for take time.',
-    'Please wait. This is a good time to stretch your legs.',
+    'Something is happening. I can feel it!',
+    'Please wait. This is a good time to go grab a beer.',
+    'Please wait. This is a good time to watch some TikTok brainrot.',
     'Posture check! Please wait while we load the application.',
     'Sometimes I drink water to surprise my liver.',
     'Cranking 90s while you wait.',
     'Take a shot of russian water while you wait.',
+    'Is your mom single?',
+    'Waiting for GTA 6...',
+    "You're so skibidi",
+    'We got heat death of the universe before GTA 6.',
 ];
 
 const loaderWidget = `

@@ -7,10 +7,10 @@ import 'package:shadcn_flutter/shadcn_flutter.dart';
 /// Confirm dialog for revoking a license.
 class RevokeLicenseDialog extends ToastConsumer {
   /// License to revoke.
-  final License license;
+  final List<License> licenses;
 
   /// Confirm dialog for revoking a license.
-  const RevokeLicenseDialog({super.key, required this.license, required super.showToast});
+  const RevokeLicenseDialog({super.key, required this.licenses, required super.showToast});
 
   @override
   State<RevokeLicenseDialog> createState() => _RevokeLicenseDialogState();
@@ -42,16 +42,17 @@ class _RevokeLicenseDialogState extends State<RevokeLicenseDialog> {
 
     final loader = showLoadingToast(
       title: t.licenses_revokeLicenseDialog_revokingLicense,
-      subtitle: t.licenses_revokeLicenseDialog_revokingLicenseWith(widget.license.licenseKey),
+      subtitle: t.licenses_revokeLicenseDialog_revokingLicenseWith(widget.licenses.length),
     );
 
     try {
-      await licenses.revokeLicense(licenseKey: widget.license.licenseKey, revocationReason: revocationReason);
-
-      showSuccessToast(
-        title: t.licenses_revokeLicenseDialog_revokedLicense,
-        subtitle: t.licenses_revokeLicenseDialog_revokedLicenseWith(widget.license.licenseKey),
-      );
+      for (final license in widget.licenses) {
+        await licenses.revokeLicense(licenseKey: license.licenseKey, revocationReason: revocationReason);
+        showSuccessToast(
+          title: t.licenses_revokeLicenseDialog_revokedLicense,
+          subtitle: t.licenses_revokeLicenseDialog_revokedLicenseWith(license.licenseKey),
+        );
+      }
 
       loader.close();
     } catch (e) {
@@ -59,7 +60,7 @@ class _RevokeLicenseDialogState extends State<RevokeLicenseDialog> {
 
       showErrorToast(
         title: t.licenses_revokeLicenseDialog_errorRevoking,
-        subtitle: t.licenses_revokeLicenseDialog_errorRevokingWith(widget.license.licenseKey),
+        subtitle: t.licenses_revokeLicenseDialog_errorRevokingWith(widget.licenses.length),
       );
     } finally {
       isRevoking = false;

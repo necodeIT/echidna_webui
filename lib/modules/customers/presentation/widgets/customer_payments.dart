@@ -43,7 +43,7 @@ class _CustomerPaymentsState extends State<CustomerPayments> {
       children: [
         Text(context.t.customers_customerPaymentsWidget_customerPayments).large().bold(),
         Text(
-          customerLicense != null ? customerLicense.licenseKey : 'No customer wide license found',
+          customerLicense != null ? customerLicense.licenseKey : context.t.customers_customerPayments_noCustomerWideLicenseFound,
         ).muted(),
         const SizedBox(height: 30),
         if (customerPayments != null)

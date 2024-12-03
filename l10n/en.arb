@@ -172,6 +172,7 @@
     "@customers_customerPaymentsWidget_customerPayments": {
         "description": "customers_customerPaymentsWidget_customerPayments"
     },
+    "customers_customerPayments_noCustomerWideLicenseFound": "No customer wide license found",
     "customers_customerPayments_noPaymentReference": "No payment reference",
     "customers_customerPayments_revokedFor": "Revoked: {reason}",
     "@customers_customerPayments_revokedFor": {
@@ -334,6 +335,46 @@
     "products_addFeatureDialog_typePaid": "Paid",
     "products_addFeatureDialog_trailPeriodLabel": "Trial period (days)",
     "products_addFeatureDialog_descriptionPlaceholder": "This is a feature",
+    "products_editFeatureDialog_editFeatureTitle": "Edit feature {id}",
+    "@products_editFeatureDialog_editFeatureTitle": {
+        "description": "products_editFeatureDialog_editFeatureTitle",
+        "placeholders": {
+            "id": {
+                "type": "String"
+            }
+        }
+    },
+    "products_editFeatureDialog_updatingFeature": "Updating feature",
+    "products_editFeatureDialog_updatingFeatureWith": "Updating feature {name}",
+    "@products_editFeatureDialog_updatingFeatureWith": {
+        "description": "products_editFeatureDialog_updatingFeatureWith",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "products_editFeatureDialog_updatedFeature": "Updated feature",
+    "products_editFeatureDialog_updatedFeatureWith": "Successfully updated feature with {name}",
+    "@products_editFeatureDialog_updatedFeatureWith": {
+        "description": "products_editFeatureDialog_updatedFeatureWith",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "products_editFeatureDialog_errorUpdatingFeature": "Failed to update feature",
+    "products_editFeatureDialog_errorUpdatingFeatureWith": "Failed to update feature {name}",
+    "@products_editFeatureDialog_errorUpdatingFeatureWith": {
+        "description": "products_editFeatureDialog_errorUpdatingFeatureWith",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "products_editFeatureDialog_updateFeature": "Update feature",
     "products_featureCard_freeFeature": "This feature is free",
     "products_featureCard_paidFeature": "This feature is paid",
     "products_featureCard_hasTrial": "This feature has a trial period of {trialPeriod} days",
@@ -466,14 +507,15 @@
     "@licenses_licensesTable_revokedHeader": {},
     "licenses_licensesTableRow_revoke": "Revoke",
     "@licenses_licensesTableRow_revoke": {},
-    "licenses_revokeLicenseDialog_revokingLicense": "Revoking license",
+    "licenses_licensesTableRow_na": "N/A",
+    "licenses_revokeLicenseDialog_revokingLicense": "Revoking licenses",
     "@licenses_revokeLicenseDialog_revokingLicense": {},
-    "licenses_revokeLicenseDialog_revokingLicenseWith": "Revoking license {licenseKey}",
+    "licenses_revokeLicenseDialog_revokingLicenseWith": "Revoking {amount} licenses",
     "@licenses_revokeLicenseDialog_revokingLicenseWith": {
         "description": "licenses_revokeLicenseDialog_revokingLicenseWith",
         "placeholders": {
-            "licenseKey": {
-                "type": "String"
+            "amount": {
+                "type": "int"
             }
         }
     },
@@ -488,14 +530,14 @@
             }
         }
     },
-    "licenses_revokeLicenseDialog_errorRevoking": "Error revoking license",
+    "licenses_revokeLicenseDialog_errorRevoking": "Error revoking licenses",
     "@licenses_revokeLicenseDialog_errorRevoking": {},
-    "licenses_revokeLicenseDialog_errorRevokingWith": "Error revoking license {licenseKey}",
+    "licenses_revokeLicenseDialog_errorRevokingWith": "An error occurred while revoking {amount} licenses",
     "@licenses_revokeLicenseDialog_errorRevokingWith": {
         "description": "licenses_revokeLicenseDialog_errorRevokingWith",
         "placeholders": {
-            "licenseKey": {
-                "type": "String"
+            "amount": {
+                "type": "int"
             }
         }
     },

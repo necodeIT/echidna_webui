@@ -109,7 +109,7 @@ class StdFeaturesDatasource extends FeaturesDatasource {
     log('Updating Feature with ID ${feature.id}');
 
     try {
-      final response = await _apiService.post(
+      final response = await _apiService.patch(
         '/admin/features',
         pathParameter: feature.id,
         token: token,

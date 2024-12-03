@@ -84,23 +84,14 @@ class _ProductFeaturesState extends State<ProductFeatures> {
                                       MenuButton(
                                         leading: const Icon(RadixIcons.pencil1),
                                         child: Text(context.t.global_edit),
-                                        onPressed: (context) {
-                                          // TODO: show edit dialog
-                                        },
-                                      ),
-                                      MenuButton(
-                                        leading: Icon(
-                                          RadixIcons.trash,
-                                          color: context.theme.colorScheme.destructive,
-                                        ),
-                                        child: Text(
-                                          context.t.licenses_licensesTableRow_revoke,
-                                          style: context.theme.typography.semiBold.copyWith(
-                                            color: context.theme.colorScheme.destructive,
-                                          ),
-                                        ),
                                         onPressed: (_) {
-                                          // TODO: show confirmation dialog
+                                          showDialog(
+                                            context: context,
+                                            builder: (_) => EditFeatureDialog(
+                                              feature: feature,
+                                              showToast: createShowToastHandler(context),
+                                            ),
+                                          );
                                         },
                                       ),
                                     ],

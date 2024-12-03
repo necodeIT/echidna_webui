@@ -15,7 +15,9 @@ class StdLogsDatasource extends LogsDatasource {
 
   @override
   void dispose() {
-    // _socket?.close();
+    _socket = null;
+
+    log('Websocket connection closed');
   }
 
   @override
@@ -27,14 +29,19 @@ class StdLogsDatasource extends LogsDatasource {
         log('Connecting to $socketUrl');
 
         _socket = WebSocketChannel.connect(Uri.parse(socketUrl));
+
+        log('Connected to websocket');
       } catch (e, s) {
         log('Failed do establish connection to websocket', e, s);
+        rethrow;
       }
     }
 
     await _socket!.ready;
 
     await for (final data in _socket!.stream) {
+      log('Received data from websocket');
+
       final json = jsonDecode(data);
 
       yield (json as List).map((e) => ServerLog.fromJson(e)).toList();
