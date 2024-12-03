@@ -11,10 +11,10 @@ import 'package:memory_cache/memory_cache.dart';
 class LicensesRepository extends Repository<AsyncValue<List<License>>> {
   final LicensesDatasource _datasource;
   final TokenRepository _tokenRepository;
-  final MemoryCache _cache = MemoryCache();
+  final MemoryCache _cache;
 
   /// Provides all licenses.
-  LicensesRepository(this._datasource, this._tokenRepository) : super(AsyncValue.loading()) {
+  LicensesRepository(this._datasource, this._tokenRepository, this._cache) : super(AsyncValue.loading()) {
     watchAsync(_tokenRepository);
   }
 
