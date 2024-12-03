@@ -102,7 +102,7 @@ class AuthModule extends Module {
       ..add<IdentityProvider>(IdentityProvider.fromEnvironment)
       ..addLazySingleton<MemoryCache>(MemoryCache.new)
       ..add<AuthService>(
-        kDebugMode
+        env['DEBUG'] == 'true'
             ? DebugAuthService.new
             : (IdentityProvider idp, NetworkService network) => idp.when(
                   saml: (_, __, ___) => throw UnimplementedError('Saml is not yet supported'),
@@ -110,10 +110,10 @@ class AuthModule extends Module {
                     String name,
                     String clientId,
                     String clientSecret,
-                    String redirectUri,
+                    String introspectUrl,
                     String authorizationUrl,
                     String tokenUrl,
-                    String userInfoUrl,
+                    String logoutUrl,
                     String scopes,
                   ) =>
                       OidcAuthService(
@@ -122,10 +122,10 @@ class AuthModule extends Module {
                       name: name,
                       clientId: clientId,
                       clientSecret: clientSecret,
-                      redirectUri: redirectUri,
+                      introspectUri: introspectUrl,
                       authorizationUrl: authorizationUrl,
                       tokenUrl: tokenUrl,
-                      userInfoUrl: userInfoUrl,
+                      logoutUrl: logoutUrl,
                       scopes: scopes,
                     ),
                   ),
@@ -140,10 +140,15 @@ class AuthModule extends Module {
 
   @override
   void routes(RouteManager r) {
-    r.child(
-      '/',
-      child: (_) => const AuthScreen(),
-      transition: TransitionType.noTransition,
-    );
+    r
+      ..child(
+        '/',
+        child: (_) => const AuthScreen(),
+        transition: TransitionType.noTransition,
+      )
+      ..child(
+        '/oidc',
+        child: (_) => OidcCallbackScreen(args: r.args),
+      );
   }
 }

@@ -6,6 +6,7 @@ import 'package:echidna_webui/modules/products/products.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mcquenji_core/mcquenji_core.dart';
 import 'package:shadcn_flutter/shadcn_flutter.dart';
+import 'package:uicons_updated/icons/uicons_solid.dart';
 
 /// Displays the customers of a product.
 class ProductCustomers extends StatefulWidget {
@@ -91,7 +92,7 @@ class _ProductCustomersState extends State<ProductCustomers> {
                               context: context,
                               builder: (_) {
                                 return SizedBox(
-                                  width: 100,
+                                  width: 175,
                                   child: DropdownMenu(
                                     children: [
                                       MenuButton(
@@ -100,6 +101,26 @@ class _ProductCustomersState extends State<ProductCustomers> {
                                         onPressed: (context) {
                                           Modular.to.navigate('/customers/${customer.id}');
                                         },
+                                      ),
+                                      MenuButton(
+                                        leading: Icon(
+                                          UiconsSolid.gavel,
+                                          color: context.theme.colorScheme.destructive,
+                                        ),
+                                        child: Text(
+                                          'Revoke Client Key',
+                                          style: context.theme.typography.semiBold.copyWith(
+                                            color: context.theme.colorScheme.destructive,
+                                          ),
+                                        ),
+                                        onPressed: (_) => showDialog(
+                                          context: context,
+                                          builder: (_) => RevokeClientKeyDialog(
+                                            product: widget.product,
+                                            customer: customer,
+                                            showToast: createShowToastHandler(context),
+                                          ),
+                                        ),
                                       ),
                                     ],
                                   ),

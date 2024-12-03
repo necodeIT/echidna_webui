@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:echidna_webui/modules/auth/auth.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mcquenji_core/mcquenji_core.dart';
 import 'package:mcquenji_local_storage/mcquenji_local_storage.dart';
 
@@ -33,17 +34,20 @@ class TokenRepository extends Repository<AsyncValue<Token>> {
     );
   }
 
-  /// Authenticates the user and stores the token.
+  /// Initiates the authentication process.
   Future<void> authenticate() async {
-    log('Authenticating user');
+    log('Initiating authentication flow with third-party identity provider');
 
-    final token = Token(
-      token: await _authService.authenticate(),
-    );
+    await _authService.authenticate();
+  }
 
-    await _localStorage.write(token);
+  /// Completes the authentication process and stores the token.
+  Future<void> completeAuthentication() async {
+    final token = await _authService.completeAuthentication();
 
-    data(token);
+    await _localStorage.write(Token(token: token));
+
+    data(Token(token: token));
   }
 
   /// Logs the user out and deletes the token from storage.

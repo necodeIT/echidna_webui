@@ -369,6 +369,7 @@
             }
         }
     },
+    "products_productCustomers_revokeClientKey": "Revoke client key",
     "products_productFeatures_productFeatures": "Product features ({length})",
     "@products_productFeatures_productFeatures": {
         "description": "products_productFeatures_productFeatures",
@@ -408,6 +409,46 @@
         "description": "products_installClientSdk_yourClientKey",
         "placeholders": {
             "key": {
+                "type": "String"
+            }
+        }
+    },
+    "products_revokeClientKeyDialog_revokingClientKey": "Revoking client key",
+    "products_revokeClientKeyDialog_revokingClientKeyWith": "Revoking {name}'s client key",
+    "@products_revokeClientKeyDialog_revokingClientKeyWith": {
+        "description": "products_revokeClientKeyDialog_revokingClientKeyWith",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "products_revokeClientKeyDialog_revokedClientKey": "Revoked client key",
+    "products_revokeClientKeyDialog_revokedClientKeyWith": "Successfully revoked {name}'s client key",
+    "@products_revokeClientKeyDialog_revokedClientKeyWith": {
+        "description": "products_revokeClientKeyDialog_revokedClientKeyWith",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "products_revokeClientKeyDialog_errorRevokingClientKey": "Failed to revoke client key",
+    "products_revokeClientKeyDialog_errorRevokingClientKeyWith": "Failed to revoke {name}'s client key",
+    "@products_revokeClientKeyDialog_errorRevokingClientKeyWith": {
+        "description": "products_revokeClientKeyDialog_errorRevokingClientKeyWith",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "products_revokeClientKeyDialog_popUpTitle": "Revoke Client Key",
+    "products_revokeClientKeyDialog_popUpText": "This will revoke the client key for {name}.\nSoftware using this key will no longer be able to verify licenses.",
+    "@products_revokeClientKeyDialog_popUpText": {
+        "description": "products_revokeClientKeyDialog_popUpText",
+        "placeholders": {
+            "name": {
                 "type": "String"
             }
         }

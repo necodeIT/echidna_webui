@@ -75,6 +75,30 @@ class ClientSdkRepository extends Repository<AsyncValue<List<ClientSdk>>> {
     }
   }
 
+  Future<List<ClientKey>> getClientKeys({List<int>? productIds, List<int>? customerIds}) async {
+    final keys = await _clientKey.getClientKeys(_token.state.requireData.token);
+
+    return keys.where((key) {
+      if (productIds != null && !productIds.contains(key.productId)) {
+        return false;
+      }
+
+      if (customerIds != null && !customerIds.contains(key.customerId)) {
+        return false;
+      }
+
+      return true;
+    }).toList();
+  }
+
+  Future<void> revokeClientKey({required String key}) async {
+    if (!state.hasData) {
+      return;
+    }
+
+    await _clientKey.revokeClientKey(_token.state.requireData.token, key: key);
+  }
+
   @override
   void dispose() {
     _datasource.dispose();

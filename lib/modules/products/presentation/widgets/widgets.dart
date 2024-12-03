@@ -9,3 +9,4 @@ export 'product_card.dart';
 export 'product_customers.dart';
 export 'product_features.dart';
 export 'product_licenses.dart';
+export 'revoke_client_key_dialog.dart';

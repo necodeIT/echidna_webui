@@ -27,4 +27,23 @@ class StdClientKeyDatasource extends ClientKeyDatasource {
 
     return ClientKey.fromJson(response.json);
   }
+
+  @override
+  Future<List<ClientKey>> getClientKeys(String token) async {
+    final response = await _apiService.get('admin/client-keys', token: token);
+
+    final clientKeys = response.jsonList.map(ClientKey.fromJson).toList();
+
+    return clientKeys;
+  }
+
+  @override
+  Future<void> revokeClientKey(String token, {required String key}) async {
+    final response = await _apiService.delete(
+      'admin/client-keys',
+      token: token,
+      pathParameter: key,
+    );
+    response.raiseForStatusCode();
+  }
 }

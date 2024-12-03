@@ -49,6 +49,7 @@ dependencies:
   tap_hover_toggle: ^0.0.1
   uicons_updated: ^0.0.5
   url_launcher: ^6.3.1
+  url_strategy: ^0.3.0
   uuid: ^4.5.1
   vector_graphics: any
   web_socket_channel: ^3.0.1
@@ -73,6 +74,10 @@ dependency_overrides:
     git:
       url: https://github.com/necodeIT/modular.git
       path: modular_core
+  flutter_modular:
+    git:
+      url: https://github.com/necodeIT/modular.git
+      path: flutter_modular
 
 flutter:
   uses-material-design: true

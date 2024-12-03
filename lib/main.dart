@@ -6,6 +6,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:logging/logging.dart';
 import 'package:mcquenji_core/mcquenji_core.dart';
 import 'package:shadcn_flutter/shadcn_flutter.dart';
+import 'package:url_strategy/url_strategy.dart';
 
 void main() async {
   Logger.root.level = Level.ALL;
@@ -16,12 +17,20 @@ void main() async {
   Modular.setInitialRoute('/dashboard');
 
   ConnectivityService.updateInterval = const Duration(seconds: 10);
+
   CoreModule.isWeb = kIsWeb;
   PlatformBrightnessRepository.debugOverride = Brightness.dark;
 
   loadEnv();
+  loadQueryParameters();
+  setPathUrlStrategy();
 
-  runApp(ModularApp(module: AppModule(), child: const AppWidget()));
+  runApp(
+    ModularApp(
+      module: AppModule(),
+      child: const AppWidget(),
+    ),
+  );
 }
 
 /// Root widget of the application.
