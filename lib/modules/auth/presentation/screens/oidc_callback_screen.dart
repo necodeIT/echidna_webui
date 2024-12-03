@@ -2,10 +2,10 @@ import 'package:echidna_webui/modules/auth/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+/// Handles the oidc callback.
 class OidcCallbackScreen extends StatelessWidget {
-  const OidcCallbackScreen({super.key, required this.args});
-
-  final ModularArguments args;
+  /// Handles the oidc callback.
+  const OidcCallbackScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

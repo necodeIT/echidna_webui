@@ -11,12 +11,11 @@ import 'package:url_strategy/url_strategy.dart';
 void main() async {
   loadEnv();
 
-  if (env['DEBUG'] == 'true') {
+  if (env['DEBUG'] == 'true' || kDebugMode) {
     Logger.root.level = Level.ALL;
     Logger.root.onRecord.listen(debugLogHandler);
+    Logger.root.level = Level.ALL;
   }
-
-  WidgetsFlutterBinding.ensureInitialized();
 
   Modular.setInitialRoute('/dashboard');
 

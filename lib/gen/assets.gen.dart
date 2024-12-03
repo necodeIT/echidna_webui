@@ -15,6 +15,9 @@ import 'package:vector_graphics/vector_graphics.dart' as _vg;
 class $AssetsBrandingGen {
   const $AssetsBrandingGen();
 
+  /// File path: assets/branding/icon.svg
+  SvgGenImage get icon => const SvgGenImage('assets/branding/icon.svg');
+
   /// File path: assets/branding/logo-horiz.svg
   SvgGenImage get logoHoriz =>
       const SvgGenImage('assets/branding/logo-horiz.svg');
@@ -24,7 +27,7 @@ class $AssetsBrandingGen {
       const SvgGenImage('assets/branding/logo-icon-background.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values => [logoHoriz, logoIconBackground];
+  List<SvgGenImage> get values => [icon, logoHoriz, logoIconBackground];
 }
 
 class $AssetsFrameworksGen {

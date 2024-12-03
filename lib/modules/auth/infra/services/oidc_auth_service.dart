@@ -1,4 +1,6 @@
 import 'dart:convert';
+// This is a web only application
+// ignore: avoid_web_libraries_in_flutter
 import 'dart:html';
 
 import 'package:echidna_dto/echidna_dto.dart';
@@ -22,6 +24,7 @@ class OidcAuthService extends AuthService {
     _networkService.dispose();
   }
 
+  /// The redirect URI for the OpenID Connect authentication.
   static String get redirectUri => '${window.location.origin}/auth/oidc';
 
   @override
@@ -39,9 +42,9 @@ class OidcAuthService extends AuthService {
 
   @override
   Future<void> logout() async {
-    // TODO(mcquenji, MasterMarcoHD): implement logout
+    final url = '${_oidcIdentityProvider.logoutUrl}?client_id=${_oidcIdentityProvider.clientId}&post_logout_redirect_uri=${window.location.origin}';
 
-    throw UnimplementedError();
+    window.location.href = Uri.encodeFull(url);
   }
 
   @override

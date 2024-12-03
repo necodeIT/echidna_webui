@@ -147,7 +147,7 @@ class AuthModule extends Module {
       )
       ..child(
         '/oidc',
-        child: (_) => OidcCallbackScreen(args: r.args),
+        child: (_) => const OidcCallbackScreen(),
       );
   }
 }

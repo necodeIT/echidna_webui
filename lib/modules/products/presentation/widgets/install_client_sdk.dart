@@ -244,9 +244,9 @@ class _InstallClientSdkState extends State<InstallClientSdk> {
                           ),
                           PrimaryButton(
                             onPressed: _controller.nextStep,
-                            child: Text(i < _instructions!.length - 1
-                                ? context.t.products_installClientSdk_next
-                                : context.t.products_installClientSdk_finish,),
+                            child: Text(
+                              i < _instructions!.length - 1 ? context.t.products_installClientSdk_next : context.t.products_installClientSdk_finish,
+                            ),
                           ),
                         ],
                         child: MarkdownBody(
@@ -267,7 +267,7 @@ class _InstallClientSdkState extends State<InstallClientSdk> {
                             code: context.theme.typography.mono,
                           ),
                         ),
-                      ).expanded(),
+                      ),
                     ),
               ],
             ),

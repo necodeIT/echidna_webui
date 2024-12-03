@@ -1,8 +1,10 @@
 import 'package:awesome_extensions/awesome_extensions.dart' hide ExpandedExtension, ThemeExt;
+import 'package:collection/collection.dart';
 import 'package:echidna_dto/echidna_dto.dart';
 import 'package:echidna_webui/modules/app/app.dart';
 import 'package:echidna_webui/modules/dashboard/dashboard.dart';
 import 'package:echidna_webui/modules/licenses/licenses.dart';
+import 'package:echidna_webui/modules/licenses/presentation/repositories/licenses_repository.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:shadcn_flutter/shadcn_flutter.dart';
 import 'package:uicons_updated/icons/uicons_solid.dart';
@@ -31,62 +33,69 @@ class _CustomerPaymentsState extends State<CustomerPayments> {
       );
     }
 
-    final customerLicense = licenses.state.requireData.firstWhere((license) => license.customerId == widget.customer.id && license.userId == null);
-    final customerPayments = payments.state.requireData.where((payment) => payment.licenseKey == customerLicense.licenseKey).toList();
+    final customerLicense =
+        licenses.state.requireData.firstWhereOrNull((license) => license.customerId == widget.customer.id && license.userId == null);
+
+    final customerPayments =
+        customerLicense != null ? payments.state.requireData.where((payment) => payment.licenseKey == customerLicense.licenseKey).toList() : null;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(context.t.customers_customerPaymentsWidget_customerPayments(customerLicense.licenseKey)).large().bold(),
+        Text(context.t.customers_customerPaymentsWidget_customerPayments).large().bold(),
+        Text(
+          customerLicense != null ? customerLicense.licenseKey : 'No customer wide license found',
+        ).muted(),
         const SizedBox(height: 30),
-        SingleChildScrollView(
-          child: Steps(
-            children: [
-              for (final payment in customerPayments)
-                StepItem(
-                  title: Text(LicenseCard.formatter.format(payment.activationDate)),
-                  content: [
-                    const SizedBox(height: 15),
-                    Row(
-                      children: [
-                        const Icon(BootstrapIcons.coin),
-                        const SizedBox(width: 10),
-                        Text(payment.paymentReference ?? context.t.customers_customerPayments_noPaymentReference),
-                      ],
-                    ),
-                    const SizedBox(height: 10),
-                    Row(
-                      children: [
-                        Icon(
-                          BootstrapIcons.calendar2XFill,
-                          color: payment.expirationDate.isBefore(DateTime.now()) ? context.theme.colorScheme.destructive : null,
-                        ),
-                        const SizedBox(width: 10),
-                        Text(LicenseCard.formatter.format(payment.expirationDate)),
-                      ],
-                    ),
-                    if (payment.revoked) const SizedBox(height: 10),
-                    if (payment.revoked)
+        if (customerPayments != null)
+          SingleChildScrollView(
+            child: Steps(
+              children: [
+                for (final payment in customerPayments)
+                  StepItem(
+                    title: Text(LicenseCard.formatter.format(payment.activationDate)),
+                    content: [
+                      const SizedBox(height: 15),
                       Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Icon(
-                            UiconsSolid.gavel,
-                            color: context.theme.colorScheme.destructive,
-                          ),
+                          const Icon(BootstrapIcons.coin),
                           const SizedBox(width: 10),
-                          Text(
-                            context.t.customers_customerPayments_revokedFor(
-                              payment.revocationReasoning ?? context.t.customers_customerPayments_noReasonProvided,
-                            ),
-                          ).expanded(),
+                          Text(payment.paymentReference ?? context.t.customers_customerPayments_noPaymentReference),
                         ],
                       ),
-                  ],
-                ),
-            ],
+                      const SizedBox(height: 10),
+                      Row(
+                        children: [
+                          Icon(
+                            BootstrapIcons.calendar2XFill,
+                            color: payment.expirationDate.isBefore(DateTime.now()) ? context.theme.colorScheme.destructive : null,
+                          ),
+                          const SizedBox(width: 10),
+                          Text(LicenseCard.formatter.format(payment.expirationDate)),
+                        ],
+                      ),
+                      if (payment.revoked) const SizedBox(height: 10),
+                      if (payment.revoked)
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Icon(
+                              UiconsSolid.gavel,
+                              color: context.theme.colorScheme.destructive,
+                            ),
+                            const SizedBox(width: 10),
+                            Text(
+                              context.t.customers_customerPayments_revokedFor(
+                                payment.revocationReasoning ?? context.t.customers_customerPayments_noReasonProvided,
+                              ),
+                            ).expanded(),
+                          ],
+                        ),
+                    ],
+                  ),
+              ],
+            ),
           ).expanded(),
-        ),
       ],
     ).paddingAll(10);
   }

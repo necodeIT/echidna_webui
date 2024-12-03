@@ -54,7 +54,7 @@ class _AuthScreenState extends State<AuthScreen> {
                       children: [
                         ClipRRect(
                           borderRadius: theme.borderRadiusSm,
-                          child: Assets.branding.logoIconBackground.svg(
+                          child: Assets.branding.icon.svg(
                             width: 30,
                             height: 30,
                             placeholderBuilder: (context) => const CircularProgressIndicator(),

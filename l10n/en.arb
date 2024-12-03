@@ -2,7 +2,7 @@
     "@@locale": "en",
     "global_home": "Home",
     "@global_home": {},
-    "global_licenseServerAdminPanel": "License Server Admin Panel",
+    "global_licenseServerAdminPanel": "Echdina Admin Panel",
     "@global_licenseServerAdminPanel": {},
     "gloabal_adminPanel": "Admin Panel",
     "@gloabal_adminPanel": {},
@@ -168,14 +168,9 @@
     },
     "customers_customerProductsWidget_customerProducts": "Products this customer is using",
     "customers_customerProductsWidget_searchProducts": "Search products...",
-    "customers_customerPaymentsWidget_customerPayments": "Payments from this customer ({licenseKey})",
+    "customers_customerPaymentsWidget_customerPayments": "Payments from this customer",
     "@customers_customerPaymentsWidget_customerPayments": {
-        "description": "customers_customerPaymentsWidget_customerPayments",
-        "placeholders": {
-            "licenseKey": {
-                "type": "String"
-            }
-        }
+        "description": "customers_customerPaymentsWidget_customerPayments"
     },
     "customers_customerPayments_noPaymentReference": "No payment reference",
     "customers_customerPayments_revokedFor": "Revoked: {reason}",
@@ -467,7 +462,7 @@
     "@licenses_licensesTable_productHeader": {},
     "licenses_licensesTable_expirationDateHeader": "Expiration Date",
     "@licenses_licensesTable_expirationDateHeader": {},
-    "licenses_licensesTable_revokedHeader": "Revoked",
+    "licenses_licensesTable_revokedHeader": "Status",
     "@licenses_licensesTable_revokedHeader": {},
     "licenses_licensesTableRow_revoke": "Revoke",
     "@licenses_licensesTableRow_revoke": {},

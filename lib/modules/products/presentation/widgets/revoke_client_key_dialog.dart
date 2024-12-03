@@ -4,10 +4,15 @@ import 'package:echidna_webui/modules/products/products.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:shadcn_flutter/shadcn_flutter.dart';
 
+/// Dialog to revoke a client key.
 class RevokeClientKeyDialog extends ToastConsumer {
+  /// Dialog to revoke a client key.
   const RevokeClientKeyDialog({super.key, required this.product, required this.customer, required super.showToast});
 
+  /// The product to revoke the client key for.
   final Product product;
+
+  /// The customer to revoke the client key for.
   final Customer customer;
 
   @override

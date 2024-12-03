@@ -75,6 +75,7 @@ class ClientSdkRepository extends Repository<AsyncValue<List<ClientSdk>>> {
     }
   }
 
+  /// Returns a list of all valid client keys.
   Future<List<ClientKey>> getClientKeys({List<int>? productIds, List<int>? customerIds}) async {
     final keys = await _clientKey.getClientKeys(_token.state.requireData.token);
 
@@ -91,6 +92,7 @@ class ClientSdkRepository extends Repository<AsyncValue<List<ClientSdk>>> {
     }).toList();
   }
 
+  /// Revokes the client key with the given [key].
   Future<void> revokeClientKey({required String key}) async {
     if (!state.hasData) {
       return;
