@@ -13,8 +13,9 @@ void main() async {
 
   if (env['DEBUG'] == 'true' || kDebugMode) {
     Logger.root.level = Level.ALL;
-    Logger.root.onRecord.listen(debugLogHandler);
-    Logger.root.level = Level.ALL;
+    // only called in debug mode
+    // ignore: avoid_print
+    Logger.root.onRecord.listen((r) => print(r.formatColored()));
   }
 
   Modular.setInitialRoute('/dashboard');
