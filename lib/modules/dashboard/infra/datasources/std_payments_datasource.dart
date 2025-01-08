@@ -11,6 +11,7 @@ class StdPaymentsDatasource extends PaymentsDatasource {
 
   @override
   void dispose() {
+    super.dispose();
     _apiService.dispose();
   }
 

@@ -11,6 +11,7 @@ class StdProductsDatasource extends ProductsDatasource {
 
   @override
   void dispose() {
+    super.dispose();
     _apiService.dispose();
   }
 

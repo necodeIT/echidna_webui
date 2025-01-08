@@ -15,6 +15,7 @@ class StdLogsDatasource extends LogsDatasource {
 
   @override
   void dispose() {
+    super.dispose();
     _socket = null;
 
     log('Websocket connection closed');

@@ -14,6 +14,7 @@ class StdApiService extends ApiService {
 
   @override
   void dispose() {
+    super.dispose();
     _networkService.dispose();
   }
 

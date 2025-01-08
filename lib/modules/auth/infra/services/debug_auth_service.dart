@@ -1,13 +1,9 @@
-
 import 'package:echidna_webui/modules/app/utils/utils.dart';
 import 'package:echidna_webui/modules/auth/auth.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 /// Implements [AuthService] for debugging purposes.
 class DebugAuthService extends AuthService {
-  @override
-  void dispose() {}
-
   @override
   Future<void> authenticate() async {
     log('Debug authentication initiated');

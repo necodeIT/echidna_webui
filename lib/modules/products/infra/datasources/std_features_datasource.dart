@@ -11,6 +11,7 @@ class StdFeaturesDatasource extends FeaturesDatasource {
 
   @override
   void dispose() {
+    super.dispose();
     _apiService.dispose();
   }
 

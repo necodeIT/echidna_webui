@@ -259,7 +259,7 @@ class _LicensesTableState extends State<LicensesTable> {
               child: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 decoration: BoxDecoration(
-                  color: hover ? context.theme.colorScheme.muted.withOpacity(0.5) : null,
+                  color: hover ? context.theme.colorScheme.muted.withValues(alpha: 0.5) : null,
                   border: Border.all(color: theme.colorScheme.border),
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(theme.radiusMd),
@@ -340,7 +340,7 @@ class _LicensesTableState extends State<LicensesTable> {
                               child: Container(
                                 padding: const EdgeInsets.all(16),
                                 decoration: BoxDecoration(
-                                  color: hover ? context.theme.colorScheme.muted.withOpacity(0.5) : context.theme.colorScheme.background,
+                                  color: hover ? context.theme.colorScheme.muted.withValues(alpha: 0.5) : context.theme.colorScheme.background,
                                   border: Border(
                                     bottom: BorderSide(
                                       color: context.theme.colorScheme.border,

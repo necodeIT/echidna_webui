@@ -11,6 +11,7 @@ class StdClientKeyDatasource extends ClientKeyDatasource {
 
   @override
   void dispose() {
+    super.dispose();
     _apiService.dispose();
   }
 

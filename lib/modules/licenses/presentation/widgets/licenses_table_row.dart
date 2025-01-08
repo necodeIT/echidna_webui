@@ -44,7 +44,7 @@ class LicensesTableRow extends StatelessWidget {
           width: double.infinity,
           height: 20,
           decoration: BoxDecoration(
-            color: context.theme.colorScheme.muted.withOpacity(0.5),
+            color: context.theme.colorScheme.muted.withValues(alpha: 0.5),
             borderRadius: BorderRadius.circular(context.theme.radiusSm),
           ),
         );
@@ -84,7 +84,7 @@ class LicensesTableRow extends StatelessWidget {
               child: Container(
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                  color: hover ? context.theme.colorScheme.muted.withOpacity(0.5) : null,
+                  color: hover ? context.theme.colorScheme.muted.withValues(alpha: 0.5) : null,
                   border: Border(
                     bottom: BorderSide(
                       color: context.theme.colorScheme.border,
