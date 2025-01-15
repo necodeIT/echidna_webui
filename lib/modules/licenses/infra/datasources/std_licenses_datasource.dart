@@ -42,6 +42,31 @@ class StdLicensesDatasource extends LicensesDatasource {
   }
 
   @override
+  Future<License> createCustomerLicense(String token, {required int customerId, required int productId}) async {
+    log('Creating new customer license: $customerId, $productId');
+
+    try {
+      final response = await _apiService.put(
+        '/admin/licenses',
+        token: token,
+        body: {
+          'customerId': customerId,
+          'productId': productId,
+        },
+      );
+      response.raiseForStatusCode();
+
+      final license = License.fromJson(response.json);
+      log('Successfully created license with ID ${license.licenseKey}');
+
+      return license;
+    } catch (e, s) {
+      log('Failed to create customer license', e, s);
+      rethrow;
+    }
+  }
+
+  @override
   Future<License> getLicense(String token, {required String licenseKey}) async {
     log('Getting License with ID $licenseKey');
 

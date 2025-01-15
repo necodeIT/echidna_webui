@@ -216,38 +216,51 @@ class _LicensesTableState extends State<LicensesTable> {
                 placeholder: Text(context.t.licenses_licensesTable_filterIDs),
               ),
             ),
-            SizedBox(
-              width: 200,
-              child: Select<LicensesTableGrouping>(
-                itemBuilder: (context, grouping) => Text(grouping.translate(context)),
-                onChanged: (grouping) => setState(() => _grouping = grouping ?? LicensesTableGrouping.none),
-                value: _grouping,
-                popupConstraints: const BoxConstraints(
-                  maxHeight: 300,
-                  maxWidth: 200,
+            Row(
+              children: [
+                TextButton(
+                  leading: Icon(Icons.add),
+                  child: Text(context.t.licenses_licensesTable_addCustomerLicense),
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (_) => CreateCustomerLicenseDialog(
+                        showToast: createShowToastHandler(context),
+                      ),
+                    );
+                  },
                 ),
-                orderSelectedFirst: false,
-                children: [
-                  SelectItemButton(
-                    value: LicensesTableGrouping.customer,
-                    child: Text(
-                      LicensesTableGrouping.customer.translate(context),
-                    ),
+                Select<LicensesTableGrouping>(
+                  itemBuilder: (context, grouping) => Text(grouping.translate(context)),
+                  onChanged: (grouping) => setState(() => _grouping = grouping ?? LicensesTableGrouping.none),
+                  value: _grouping,
+                  popupConstraints: const BoxConstraints(
+                    maxHeight: 300,
+                    maxWidth: 200,
                   ),
-                  SelectItemButton(
-                    value: LicensesTableGrouping.product,
-                    child: Text(
-                      LicensesTableGrouping.product.translate(context),
+                  orderSelectedFirst: false,
+                  children: [
+                    SelectItemButton(
+                      value: LicensesTableGrouping.customer,
+                      child: Text(
+                        LicensesTableGrouping.customer.translate(context),
+                      ),
                     ),
-                  ),
-                  SelectItemButton(
-                    value: LicensesTableGrouping.none,
-                    child: Text(
-                      LicensesTableGrouping.none.translate(context),
+                    SelectItemButton(
+                      value: LicensesTableGrouping.product,
+                      child: Text(
+                        LicensesTableGrouping.product.translate(context),
+                      ),
                     ),
-                  ),
-                ],
-              ),
+                    SelectItemButton(
+                      value: LicensesTableGrouping.none,
+                      child: Text(
+                        LicensesTableGrouping.none.translate(context),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ),
           ],
         ),

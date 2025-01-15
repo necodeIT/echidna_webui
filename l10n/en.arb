@@ -597,6 +597,64 @@
     "licenses_licenseScreen_customerLabel": "Customer:",
     "licenses_licenseScreen_productLabel": "Product:",
     "licenses_licenseFeatures_noFeaturesUnlocked": "No features unlocked.",
+    "licenses_createCustomerLicenseDialog_creatingCustomerLicense": "Creating customer license",
+    "licenses_createCustomerLicenseDialog_creatingCustomerLicenseWith": "Creating {productName} customer license for {customerName}",
+    "@licenses_createCustomerLicenseDialog_creatingCustomerLicenseWith": {
+        "description": "licenses_createCustomerLicenseDialog_creatingCustomerLicenseWith",
+        "placeholders": {
+            "productName": {
+                "type": "String"
+            },
+            "customerName": {
+                "type": "String"
+            }
+        }
+    },
+    "licenses_createCustomerLicenseDialog_customerLicenseAlreadyExists": "Customer license already exists",
+    "licenses_createCustomerLicenseDialog_customerLicenseAlreadyExistsWith": "{productName} customer license for {customerName} already exists",
+    "@licenses_createCustomerLicenseDialog_customerLicenseAlreadyExistsWith": {
+        "description": "licenses_createCustomerLicenseDialog_customerLicenseAlreadyExistsWith",
+        "placeholders": {
+            "productName": {
+                "type": "String"
+            },
+            "customerName": {
+                "type": "String"
+            }
+        }
+    },
+    "licenses_createCustomerLicenseDialog_successCustomerLicense": "Successfully created customer license",
+    "licenses_createCustomerLicenseDialog_successCustomerLicenseWith": "Successfully created {productName} customer license for {customerName}",
+    "@licenses_createCustomerLicenseDialog_successCustomerLicenseWith": {
+        "description": "licenses_createCustomerLicenseDialog_successCustomerLicenseWith",
+        "placeholders": {
+            "productName": {
+                "type": "String"
+            },
+            "customerName": {
+                "type": "String"
+            }
+        }
+    },
+    "licenses_createCustomerLicenseDialog_errorCustomerLicense": "Error creating customer license",
+    "licenses_createCustomerLicenseDialog_errorCustomerLicenseWith": "Error creating {productName} customer license for {customerName}",
+    "@licenses_createCustomerLicenseDialog_errorCustomerLicenseWith": {
+        "description": "licenses_createCustomerLicenseDialog_errorCustomerLicenseWith",
+        "placeholders": {
+            "productName": {
+                "type": "String"
+            },
+            "customerName": {
+                "type": "String"
+            }
+        }
+    },
+    "licenses_createCustomerLicenseDialog_title": "Create customer license",
+    "licenses_createCustomerLicenseDialog_customerLabel": "Customer",
+    "licenses_createCustomerLicenseDialog_customerPlaceholder": "Select customer",
+    "licenses_createCustomerLicenseDialog_productLabel": "Product",
+    "licenses_createCustomerLicenseDialog_productPlaceholder": "Select product",
+    "licenses_licensesTable_addCustomerLicense": "Add customer license",
     "logs_logsScreen_serverLogs": "Server logs",
     "settings_settingsScreen_settings": "Settings",
     "settings_settingsScreen_colorScheme": "Color scheme"

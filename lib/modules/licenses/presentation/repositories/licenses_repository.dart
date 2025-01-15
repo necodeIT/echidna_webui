@@ -44,6 +44,26 @@ class LicensesRepository extends Repository<AsyncValue<List<License>>> {
     _datasource.dispose();
   }
 
+  Future<void> createCustomerLicense({required int customerId, required int productId}) async {
+    log('Creating customer license for customer $customerId');
+
+    if (!state.hasData) {
+      log('Cannot create customer license: Bad state');
+      return;
+    }
+
+    try {
+      final license = await _datasource.createCustomerLicense(_tokenRepository.state.requireData.token, customerId: customerId, productId: productId);
+
+      data([...state.requireData, license]);
+
+      log('Successfully created customer license with ID ${license.licenseKey}');
+    } catch (e, s) {
+      log('Failed to create customer license', e, s);
+      rethrow;
+    }
+  }
+
   /// Updates the license with the given [licenseKey].
   Future<void> updateLicense({
     required String licenseKey,

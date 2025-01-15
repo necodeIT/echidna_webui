@@ -15,6 +15,9 @@ abstract class LicensesDatasource extends Datasource {
   /// Creates a new license.
   Future<License> createLicense(String token, {required String userId, required int customerId, required int productId});
 
+  /// Creates a new customer license.
+  Future<License> createCustomerLicense(String token, {required int customerId, required int productId});
+
   /// Updates a license.
   Future<License> updateLicense(String token, {required License license});
 
